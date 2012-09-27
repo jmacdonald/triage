@@ -1,4 +1,6 @@
 Manzier::Application.routes.draw do
+  resources :requests
+
   devise_for :users
 
   get "home/index"
