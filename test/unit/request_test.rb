@@ -7,4 +7,5 @@ class RequestTest < ActiveSupport::TestCase
   should have_many :comments
   should validate_presence_of :title
   should validate_presence_of :description
+  should validate_presence_of :user
 end

@@ -3,5 +3,5 @@ class Request < ActiveRecord::Base
   has_many :comments
   attr_accessible :description, :title
 
-  validates :title, :description, :presence => true
+  validates :title, :description, :user, :presence => true
 end
