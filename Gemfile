@@ -25,6 +25,10 @@ gem 'devise'
 gem 'haml-rails'
 
 group :test do
+  gem 'rb-fsevent'
+  gem 'listen', '0.4.7'
+  gem 'guard-minitest'
+  gem 'terminal-notifier-guard'
   gem 'turn'
   gem 'shoulda'
   gem 'shoulda-matchers'
