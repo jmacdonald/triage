@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class RequestTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  subject { requests :valid }
+
+  should belong_to :user
 end
