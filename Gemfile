@@ -23,6 +23,7 @@ end
 gem 'jquery-rails'
 gem 'devise'
 gem 'haml-rails'
+gem 'paperclip'
 
 group :test do
   gem 'rb-fsevent'
