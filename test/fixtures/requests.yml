@@ -3,4 +3,4 @@
 valid:
   title: System is not working
   description: The system is not working as expected; please investigate.
-  user: valid
+  author: valid
