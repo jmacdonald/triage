@@ -7,6 +7,7 @@ class RequestTest < ActiveSupport::TestCase
   should belong_to :assignee
   should belong_to :status
   should have_many :comments
+  should have_many :attachments
   should validate_presence_of :title
   should validate_presence_of :description
   should validate_presence_of :author

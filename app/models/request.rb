@@ -3,6 +3,7 @@ class Request < ActiveRecord::Base
   belongs_to :assignee, :class_name => 'User', :foreign_key => 'assignee_id'
   belongs_to :status
   has_many :comments
+  has_many :attachments
   attr_accessible :description, :title
 
   validates :title, :description, :author, :presence => true
