@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120927172052) do
+ActiveRecord::Schema.define(:version => 20120927181309) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(:version => 20120927172052) do
   end
 
   add_index "requests", ["author_id"], :name => "index_requests_on_user_id"
+
+  create_table "statuses", :force => true do |t|
+    t.string   "title"
+    t.boolean  "default"
+    t.boolean  "closed"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
