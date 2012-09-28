@@ -11,3 +11,10 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+# Add a negative assertion method for testing.
+module Test::Unit::Assertions
+  def assert_false(object, message="")
+    assert_equal(false, object, message)
+  end
+end
