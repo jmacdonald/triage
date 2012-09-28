@@ -4,7 +4,7 @@ class RequestTest < ActiveSupport::TestCase
   subject { requests :valid }
 
   should belong_to :author
-  should belong_to :assigned_to
+  should belong_to :assignee
   should have_many :comments
   should validate_presence_of :title
   should validate_presence_of :description
