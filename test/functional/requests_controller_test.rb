@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class RequestsControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'that the index action works' do
+    get :index
+    assert_response :success
+  end
 end
