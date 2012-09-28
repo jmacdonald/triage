@@ -3,4 +3,10 @@ class Status < ActiveRecord::Base
   has_many :requests
 
   validates :title, :presence => true
+
+  before_save :clear_defaults, :if => :default?
+
+  def clear_defaults
+    Status.update_all :default => false
+  end
 end
