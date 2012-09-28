@@ -5,4 +5,6 @@ class StatusTest < ActiveSupport::TestCase
 
   should have_many :requests
   should validate_presence_of :title
+  should ensure_inclusion_of(:default).in_array ['true', 'false', 'asdf']
+  should ensure_inclusion_of(:closed).in_array ['true', 'false', 'asdf']
 end
