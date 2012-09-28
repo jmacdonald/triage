@@ -3,5 +3,5 @@
 valid:
   title: System is not working
   description: The system is not working as expected; please investigate.
-  author: valid
+  requester: valid
   assignee: valid

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120927195948) do
+ActiveRecord::Schema.define(:version => 20120928131311) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "request_id"
@@ -35,14 +35,14 @@ ActiveRecord::Schema.define(:version => 20120927195948) do
   create_table "requests", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.integer  "author_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "requester_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "assignee_id"
     t.integer  "status_id"
   end
 
-  add_index "requests", ["author_id"], :name => "index_requests_on_user_id"
+  add_index "requests", ["requester_id"], :name => "index_requests_on_user_id"
 
   create_table "statuses", :force => true do |t|
     t.string   "title"
