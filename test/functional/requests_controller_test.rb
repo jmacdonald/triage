@@ -14,4 +14,9 @@ class RequestsControllerTest < ActionController::TestCase
     get :index
     assert_equal 1, assigns(:requests).count
   end
+
+  test 'that assignments from other users are not shown as requests' do
+    get :index
+    assert_equal users(:valid), assigns(:requests).first.requester
+  end
 end
