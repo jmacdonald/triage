@@ -129,4 +129,24 @@ class RequestsControllerTest < ActionController::TestCase
       end
     end
   end
+
+  context 'delete action' do
+    setup do
+      delete :destroy, id: requests(:valid).id
+    end
+
+    should 'work' do
+      assert_response :redirect
+    end
+
+    should 'redirect to the request index action' do
+      assert_redirected_to :action => :index
+    end
+
+    should 'not allow deletes to requests from another user' do
+      assert_raise ActiveRecord::RecordNotFound do
+        delete :destroy, :id => users(:mia).id
+      end
+    end
+  end
 end

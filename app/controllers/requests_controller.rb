@@ -36,4 +36,12 @@ class RequestsController < ApplicationController
       render 'edit'
     end
   end
+
+  def destroy
+    @request = current_user.requests.find params[:id]
+
+    if @request.destroy
+      redirect_to requests_url
+    end
+  end
 end
