@@ -5,6 +5,10 @@ class RequestsController < ApplicationController
     @request = current_user.requests.new
   end
 
+  def create
+    redirect_to requests_url
+  end
+
   def index
     @requests = current_user.requests
   end

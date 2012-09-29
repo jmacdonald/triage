@@ -23,6 +23,21 @@ class RequestsControllerTest < ActionController::TestCase
     end
   end
 
+  context 'create action' do
+    setup do
+      post :create, {
+        title: requests(:valid).title,
+        description: requests(:valid).description,
+        requester_id: requests(:valid).requester.id,
+        assignee_id: requests(:valid).assignee.id
+      }
+    end
+
+    should 'work' do
+      assert_redirected_to requests_url
+    end
+  end
+
   context 'index action' do
     setup do
       get :index
