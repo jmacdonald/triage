@@ -22,4 +22,14 @@ class RequestsControllerTest < ActionController::TestCase
       assert_equal users(:valid), assigns(:requests).first.requester
     end
   end
+
+  context 'show action' do
+    setup do
+      get :show, :id => users(:valid).id
+    end
+
+    should 'work' do
+      assert_response :success
+    end
+  end
 end
