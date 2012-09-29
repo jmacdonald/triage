@@ -9,7 +9,7 @@ class RequestsController < ApplicationController
     @request = current_user.requests.new params[:request]
     
     if @request.save
-      redirect_to requests_url
+      redirect_to @request
     else
       render 'new'
     end
@@ -31,7 +31,7 @@ class RequestsController < ApplicationController
     @request = current_user.requests.find params[:id]
 
     if @request.update_attributes params[:request]
-      redirect_to :action => 'show', :id => params[:id]
+      redirect_to @request
     else
       render 'edit'
     end

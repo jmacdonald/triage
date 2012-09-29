@@ -32,7 +32,11 @@ class RequestsControllerTest < ActionController::TestCase
     end
 
     should 'work' do
-      assert_redirected_to requests_url
+      assert_response :redirect
+    end
+
+    should 'redirect to the request\'s show action' do
+      assert_redirected_to :action => :show, :id => assigns(:request)
     end
 
     should 'instantiate a request object' do
@@ -116,7 +120,7 @@ class RequestsControllerTest < ActionController::TestCase
     end
 
     should 'redirect to the request\'s show action' do
-      assert_redirected_to :action => :show
+      assert_redirected_to :action => :show, :id => assigns(:request)
     end
 
     should 'not allow updates to requests from another user' do
