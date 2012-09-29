@@ -17,6 +17,10 @@ class RequestsControllerTest < ActionController::TestCase
     should 'instantiate a new in-memory request' do
       assert assigns(:request)
     end
+
+    should 'instantiate using the current user as the assignee' do
+      assert_equal users(:valid), assigns(:request).requester
+    end
   end
 
   context 'index action' do

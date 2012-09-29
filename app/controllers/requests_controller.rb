@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
   before_filter :authenticate_user!
 
   def new
-    @request = Request.new
+    @request = current_user.requests.new
   end
 
   def index
