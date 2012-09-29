@@ -60,7 +60,7 @@ class RequestsControllerTest < ActionController::TestCase
       assert_response :success
     end
 
-    should 'only show the current user\'s requests' do
+    should 'not show requests from another user' do
       assert_equal 1, assigns(:requests).count
     end
 
@@ -81,6 +81,22 @@ class RequestsControllerTest < ActionController::TestCase
     should 'not show requests from another user' do
       assert_raise ActiveRecord::RecordNotFound do
         get :show, :id => users(:mia).id
+      end
+    end
+  end
+
+  context 'edit action' do
+    setup do
+      get :edit, :id => users(:valid).id
+    end
+
+    should 'work' do
+      assert_response :success
+    end
+
+    should 'not allow edits to requests from another user' do
+      assert_raise ActiveRecord::RecordNotFound do
+        get :edit, :id => users(:mia).id
       end
     end
   end

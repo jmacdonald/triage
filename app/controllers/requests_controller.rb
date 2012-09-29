@@ -22,4 +22,8 @@ class RequestsController < ApplicationController
   def show
     @request = current_user.requests.find(params[:id])
   end
+
+  def edit
+    @request = current_user.requests.find(params[:id])
+  end
 end
