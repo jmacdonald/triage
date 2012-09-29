@@ -6,7 +6,13 @@ class RequestsController < ApplicationController
   end
 
   def create
-    redirect_to requests_url
+    @request = current_user.requests.new params[:request]
+    
+    if @request.save
+      redirect_to requests_url
+    else
+      render 'new'
+    end
   end
 
   def index

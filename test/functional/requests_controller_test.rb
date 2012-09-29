@@ -18,23 +18,36 @@ class RequestsControllerTest < ActionController::TestCase
       assert assigns(:request)
     end
 
-    should 'instantiate using the current user as the assignee' do
+    should 'instantiate using the current user as the requester' do
       assert_equal users(:valid), assigns(:request).requester
     end
   end
 
   context 'create action' do
     setup do
-      post :create, {
+      post :create, { :request => {
         title: requests(:valid).title,
         description: requests(:valid).description,
-        requester_id: requests(:valid).requester.id,
-        assignee_id: requests(:valid).assignee.id
-      }
+      }}
     end
 
     should 'work' do
       assert_redirected_to requests_url
+    end
+
+    should 'instantiate a request object' do
+      assert assigns(:request)
+    end
+
+    should 'set the current user as the requester by default' do
+      assert_equal users(:valid), assigns(:request).requester
+    end
+
+    should 'render the "new" action template when there is an error' do
+      # Submit an empty request.
+      post :create
+      
+      assert_template "new"
     end
   end
 
