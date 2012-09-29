@@ -5,6 +5,20 @@ class RequestsControllerTest < ActionController::TestCase
     sign_in users :valid
   end
 
+  context 'new action' do
+    setup do
+      get :new
+    end
+    
+    should 'work' do
+      assert_response :success
+    end
+
+    should 'instantiate a new in-memory request' do
+      assert assigns(:request)
+    end
+  end
+
   context 'index action' do
     setup do
       get :index
