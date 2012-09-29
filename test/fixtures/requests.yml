@@ -5,3 +5,9 @@ valid:
   description: The system is not working as expected; please investigate.
   requester: valid
   assignee: valid
+
+mia:
+  title: Cannot close request
+  description: The request I have opened cannot be closed.
+  requester: mia
+  assignee: valid

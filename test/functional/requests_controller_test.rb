@@ -9,4 +9,9 @@ class RequestsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
   end
+
+  test 'that users can only see their requests' do
+    get :index
+    assert_equal 1, assigns(:requests).count
+  end
 end
