@@ -51,4 +51,28 @@ class AbilityTest < ActiveSupport::TestCase
       assert @ability.cannot?(:destroy, @assigned_request)
     end
   end
+
+  context 'a requester' do
+    setup do
+      @requester = Ability.new(users :requester)
+      @owned_request = Request.new
+      @owned_request.requester = users :requester
+    end
+
+    should 'be able to read its own requests' do
+      assert @requester.can?(:read, @owned_request)
+    end
+
+    should 'not be able to read requests other than its own' do
+      assert @requester.cannot?(:read, Request.new)
+    end
+
+    should 'be able to create requests' do
+      assert @requester.can?(:create, Request.new)
+    end
+
+    should 'be able to create comments' do
+      assert @requester.can?(:create, Comment.new)
+    end
+  end
 end
