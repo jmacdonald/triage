@@ -31,5 +31,11 @@ class RequestsControllerTest < ActionController::TestCase
     should 'work' do
       assert_response :success
     end
+
+    should 'not show requests from another user' do
+      assert_raise ActiveRecord::RecordNotFound do
+        get :show, :id => users(:mia).id
+      end
+    end
   end
 end
