@@ -100,4 +100,29 @@ class RequestsControllerTest < ActionController::TestCase
       end
     end
   end
+
+  context 'update action' do
+    setup do
+      put :update, {
+        id: users(:valid).id,
+        request: {
+         title: 'New Title'
+        }
+      } 
+    end
+
+    should 'work' do
+      assert_response :redirect
+    end
+
+    should 'redirect to the request\'s show action' do
+      assert_redirected_to :action => :show
+    end
+
+    should 'not allow updates to requests from another user' do
+      assert_raise ActiveRecord::RecordNotFound do
+        put :update, :id => users(:mia).id
+      end
+    end
+  end
 end
