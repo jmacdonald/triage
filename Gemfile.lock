@@ -32,6 +32,7 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.3)
+    cancan (1.6.8)
     cocaine (0.3.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -150,6 +151,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cancan
   coffee-rails (~> 3.2.1)
   devise
   guard-minitest

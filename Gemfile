@@ -24,6 +24,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'haml-rails'
 gem 'paperclip'
+gem 'cancan'
 
 group :test do
   gem 'rb-fsevent'
