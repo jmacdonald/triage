@@ -84,7 +84,7 @@ class RequestsControllerTest < ActionController::TestCase
 
     should 'not show requests from another user' do
       assert_raise ActiveRecord::RecordNotFound do
-        get :show, :id => users(:mia).id
+        get :show, :id => users(:administrator).id
       end
     end
   end
@@ -100,7 +100,7 @@ class RequestsControllerTest < ActionController::TestCase
 
     should 'not allow edits to requests from another user' do
       assert_raise ActiveRecord::RecordNotFound do
-        get :edit, :id => users(:mia).id
+        get :edit, :id => users(:administrator).id
       end
     end
   end
@@ -125,7 +125,7 @@ class RequestsControllerTest < ActionController::TestCase
 
     should 'not allow updates to requests from another user' do
       assert_raise ActiveRecord::RecordNotFound do
-        put :update, :id => users(:mia).id
+        put :update, :id => users(:administrator).id
       end
     end
   end
@@ -145,7 +145,7 @@ class RequestsControllerTest < ActionController::TestCase
 
     should 'not allow deletes to requests from another user' do
       assert_raise ActiveRecord::RecordNotFound do
-        delete :destroy, :id => users(:mia).id
+        delete :destroy, :id => users(:administrator).id
       end
     end
   end

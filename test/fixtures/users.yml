@@ -1,5 +1,14 @@
 valid:
-  email: jordan@wastedintelligence.com
+  email: valid@wastedintelligence.com
 
-mia:
+administrator:
+  email: jordan@wastedintelligence.com
+  role: administrator
+
+provider:
+  email: tim@wastedintelligence.com
+  role: provider
+
+requester:
   email: mia@wastedintelligence.com
+  role: requester
