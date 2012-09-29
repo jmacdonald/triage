@@ -18,3 +18,8 @@ module Test::Unit::Assertions
     assert_equal(false, object, message)
   end
 end
+
+# Include devise test helpers.
+class ActionController::TestCase
+  include Devise::TestHelpers
+end
