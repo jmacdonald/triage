@@ -35,20 +35,31 @@ class AbilityTest < ActiveSupport::TestCase
 
       @assigned_request = Request.new
       @assigned_request.assignee = users :provider
+
+      @admin_assigned_request = Request.new
+      @admin_assigned_request.assignee = users :administrator
+    end
+
+    should 'be able to create new requests' do
+      assert @ability.can?(:create, @assigned_request)
     end
 
     should 'be able to read any request' do
-      assert @ability.can?(:read, Request.new)
+      assert @ability.can?(:read, @unassigned_request)
+      assert @ability.can?(:read, @assigned_request)
+      assert @ability.can?(:read, @admin_assigned_request)
     end
 
-    should 'only be able to manage requests assigned to it' do
-      assert @ability.can?(:manage, @assigned_request)
-      assert @ability.cannot?(:manage, @unassigned_request)
+    should 'only be able to update requests assigned to it' do
+      assert @ability.can?(:update, @assigned_request)
+      assert @ability.cannot?(:update, @admin_assigned_request)
+      assert @ability.cannot?(:update, @unassigned_request)
     end
 
     should 'not be able to destroy any requests' do
       assert @ability.cannot?(:destroy, @unassigned_request)
       assert @ability.cannot?(:destroy, @assigned_request)
+      assert @ability.cannot?(:destroy, @admin_assigned_request)
     end
   end
 
