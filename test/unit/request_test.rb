@@ -23,4 +23,12 @@ class RequestTest < ActiveSupport::TestCase
     assert request.save, 'nil status caused save to fail'
     assert_equal statuses(:valid), request.status
   end
+
+  test "that the default status doesn't override a pre-existing one" do
+    request = requests :valid
+    request.status = statuses :closed
+    request.save
+
+    assert_equal statuses(:closed), request.status
+  end
 end

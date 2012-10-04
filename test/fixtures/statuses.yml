@@ -2,3 +2,8 @@ valid:
   title: New
   default: true
   closed: false
+
+closed:
+  title: Closed
+  default: false
+  closed: true
