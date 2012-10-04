@@ -31,7 +31,7 @@ GEM
     ansi (1.4.3)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.0.4.2)
+    bootstrap-sass (2.1.0.0)
     builder (3.0.3)
     cancan (1.6.8)
     cocaine (0.3.1)
