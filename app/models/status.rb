@@ -6,6 +6,10 @@ class Status < ActiveRecord::Base
 
   before_save :clear_defaults, :if => :default?
 
+  def self.default
+    self.where(:default => true).first
+  end
+
   def clear_defaults
     Status.update_all :default => false
   end

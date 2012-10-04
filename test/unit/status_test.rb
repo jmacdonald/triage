@@ -51,4 +51,12 @@ class StatusTest < ActiveSupport::TestCase
       assert_equal 1, Status.where(:default => true).count
     end
   end
+
+  test 'that a "default" method exists on the class' do
+    assert Status.respond_to?(:default), 'default method does not exist'
+  end
+
+  test 'that the "default" method returns a single status with its default flag set' do
+    assert_equal statuses(:valid), Status.default
+  end
 end
