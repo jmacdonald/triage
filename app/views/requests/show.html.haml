@@ -4,6 +4,12 @@
   %dt Status
   %dd 
     = @request.status
+  %dt Requested By
+  %dd 
+    = @request.requester
+  %dt Assigned To
+  %dd 
+    = @request.assignee ? @request.assignee : 'Unassigned'
 
 %h5
   Description
