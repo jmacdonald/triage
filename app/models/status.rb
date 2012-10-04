@@ -9,4 +9,8 @@ class Status < ActiveRecord::Base
   def clear_defaults
     Status.update_all :default => false
   end
+
+  def to_s
+    self.title
+  end
 end

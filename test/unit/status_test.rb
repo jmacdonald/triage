@@ -8,6 +8,10 @@ class StatusTest < ActiveSupport::TestCase
   should ensure_inclusion_of(:default).in_array [true, false]
   should ensure_inclusion_of(:closed).in_array [true, false]
 
+  test 'that statuses can display themselves as strings' do
+    assert_equal 'New', statuses(:valid).to_s
+  end
+
   context 'a new default status' do
     setup do
       # Create a new default status.
