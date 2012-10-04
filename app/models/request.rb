@@ -15,6 +15,6 @@ class Request < ActiveRecord::Base
   end
 
   def set_default_status
-    self.status = Status.where(:default => true).first
+    self.status = Status.default
   end
 end
