@@ -7,4 +7,8 @@ class Request < ActiveRecord::Base
   attr_accessible :description, :title
 
   validates :title, :description, :requester, :presence => true
+
+  def to_s
+    self.title
+  end
 end
