@@ -1,16 +1,21 @@
 %h2
   = @request
-%dl.dl-horizontal
-  %dt Status
-  %dd 
-    = @request.status
-  %dt Requested By
-  %dd 
-    = @request.requester
-  %dt Assigned To
-  %dd 
-    = @request.assignee ? @request.assignee : 'Unassigned'
-
+.row-fluid
+  .span4
+    %dl.dl-horizontal
+      %dt Status
+      %dd 
+        = @request.status
+      %dt Requested By
+      %dd 
+        = @request.requester
+      %dt Requested On
+      %dd 
+        = @request.created_at.strftime "%B #{@request.created_at.day.ordinalize}, %Y at %l:%M%P"
+      %dt Assigned To
+      %dd 
+        = @request.assignee ? @request.assignee : 'Unassigned'
+  .span4
 %h5
   Description
 = @request.description
