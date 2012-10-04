@@ -26,6 +26,7 @@ gem 'haml-rails'
 gem 'paperclip'
 gem 'cancan'
 gem 'bootstrap-sass'
+gem 'simple_form'
 
 group :test do
   gem 'rb-fsevent'
