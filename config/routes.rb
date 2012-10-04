@@ -1,4 +1,6 @@
 Manzier::Application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
   resources :requests
 
   devise_for :users
