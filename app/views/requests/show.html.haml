@@ -4,8 +4,9 @@
   .span4
     %dl.dl-horizontal
       %dt Status
-      %dd 
-        = @request.status
+      %dd
+        %span.label
+          = @request.status
       %dt Requested By
       %dd 
         = @request.requester
