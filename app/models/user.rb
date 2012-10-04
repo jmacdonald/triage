@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
   has_many :comments
 
   validates :email, :password, :role, :name, :presence => true
+
+  def to_s
+    self.name
+  end
 end
