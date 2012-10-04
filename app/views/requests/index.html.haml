@@ -1,0 +1,23 @@
+- if @requests.empty?
+  .alert.alert-info
+    You don't have any requests. Maybe you'd like to
+    = link_to 'create one?', new_request_url
+- else
+  %table.table.table-hover
+    %thead
+      %tr
+        %th
+          Title
+        %th
+          Requester
+        %th
+          Status
+    %tbody
+      - @requests.each do |request|
+        %tr
+          %td
+            = link_to request
+          %td
+            = request.requester
+          %td
+            = request.status
