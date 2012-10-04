@@ -5,3 +5,4 @@ valid:
   description: The system is not working as expected; please investigate.
   requester: valid
   assignee: valid
+  status: new
