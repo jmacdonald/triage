@@ -6,7 +6,7 @@ class Request < ActiveRecord::Base
   has_many :attachments
   attr_accessible :description, :title
 
-  validates :title, :description, :requester, :presence => true
+  validates :status, :title, :description, :requester, :presence => true
 
   def to_s
     self.title
