@@ -9,4 +9,5 @@ class UserTest < ActiveSupport::TestCase
   should validate_presence_of :email
   should validate_presence_of :password
   should validate_presence_of :role
+  should validate_presence_of :name
 end
