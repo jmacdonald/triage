@@ -1,3 +1,12 @@
+- content_for :nav do
+  .well.context-menu
+    %ul.nav.nav-list
+      %li.nav-header Actions
+      %li
+        %a{ href: '#' }
+          %i.icon-comment
+          Add Comment
+
 %h2
   = @request
 .row-fluid

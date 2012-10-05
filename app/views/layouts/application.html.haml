@@ -27,6 +27,7 @@
     .container-fluid
       .row-fluid
         .span2
+          = yield :nav
         .span10
           / Flash messages
           - if flash[:notice]
