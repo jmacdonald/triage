@@ -34,7 +34,7 @@ RailsAdmin.config do |config|
   # config.excluded_models = [Attachment, Comment, Request, Status, User]
 
   # Add models here if you want to go 'whitelist mode':
-  config.included_models = [Status, User]
+  config.included_models = [Status, User, System]
 
   # Application wide tried label methods for models' instances
   # config.label_methods << :description # Default is [:name, :title]
