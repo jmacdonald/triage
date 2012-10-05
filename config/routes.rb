@@ -2,7 +2,10 @@ Manzier::Application.routes.draw do
   devise_for :users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-  resources :requests
+  resources :requests do
+    resources :comments, :only => [:create]
+  end
+
   get "home/index"
 
   # The priority is based upon order of creation:
