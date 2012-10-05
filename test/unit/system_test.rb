@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class SystemTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  subject { systems :valid }
+
+  should validate_presence_of :name
 end
