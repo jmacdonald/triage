@@ -7,7 +7,7 @@ class Request < ActiveRecord::Base
   has_many :attachments
   attr_accessible :description, :title
 
-  validates :status, :title, :description, :requester, :presence => true
+  validates :status, :title, :description, :requester, :system, :presence => true
 
   before_validation :set_default_status, :if => "status.nil?"
 
