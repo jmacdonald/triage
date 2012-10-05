@@ -18,6 +18,9 @@
             %li
               %a{ :href => '#' } Assignments
           %ul.nav.pull-right
+            - if current_user.role = 'administrator'
+              %li
+                = link_to 'Admin', rails_admin_url
             %li
               = link_to 'Logout', destroy_user_session_url, :method => :delete
         - else
