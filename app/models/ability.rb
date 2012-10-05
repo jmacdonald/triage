@@ -18,7 +18,7 @@ class Ability
       can :read, Request, :requester_id => user.id
 
       can :create, Request
-      can :create, Comment
+      can :create, Comment, :request => { :requester_id => user.id }
     end
   end
 end

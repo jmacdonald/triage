@@ -82,8 +82,17 @@ class AbilityTest < ActiveSupport::TestCase
       assert @requester.can?(:create, Request.new)
     end
 
-    should 'be able to create comments' do
-      assert @requester.can?(:create, Comment.new)
+    should "be able to create comments on requests they've created" do
+      comment = Comment.new
+      comment.request = @owned_request
+      assert @requester.can?(:create, comment)
+    end
+
+    should "not be able to create comments on requests they didn't create" do
+      comment = Comment.new
+      comment.request = requests :valid
+
+      assert @requester.cannot?(:create, comment)
     end
   end
 end
