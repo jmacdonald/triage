@@ -30,20 +30,23 @@
   Description
 = @request.description
 
-%h4 Comments
+%hr
 
-- @request.comments.each do |comment|
-  .comment
-    .row-fluid
-      .span1
-        = gravatar_image_tag comment.user.email, class: 'img-polaroid', gravatar: {size: 32}
-      .span11
-        %h5
-          = pretty_date comment.created_at
-          %br
-          %small
-            = comment.user
-        = comment.content
+.comments
+  %h4 Comments
+
+  - @request.comments.each do |comment|
+    .comment
+      .row-fluid
+        .span1
+          = gravatar_image_tag comment.user.email, class: 'img-polaroid', gravatar: {size: 32}
+        .span11
+          %h5
+            = pretty_date comment.created_at
+            %br
+            %small
+              = comment.user
+          = comment.content
 
 #add_comment_modal.modal.hide.fade
   = simple_form_for [@request, @request.comments.new] do |f|
