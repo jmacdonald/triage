@@ -1,3 +1,11 @@
+- content_for :nav do
+  .well.context-menu
+    %ul.nav.nav-list
+      %li.nav-header Requests
+      %li.active
+        = link_to requests_path do
+          My Requests
+
 - if @requests.empty?
   .alert.alert-info
     You don't have any requests. Maybe you'd like to
