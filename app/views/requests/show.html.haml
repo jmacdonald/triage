@@ -9,26 +9,23 @@
 
 %h2
   = @request
-.row-fluid
-  .span4
-    %dl.dl-horizontal
-      %dt Status
-      %dd
-        %span.label
-          = @request.status
-      %dt System
-      %dd 
-        = @request.system
-      %dt Requested By
-      %dd 
-        = @request.requester
-      %dt Requested On
-      %dd 
-        = pretty_date @request.created_at
-      %dt Assigned To
-      %dd 
-        = @request.assignee ? @request.assignee : 'Unassigned'
-  .span4
+%dl.dl-horizontal
+  %dt Status
+  %dd
+    %span.label
+      = @request.status
+  %dt System
+  %dd 
+    = @request.system
+  %dt Requested By
+  %dd 
+    = @request.requester
+  %dt Requested On
+  %dd 
+    = pretty_date @request.created_at
+  %dt Assigned To
+  %dd 
+    = @request.assignee ? @request.assignee : 'Unassigned'
 %h5
   Description
 = @request.description
