@@ -33,12 +33,18 @@
   Description
 = @request.description
 
+%h5 Comments
+
+- @request.comments.each do |comment|
+  = comment.content
+
 #add_comment_modal.modal.hide.fade
-  .modal-header
-    %h3 Add Comment
-  .modal-body
-    One fine
-  .modal-footer
-    %a.btn{href: '#', data: {dismiss: 'modal'}}
-      Close
-    = link_to 'Add Comment', request_comments_url(@request.id), class: 'btn btn-primary'
+  = simple_form_for [@request, @request.comments.new] do |f|
+    .modal-header
+      %h3 Add Comment
+    .modal-body
+      = f.input :content, input_html: {rows: 5}, label: false
+    .modal-footer
+      %a.btn{href: '#', data: {dismiss: 'modal'}}
+        Close
+      = f.button :submit, class: 'btn-primary'
