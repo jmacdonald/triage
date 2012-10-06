@@ -28,4 +28,5 @@
           %td
             = request.requester
           %td
-            = request.status
+            %span.label{ class: (label_class request.status)}
+              = request.status
