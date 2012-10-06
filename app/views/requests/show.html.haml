@@ -24,7 +24,7 @@
         = @request.requester
       %dt Requested On
       %dd 
-        = @request.created_at.strftime "%B #{@request.created_at.day.ordinalize}, %Y at %l:%M%P"
+        = pretty_date @request.created_at
       %dt Assigned To
       %dd 
         = @request.assignee ? @request.assignee : 'Unassigned'
@@ -33,10 +33,20 @@
   Description
 = @request.description
 
-%h5 Comments
+%h4 Comments
 
 - @request.comments.each do |comment|
-  = comment.content
+  .comment
+    .row-fluid
+      .span1
+        = gravatar_image_tag comment.user.email, class: 'img-polaroid', gravatar: {size: 32}
+      .span11
+        %h5
+          = pretty_date comment.created_at
+          %br
+          %small
+            = comment.user
+        = comment.content
 
 #add_comment_modal.modal.hide.fade
   = simple_form_for [@request, @request.comments.new] do |f|
