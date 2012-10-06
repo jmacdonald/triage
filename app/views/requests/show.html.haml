@@ -3,6 +3,10 @@
     %ul.nav.nav-list
       %li.nav-header Actions
       %li
+        = link_to edit_request_path(@request) do
+          %i.icon-pencil
+          Edit Request
+      %li
         %a{ href: '#add_comment_modal', data: {toggle: 'modal'}}
           %i.icon-comment
           Add Comment
