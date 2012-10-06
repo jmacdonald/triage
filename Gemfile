@@ -28,6 +28,7 @@ gem 'cancan'
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'rails_admin'
+gem 'gravatar_image_tag'
 
 group :test do
   gem 'rb-fsevent'
