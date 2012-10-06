@@ -3,4 +3,8 @@ class System < ActiveRecord::Base
   has_many :requests
 
   validates :name, :presence => true
+
+  def to_s
+    self.name
+  end
 end
