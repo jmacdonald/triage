@@ -5,7 +5,7 @@ class Request < ActiveRecord::Base
   belongs_to :system
   has_many :comments
   has_many :attachments
-  attr_accessible :description, :title
+  attr_accessible :description, :title, :system_id
 
   validates :status, :title, :description, :requester, :system, :presence => true
 
@@ -17,5 +17,9 @@ class Request < ActiveRecord::Base
 
   def set_default_status
     self.status = Status.default
+
+    if self.status.nil?
+      logger.error 'Requests cannot be created without a default status; please create one.'
+    end
   end
 end
