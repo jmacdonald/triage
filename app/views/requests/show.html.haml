@@ -3,7 +3,7 @@
     %ul.nav.nav-list
       %li.nav-header Actions
       %li
-        %a{ href: '#' }
+        %a{ href: '#add_comment_modal', data: {toggle: 'modal'}}
           %i.icon-comment
           Add Comment
 
@@ -32,3 +32,13 @@
 %h5
   Description
 = @request.description
+
+#add_comment_modal.modal.hide.fade
+  .modal-header
+    %h3 Add Comment
+  .modal-body
+    One fine
+  .modal-footer
+    %a.btn{href: '#', data: {dismiss: 'modal'}}
+      Close
+    = link_to 'Add Comment', request_comments_url(@request.id), class: 'btn btn-primary'
