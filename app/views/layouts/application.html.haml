@@ -15,8 +15,6 @@
               = link_to 'Home', root_url
             %li{:class => ('active' if current_page?(requests_url))}
               = link_to 'Requests', requests_url
-            %li
-              %a{ :href => '#' } Assignments
           %ul.nav.pull-right
             - if current_user.role = 'administrator'
               %li
