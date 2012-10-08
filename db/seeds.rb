@@ -5,4 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+admin = User.new({
+  email: 'admin@example.com',
+  password: 'administrator',
+  password_confirmation: 'administrator',
+  name: 'Administrator'
+})
+admin.role = 'administrator'
+admin.save
+
 Status.create([{title: 'New', default: true}, {title: 'Assigned'}, {title: 'Closed', closed: true}])
