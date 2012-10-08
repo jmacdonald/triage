@@ -5,8 +5,7 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
+gem 'pg'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -31,6 +30,8 @@ gem 'rails_admin'
 gem 'gravatar_image_tag'
 
 group :test do
+  gem 'sqlite3'
+  gem 'mysql2'
   gem 'minitest'
   gem 'rb-fsevent'
   gem 'listen', '0.4.7'
