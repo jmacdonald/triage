@@ -71,7 +71,7 @@ class RequestsControllerTest < ActionController::TestCase
 
   context 'show action' do
     setup do
-      get :show, :id => users(:valid).id
+      get :show, :id => requests(:valid).id
     end
 
     should 'work' do
@@ -81,7 +81,7 @@ class RequestsControllerTest < ActionController::TestCase
 
   context 'edit action' do
     setup do
-      get :edit, :id => users(:valid).id
+      get :edit, :id => requests(:valid).id
     end
 
     should 'work' do
@@ -92,7 +92,7 @@ class RequestsControllerTest < ActionController::TestCase
   context 'update action' do
     setup do
       put :update, {
-        id: users(:valid).id,
+        id: requests(:valid).id,
         request: {
          title: 'New Title'
         }
