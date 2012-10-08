@@ -80,16 +80,6 @@ class RequestsControllerTest < ActionController::TestCase
     end
   end
 
-  context 'edit action' do
-    setup do
-      get :edit, :id => requests(:valid).id
-    end
-
-    should 'work' do
-      assert_response :success
-    end
-  end
-
   context 'update action' do
     setup do
       put :update, {

@@ -24,10 +24,6 @@ class RequestsController < ApplicationController
     @request = current_user.requests.find params[:id]
   end
 
-  def edit
-    @request = current_user.requests.find params[:id]
-  end
-
   def update
     @request = current_user.requests.find params[:id]
 
