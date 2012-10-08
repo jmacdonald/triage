@@ -10,6 +10,11 @@ class UserTest < ActiveSupport::TestCase
   should validate_presence_of :password
   should validate_presence_of :role
   should validate_presence_of :name
+  should_not allow_mass_assignment_of(:role)
+
+  [:email, :password, :password_confirmation, :name].each do |attribute|
+    should allow_mass_assignment_of(attribute)
+  end
 
   test 'that users can display themselves as strings' do
     assert_equal 'Valid User', users(:valid).to_s
