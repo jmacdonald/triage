@@ -5,7 +5,7 @@ rvm:
 env:
   - DB=sqlite
   - DB=mysql
-  - DB=postgres
+  - DB=postgresql
 script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
 before_script:
