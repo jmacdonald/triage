@@ -64,10 +64,6 @@ class RequestsControllerTest < ActionController::TestCase
       assert_response :success
     end
 
-    should 'not show requests from another user' do
-      assert_equal 1, assigns(:requests).count
-    end
-
     should 'not show assignments' do
       assert_equal users(:valid), assigns(:requests).first.requester
     end
@@ -81,12 +77,6 @@ class RequestsControllerTest < ActionController::TestCase
     should 'work' do
       assert_response :success
     end
-
-    should 'not show requests from another user' do
-      assert_raise ActiveRecord::RecordNotFound do
-        get :show, :id => users(:administrator).id
-      end
-    end
   end
 
   context 'edit action' do
@@ -96,12 +86,6 @@ class RequestsControllerTest < ActionController::TestCase
 
     should 'work' do
       assert_response :success
-    end
-
-    should 'not allow edits to requests from another user' do
-      assert_raise ActiveRecord::RecordNotFound do
-        get :edit, :id => users(:administrator).id
-      end
     end
   end
 
@@ -122,12 +106,6 @@ class RequestsControllerTest < ActionController::TestCase
     should 'redirect to the request\'s show action' do
       assert_redirected_to :action => :show, :id => assigns(:request)
     end
-
-    should 'not allow updates to requests from another user' do
-      assert_raise ActiveRecord::RecordNotFound do
-        put :update, :id => users(:administrator).id
-      end
-    end
   end
 
   context 'delete action' do
@@ -141,12 +119,6 @@ class RequestsControllerTest < ActionController::TestCase
 
     should 'redirect to the request index action' do
       assert_redirected_to :action => :index
-    end
-
-    should 'not allow deletes to requests from another user' do
-      assert_raise ActiveRecord::RecordNotFound do
-        delete :destroy, :id => users(:administrator).id
-      end
     end
   end
 end
