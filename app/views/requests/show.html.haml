@@ -8,6 +8,10 @@
             %i.icon-share
             Re-assign
       %li
+        %a{ href: '#change_status_modal', data: {toggle: 'modal'}}
+          %i.icon-info-sign
+          Change Status
+      %li
         %a{ href: '#add_comment_modal', data: {toggle: 'modal'}}
           %i.icon-comment
           Add Comment
@@ -53,17 +57,6 @@
               = comment.user
           = comment.content
 
-#add_comment_modal.modal.hide.fade
-  = simple_form_for [@request, @request.comments.new] do |f|
-    .modal-header
-      %h3 Add Comment
-    .modal-body
-      = f.input :content, input_html: {rows: 5}, label: false
-    .modal-footer
-      %a.btn{href: '#', data: {dismiss: 'modal'}}
-        Close
-      = f.button :submit, class: 'btn-primary'
-
 #reassign_modal.modal.hide.fade
   = simple_form_for [@request] do |f|
     .modal-header
@@ -73,4 +66,26 @@
     .modal-footer
       %a.btn{href: '#', data: {dismiss: 'modal'}}
         Close
-      = f.button :submit, class: 'btn-primary'
+      = f.button :submit, class: 'btn-primary', value: 'Re-Asssign'
+
+#change_status_modal.modal.hide.fade
+  = simple_form_for [@request] do |f|
+    .modal-header
+      %h3 Change Status
+    .modal-body
+      = f.association :status
+    .modal-footer
+      %a.btn{href: '#', data: {dismiss: 'modal'}}
+        Close
+      = f.button :submit, class: 'btn-primary', value: 'Change'
+
+#add_comment_modal.modal.hide.fade
+  = simple_form_for [@request, @request.comments.new] do |f|
+    .modal-header
+      %h3 Add Comment
+    .modal-body
+      = f.input :content, input_html: {rows: 5}, label: false
+    .modal-footer
+      %a.btn{href: '#', data: {dismiss: 'modal'}}
+        Close
+      = f.button :submit, class: 'btn-primary', value: 'Add Comment'
