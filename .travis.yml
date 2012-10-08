@@ -2,3 +2,12 @@ language: ruby
 rvm:
   - "1.9.2"
   - "1.9.3"
+env:
+  - DB=sqlite
+  - DB=mysql
+  - DB=postgres
+script:
+  - RAILS_ENV=test bundle exec rake --trace db:migrate test
+before_script:
+  - mysql -e 'create database manzier_test'
+  - psql -c 'create database manzier_test' -U postgres
