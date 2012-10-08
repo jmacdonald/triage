@@ -31,6 +31,7 @@ gem 'rails_admin'
 gem 'gravatar_image_tag'
 
 group :test do
+  gem 'minitest'
   gem 'rb-fsevent'
   gem 'listen', '0.4.7'
   gem 'guard-minitest'

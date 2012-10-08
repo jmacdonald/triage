@@ -87,6 +87,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.19)
+    minitest (2.7.0)
     multi_json (1.3.6)
     orm_adapter (0.4.0)
     paperclip (3.2.0)
@@ -190,6 +191,7 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   listen (= 0.4.7)
+  minitest
   paperclip
   rails (= 3.2.8)
   rails_admin
