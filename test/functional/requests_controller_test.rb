@@ -104,6 +104,14 @@ class RequestsControllerTest < ActionController::TestCase
       assert_response :redirect
     end
 
+    should 'update the specified attribute' do
+      assert_equal 'New Title', assigns(:request).title
+    end
+
+    should 'only update the attributes provided' do
+      assert_equal requests(:valid).description, assigns(:request).description
+    end
+
     should 'redirect to the request\'s show action' do
       assert_redirected_to :action => :show, :id => assigns(:request)
     end
