@@ -4,9 +4,9 @@
       %li.nav-header Actions
       - if can? :edit, @request
         %li
-          = link_to edit_request_path(@request) do
-            %i.icon-pencil
-            Edit Request
+          %a{ href: '#reassign_modal', data: {toggle: 'modal'}}
+            %i.icon-share
+            Re-assign
       %li
         %a{ href: '#add_comment_modal', data: {toggle: 'modal'}}
           %i.icon-comment
@@ -59,6 +59,17 @@
       %h3 Add Comment
     .modal-body
       = f.input :content, input_html: {rows: 5}, label: false
+    .modal-footer
+      %a.btn{href: '#', data: {dismiss: 'modal'}}
+        Close
+      = f.button :submit, class: 'btn-primary'
+
+#reassign_modal.modal.hide.fade
+  = simple_form_for [@request] do |f|
+    .modal-header
+      %h3 Re-assign Request
+    .modal-body
+      = f.association :assignee
     .modal-footer
       %a.btn{href: '#', data: {dismiss: 'modal'}}
         Close
