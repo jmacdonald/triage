@@ -14,6 +14,10 @@ class RequestTest < ActiveSupport::TestCase
   should validate_presence_of :requester
   should validate_presence_of :system
 
+  [:assignee_id, :status_id, :system_id, :title, :description].each do |attribute|
+    should allow_mass_assignment_of(attribute)
+  end
+
   test 'that requests can display themselves as strings' do
     assert_equal 'System is not working', requests(:valid).to_s
   end

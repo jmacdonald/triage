@@ -5,7 +5,7 @@ class Request < ActiveRecord::Base
   belongs_to :system
   has_many :comments
   has_many :attachments
-  attr_accessible :description, :title, :system_id
+  attr_accessible :description, :title, :system_id, :assignee_id, :status_id
 
   validates :status, :title, :description, :requester, :system, :presence => true
 
