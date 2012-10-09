@@ -6,4 +6,5 @@ class AttachmentTest < ActiveSupport::TestCase
   should belong_to :request
   should belong_to :user
   should validate_presence_of :request
+  should validate_presence_of :user
 end
