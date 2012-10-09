@@ -12,6 +12,10 @@
           %i.icon-info-sign
           Change Status
       %li
+        %a{ href: '#edit_details_modal', data: {toggle: 'modal'}}
+          %i.icon-pencil
+          Edit Details
+      %li
         %a{ href: '#add_comment_modal', data: {toggle: 'modal'}}
           %i.icon-comment
           Add Comment
@@ -78,6 +82,18 @@
       %a.btn{href: '#', data: {dismiss: 'modal'}}
         Close
       = f.button :submit, class: 'btn-primary', value: 'Change'
+
+#edit_details_modal.modal.hide.fade
+  = simple_form_for [@request] do |f|
+    .modal-header
+      %h3 Edit Details
+    .modal-body
+      = f.input :title
+      = f.input :description
+    .modal-footer
+      %a.btn{href: '#', data: {dismiss: 'modal'}}
+        Close
+      = f.button :submit, class: 'btn-primary', value: 'Edit Details'
 
 #add_comment_modal.modal.hide.fade
   = simple_form_for [@request, @request.comments.new] do |f|
