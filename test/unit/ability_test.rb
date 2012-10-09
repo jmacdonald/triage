@@ -61,6 +61,15 @@ class AbilityTest < ActiveSupport::TestCase
       assert @ability.cannot?(:destroy, @assigned_request)
       assert @ability.cannot?(:destroy, @admin_assigned_request)
     end
+
+    should 'be able to comment on any request' do
+      assert @ability.can(:create, Comment.new)
+    end
+
+    should 'not be able to update or destroy comments' do
+      assert @ability.cannot?(:update, Comment.new)
+      assert @ability.cannot?(:destroy, Comment.new)
+    end
   end
 
   context 'a requester' do
@@ -93,6 +102,11 @@ class AbilityTest < ActiveSupport::TestCase
       comment.request = requests :valid
 
       assert @requester.cannot?(:create, comment)
+    end
+
+    should 'not be able to update or destroy comments' do
+      assert @requester.cannot?(:update, Comment.new)
+      assert @requester.cannot?(:destroy, Comment.new)
     end
   end
 end
