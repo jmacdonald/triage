@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :requests, :foreign_key => :requester_id
   has_many :assignments, :class_name => 'Request', :foreign_key => :assignee_id
   has_many :comments
+  has_many :attachments
 
   validates :email, :password, :role, :name, :presence => true
 

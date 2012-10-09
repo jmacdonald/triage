@@ -6,6 +6,7 @@ class UserTest < ActiveSupport::TestCase
   should have_many :requests
   should have_many :assignments
   should have_many :comments
+  should have_many :attachments
   should validate_presence_of :email
   should validate_presence_of :password
   should validate_presence_of :role

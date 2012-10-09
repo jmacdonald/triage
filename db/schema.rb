@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009183131) do
+ActiveRecord::Schema.define(:version => 20121009193852) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "request_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20121009183131) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.integer  "user_id"
   end
 
   add_index "attachments", ["request_id"], :name => "index_attachments_on_request_id"
