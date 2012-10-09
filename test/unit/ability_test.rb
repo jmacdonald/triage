@@ -31,8 +31,6 @@ class AbilityTest < ActiveSupport::TestCase
     setup do
       @provider = Ability.new(users :provider)
 
-      @unassigned_request = Request.new
-
       @assigned_request = Request.new
       @assigned_request.assignee = users :provider
 
@@ -45,7 +43,7 @@ class AbilityTest < ActiveSupport::TestCase
     end
 
     should 'be able to read any request' do
-      assert @provider.can?(:read, @unassigned_request)
+      assert @provider.can?(:read, Request.new)
       assert @provider.can?(:read, @assigned_request)
       assert @provider.can?(:read, @admin_assigned_request)
     end
@@ -53,11 +51,11 @@ class AbilityTest < ActiveSupport::TestCase
     should 'only be able to update requests assigned to it' do
       assert @provider.can?(:update, @assigned_request)
       assert @provider.cannot?(:update, @admin_assigned_request)
-      assert @provider.cannot?(:update, @unassigned_request)
+      assert @provider.cannot?(:update, Request.new)
     end
 
     should 'not be able to destroy any requests' do
-      assert @provider.cannot?(:destroy, @unassigned_request)
+      assert @provider.cannot?(:destroy, Request.new)
       assert @provider.cannot?(:destroy, @assigned_request)
       assert @provider.cannot?(:destroy, @admin_assigned_request)
     end
