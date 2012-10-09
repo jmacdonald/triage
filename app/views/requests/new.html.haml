@@ -2,6 +2,6 @@
 
 = simple_form_for @request do |f|
   = f.input :title
-  = f.input :description, :input_html => {:rows => 3}
+  = f.input :description
   = f.association :system
   = f.button :submit
