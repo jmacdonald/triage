@@ -12,21 +12,21 @@
         - if current_user
           %ul.nav
             %li{:class => ('active' if current_page?(root_path))}
-              = link_to 'Home', root_url
-            %li{:class => ('active' if current_page?(requests_url))}
-              = link_to 'Requests', requests_url
+              = link_to 'Home', root_path
+            %li{:class => ('active' if current_page?(requests_path))}
+              = link_to 'Requests', requests_path
             %li{:class => ('active' if current_page?(new_request_path))}
               = link_to 'New Request', new_request_path
           %ul.nav.pull-right
             - if current_user.role = 'administrator'
               %li
-                = link_to 'Admin', rails_admin_url
+                = link_to 'Admin', rails_admin_path
             %li
-              = link_to 'Logout', destroy_user_session_url, :method => :delete
+              = link_to 'Logout', destroy_user_session_path, :method => :delete
         - else
           %ul.nav.pull-right
             %li
-              = link_to 'Login', new_user_session_url
+              = link_to 'Login', new_user_session_path
     .container-fluid
       .row-fluid
         .span2
