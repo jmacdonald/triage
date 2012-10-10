@@ -66,8 +66,10 @@ class RequestsControllerTest < ActionController::TestCase
       assert_response :success
     end
 
-    should 'not show assignments' do
-      assert_equal @current_user, assigns(:requests).first.requester
+    should 'only show requests created by the current user' do
+      assigns(:requests).each do |request|
+        assert_equal @current_user, request.requester
+      end
     end
   end
 
