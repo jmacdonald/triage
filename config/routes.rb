@@ -3,6 +3,7 @@ Manzier::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   get 'assignments' => 'requests#assignments'
+  get 'my_open_requests' => 'requests#my_open'
   resources :requests do
     resources :comments, :only => [:create]
   end
