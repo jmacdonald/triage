@@ -3,6 +3,7 @@ class System < ActiveRecord::Base
   has_many :requests
 
   validates :name, :presence => true
+  validates :name, :uniqueness => true
 
   def to_s
     self.name
