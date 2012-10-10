@@ -17,7 +17,7 @@ class RequestsController < ApplicationController
   end
 
   def index
-    @requests = current_user.requests
+    @requests = Request.all
   end
 
   def assignments

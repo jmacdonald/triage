@@ -8,10 +8,17 @@ valid:
   status: valid
   system: valid
 
+unassigned:
+  title: System is not working
+  description: The system is not working as expected; please investigate.
+  requester: requester
+  status: closed
+  system: valid
+
 closed:
   title: System is not working
   description: The system is not working as expected; please investigate.
-  requester: valid
+  requester: requester
   assignee: valid
   status: closed
   system: valid
