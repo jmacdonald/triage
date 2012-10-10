@@ -7,3 +7,11 @@ valid:
   assignee: valid
   status: valid
   system: valid
+
+closed:
+  title: System is not working
+  description: The system is not working as expected; please investigate.
+  requester: valid
+  assignee: valid
+  status: closed
+  system: valid
