@@ -97,18 +97,26 @@ class AbilityTest < ActiveSupport::TestCase
 
       @owned_request = Request.new
       @owned_request.requester = users :requester
+
+      @admin_request = Request.new
+      @admin_request.requester = users :administrator
     end
 
     should 'be able to read its own requests' do
       assert @requester.can?(:read, @owned_request)
     end
 
-    should 'not be able to read requests other than its own' do
-      assert @requester.cannot?(:read, Request.new)
+    should 'not be able to read requests owned by another user' do
+      assert @requester.cannot?(:read, @admin_request)
     end
 
     should 'be able to create requests' do
       assert @requester.can?(:create, Request.new)
+    end
+
+    should 'not be able to update requests' do
+      assert @requester.cannot?(:update, @owned_request)
+      assert @requester.cannot?(:update, @admin_request)
     end
 
     should "be able to create comments on requests they've created" do
@@ -119,14 +127,19 @@ class AbilityTest < ActiveSupport::TestCase
 
     should "not be able to create comments on requests they didn't create" do
       comment = Comment.new
-      comment.request = requests :valid
+      comment.request = @admin_request
 
       assert @requester.cannot?(:create, comment)
     end
 
-    should 'not be able to update or destroy comments' do
-      assert @requester.cannot?(:update, Comment.new)
-      assert @requester.cannot?(:destroy, Comment.new)
+    should 'not be able to update comments' do
+      assert @requester.cannot?(:update, @owned_request)
+      assert @requester.cannot?(:update, @admin_request)
+    end
+
+    should 'not be able to destroy comments' do
+      assert @requester.cannot?(:destroy, @owned_request)
+      assert @requester.cannot?(:destroy, @admin_request)
     end
   end
 end
