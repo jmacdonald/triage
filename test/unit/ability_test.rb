@@ -32,31 +32,49 @@ class AbilityTest < ActiveSupport::TestCase
       @provider = Ability.new(users :provider)
 
       @assigned_request = Request.new
-      @assigned_request.assignee = users :provider
+      @assigned_request.assignee = users(:provider)
 
       @admin_assigned_request = Request.new
-      @admin_assigned_request.assignee = users :administrator
+      @admin_assigned_request.assignee = users(:administrator)
     end
 
     should 'be able to create new requests' do
-      assert @provider.can?(:create, @assigned_request)
+      assert @provider.can?(:create, Request.new)
     end
 
-    should 'be able to read any request' do
+    should 'be able to read a new request' do
       assert @provider.can?(:read, Request.new)
+    end
+
+    should 'be able to read a request assigned to it' do
       assert @provider.can?(:read, @assigned_request)
+    end
+
+    should 'be able to read a request assigned to another user' do
       assert @provider.can?(:read, @admin_assigned_request)
     end
 
-    should 'only be able to update requests assigned to it' do
-      assert @provider.can?(:update, @assigned_request)
-      assert @provider.cannot?(:update, @admin_assigned_request)
+    should 'not be able to update a new request' do
       assert @provider.cannot?(:update, Request.new)
     end
 
-    should 'not be able to destroy any requests' do
+    should 'be able to update requests assigned to it' do
+      assert @provider.can?(:update, @assigned_request)
+    end
+
+    should 'not be able to update requests assigned to another user' do
+      assert @provider.cannot?(:update, @admin_assigned_request)
+    end
+
+    should 'not be able to destroy a new request' do
       assert @provider.cannot?(:destroy, Request.new)
+    end
+
+    should 'not be able to destroy a request assigned to it' do
       assert @provider.cannot?(:destroy, @assigned_request)
+    end
+
+    should 'not be able to destroy a request assigned to another user' do
       assert @provider.cannot?(:destroy, @admin_assigned_request)
     end
 
@@ -64,8 +82,11 @@ class AbilityTest < ActiveSupport::TestCase
       assert @provider.can(:create, Comment.new)
     end
 
-    should 'not be able to update or destroy comments' do
+    should 'not be able to update comments' do
       assert @provider.cannot?(:update, Comment.new)
+    end
+
+    should 'not be able to destroy comments' do
       assert @provider.cannot?(:destroy, Comment.new)
     end
   end
@@ -73,6 +94,7 @@ class AbilityTest < ActiveSupport::TestCase
   context 'a requester' do
     setup do
       @requester = Ability.new(users :requester)
+
       @owned_request = Request.new
       @owned_request.requester = users :requester
     end

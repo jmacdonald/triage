@@ -12,6 +12,7 @@ class Ability
       can :manage, Request, :assignee_id => user.id
       cannot :destroy, Request
 
+      can :create, Request
       can :create, Comment
     elsif user.role == 'requester'
       # Read requests created by them.
