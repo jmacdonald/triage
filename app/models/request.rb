@@ -10,7 +10,7 @@ class Request < ActiveRecord::Base
   validates :status, :title, :description, :requester, :system, :presence => true
   before_validation :set_default_status, :if => "status.nil?"
 
-  scope :open, joins(:status).where(:statuses => {:closed => false})
+  scope :unclosed, joins(:status).where(:statuses => {:closed => false})
 
   def to_s
     self.title
