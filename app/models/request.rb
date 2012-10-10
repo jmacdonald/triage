@@ -8,8 +8,9 @@ class Request < ActiveRecord::Base
   attr_accessible :description, :title, :system_id, :assignee_id, :status_id
 
   validates :status, :title, :description, :requester, :system, :presence => true
-
   before_validation :set_default_status, :if => "status.nil?"
+
+  scope :open, joins(:status).where(:statuses => {:closed => false})
 
   def to_s
     self.title
