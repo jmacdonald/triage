@@ -15,6 +15,8 @@
               = link_to 'Home', root_url
             %li{:class => ('active' if current_page?(requests_url))}
               = link_to 'Requests', requests_url
+            %li{:class => ('active' if current_page?(new_request_path))}
+              = link_to 'New Request', new_request_path
           %ul.nav.pull-right
             - if current_user.role = 'administrator'
               %li
