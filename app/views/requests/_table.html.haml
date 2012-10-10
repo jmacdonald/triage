@@ -1,0 +1,19 @@
+%table#requests.table.table-hover.table-bordered
+  %thead
+    %tr
+      %th
+        Title
+      %th
+        Requester
+      %th
+        Status
+  %tbody
+    - @requests.each do |request|
+      %tr
+        %td
+          = link_to request, request
+        %td
+          = request.requester
+        %td
+          %span.label{ class: (label_class request.status) }
+            = request.status

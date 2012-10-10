@@ -87,10 +87,6 @@ class RequestsControllerTest < ActionController::TestCase
         assert_equal @current_user, request.assignee
       end
     end
-
-    should 'use the index view template' do
-      assert_template 'index'
-    end
   end
 
   context 'show action' do

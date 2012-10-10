@@ -22,7 +22,6 @@ class RequestsController < ApplicationController
 
   def assignments
     @requests = current_user.assignments
-    render 'index'
   end
 
   def show

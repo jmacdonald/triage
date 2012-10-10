@@ -1,0 +1,11 @@
+- content_for :nav do
+  .well.context-menu
+    %ul.nav.nav-list
+      %li.nav-header Requests
+      %li{ class: ('active' if current_page?(requests_path) ) }
+        = link_to requests_path do
+          My Requests
+      %li.nav-header Assignments
+      %li{ class: ('active' if current_page?(assignments_path) ) }
+        = link_to assignments_path do
+          My Assignments

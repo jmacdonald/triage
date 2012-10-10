@@ -1,36 +1,8 @@
-- content_for :nav do
-  .well.context-menu
-    %ul.nav.nav-list
-      %li.nav-header Requests
-      %li{ class: ('active' if current_page?(requests_path) ) }
-        = link_to requests_path do
-          My Requests
-      %li.nav-header Assignments
-      %li{ class: ('active' if current_page?(assignments_path) ) }
-        = link_to assignments_path do
-          My Assignments
+= render 'nav'
 
 - if @requests.empty?
   .alert.alert-info
     You don't have any requests. Maybe you'd like to
     = link_to 'create one?', new_request_url
 - else
-  %table#requests.table.table-hover.table-bordered
-    %thead
-      %tr
-        %th
-          Title
-        %th
-          Requester
-        %th
-          Status
-    %tbody
-      - @requests.each do |request|
-        %tr
-          %td
-            = link_to request, request
-          %td
-            = request.requester
-          %td
-            %span.label{ class: (label_class request.status) }
-              = request.status
+  = render 'table'
