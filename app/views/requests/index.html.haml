@@ -2,7 +2,7 @@
   .well.context-menu
     %ul.nav.nav-list
       %li.nav-header Requests
-      %li.active
+      %li{ class: ('active' if current_page?(requests_path) ) }
         = link_to requests_path do
           My Requests
 
