@@ -3,6 +3,7 @@ require 'test_helper'
 class RequestsControllerTest < ActionController::TestCase
   setup do
     sign_in users :valid
+    @current_user = users :valid
   end
 
   context 'new action' do
@@ -19,7 +20,7 @@ class RequestsControllerTest < ActionController::TestCase
     end
 
     should 'instantiate using the current user as the requester' do
-      assert_equal users(:valid), assigns(:request).requester
+      assert_equal @current_user, assigns(:request).requester
     end
   end
 
@@ -45,7 +46,7 @@ class RequestsControllerTest < ActionController::TestCase
     end
 
     should 'set the current user as the requester by default' do
-      assert_equal users(:valid), assigns(:request).requester
+      assert_equal @current_user, assigns(:request).requester
     end
 
     should 'render the "new" action template when there is an error' do
@@ -66,7 +67,7 @@ class RequestsControllerTest < ActionController::TestCase
     end
 
     should 'not show assignments' do
-      assert_equal users(:valid), assigns(:requests).first.requester
+      assert_equal @current_user, assigns(:requests).first.requester
     end
   end
 
