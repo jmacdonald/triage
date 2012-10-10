@@ -2,6 +2,7 @@ Manzier::Application.routes.draw do
   devise_for :users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
+  get 'assignments' => 'requests#assignments'
   resources :requests do
     resources :comments, :only => [:create]
   end

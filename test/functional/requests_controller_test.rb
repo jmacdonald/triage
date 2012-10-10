@@ -73,6 +73,26 @@ class RequestsControllerTest < ActionController::TestCase
     end
   end
 
+  context 'assignments action' do
+    setup do
+      get :assignments
+    end
+
+    should 'work' do
+      assert_response :success
+    end
+
+    should 'only show requests assigned to the current user' do
+      assigns(:requests).each do |request|
+        assert_equal @current_user, request.assignee
+      end
+    end
+
+    should 'use the index view template' do
+      assert_template 'index'
+    end
+  end
+
   context 'show action' do
     setup do
       get :show, :id => requests(:valid).id

@@ -20,6 +20,11 @@ class RequestsController < ApplicationController
     @requests = current_user.requests
   end
 
+  def assignments
+    @requests = current_user.assignments
+    render 'index'
+  end
+
   def show
     @request = current_user.requests.find params[:id]
   end
