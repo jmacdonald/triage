@@ -59,4 +59,12 @@ class StatusTest < ActiveSupport::TestCase
   test 'that the "default" method returns a single status with its default flag set' do
     assert_equal statuses(:valid), Status.default
   end
+
+  test 'that null "default" values are defaulted to false' do
+    assert_equal 2, Status.where(:default => false).count
+  end
+
+  test 'that null "closed" values are defaulted to false' do
+    assert_equal 2, Status.where(:closed => false).count
+  end
 end

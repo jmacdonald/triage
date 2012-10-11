@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009193852) do
+ActiveRecord::Schema.define(:version => 20121011031856) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "request_id"
@@ -65,10 +65,10 @@ ActiveRecord::Schema.define(:version => 20121009193852) do
 
   create_table "statuses", :force => true do |t|
     t.string   "title"
-    t.boolean  "default"
-    t.boolean  "closed"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "default",    :default => false
+    t.boolean  "closed",     :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "systems", :force => true do |t|

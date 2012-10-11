@@ -7,3 +7,6 @@ closed:
   title: Closed
   default: false
   closed: true
+
+nil_booleans:
+  title: Nils
