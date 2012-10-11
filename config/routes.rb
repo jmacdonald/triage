@@ -5,6 +5,7 @@ Manzier::Application.routes.draw do
   get 'assignments/open' => 'requests#open_assignments', :as => 'open_assignments'
   resources :requests do
     get 'open', :on => :collection
+    get 'closed', :on => :collection
     resources :comments, :only => [:create]
   end
 

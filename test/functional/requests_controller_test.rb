@@ -93,6 +93,28 @@ class RequestsControllerTest < ActionController::TestCase
     end
   end
 
+  context 'closed action' do
+    setup do
+      get :closed
+    end
+
+    should 'work' do
+      assert_response :success
+    end
+
+    should 'only return requests owned by the current user' do
+      assigns(:requests).each do |request|
+        assert_equal users(:valid), request.requester
+      end
+    end
+
+    should 'only return closed requests' do
+      assigns(:requests).each do |request|
+        assert request.status.closed?
+      end
+    end
+  end
+
   context 'open assignments action' do
     setup do
       get :open_assignments

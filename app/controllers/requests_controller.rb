@@ -26,6 +26,12 @@ class RequestsController < ApplicationController
     render 'index'
   end
 
+  def closed
+    @requests = current_user.requests.closed
+
+    render 'index'
+  end
+
   def open_assignments
     @requests = current_user.assignments.unclosed
   end

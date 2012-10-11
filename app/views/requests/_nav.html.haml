@@ -8,6 +8,9 @@
       %li{ class: ('active' if current_page?(open_requests_path) ) }
         = link_to open_requests_path do
           My Open Requests
+      %li{ class: ('active' if current_page?(closed_requests_path) ) }
+        = link_to closed_requests_path do
+          My Closed Requests
       %li.nav-header Assignments
       %li{ class: ('active' if current_page?(open_assignments_path) ) }
         = link_to open_assignments_path do
