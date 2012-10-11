@@ -5,10 +5,10 @@
       %li{ class: ('active' if current_page?(requests_path) ) }
         = link_to requests_path do
           All Requests
-      %li{ class: ('active' if current_page?(my_open_requests_path) ) }
-        = link_to my_open_requests_path do
+      %li{ class: ('active' if current_page?(open_requests_path) ) }
+        = link_to open_requests_path do
           My Open Requests
       %li.nav-header Assignments
-      %li{ class: ('active' if current_page?(assignments_path) ) }
-        = link_to assignments_path do
-          My Assignments
+      %li{ class: ('active' if current_page?(open_assignments_path) ) }
+        = link_to open_assignments_path do
+          My Open Assignments

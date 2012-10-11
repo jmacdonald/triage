@@ -20,14 +20,14 @@ class RequestsController < ApplicationController
     @requests = Request.all
   end
 
-  def my_open
+  def open
     @requests = current_user.requests.unclosed
 
     render 'index'
   end
 
-  def assignments
-    @requests = current_user.assignments
+  def open_assignments
+    @requests = current_user.assignments.unclosed
   end
 
   def show

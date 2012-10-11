@@ -2,9 +2,9 @@ Manzier::Application.routes.draw do
   devise_for :users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-  get 'assignments' => 'requests#assignments'
-  get 'my_open_requests' => 'requests#my_open'
+  get 'assignments/open' => 'requests#open_assignments', :as => 'open_assignments'
   resources :requests do
+    get 'open', :on => :collection
     resources :comments, :only => [:create]
   end
 

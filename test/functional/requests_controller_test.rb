@@ -71,9 +71,9 @@ class RequestsControllerTest < ActionController::TestCase
     end
   end
 
-  context 'my_open action' do
+  context 'open action' do
     setup do
-      get :my_open
+      get :open
     end
 
     should 'work' do
@@ -93,9 +93,9 @@ class RequestsControllerTest < ActionController::TestCase
     end
   end
 
-  context 'assignments action' do
+  context 'open assignments action' do
     setup do
-      get :assignments
+      get :open_assignments
     end
 
     should 'work' do
@@ -105,6 +105,12 @@ class RequestsControllerTest < ActionController::TestCase
     should 'only show requests assigned to the current user' do
       assigns(:requests).each do |request|
         assert_equal @current_user, request.assignee
+      end
+    end
+
+    should 'only return open assignments' do
+      assigns(:requests).each do |request|
+        assert_false request.status.closed?
       end
     end
   end
