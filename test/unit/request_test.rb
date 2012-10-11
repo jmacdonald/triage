@@ -38,6 +38,12 @@ class RequestTest < ActiveSupport::TestCase
     assert_equal statuses(:closed), request.status
   end
 
+  test 'that the closed scope only returns requests with a status that is closed' do
+    Request.closed.each do |request|
+      assert request.status.closed?
+    end
+  end
+
   test 'that the unclosed scope only returns requests with a status that is not closed' do
     Request.unclosed.each do |request|
       assert_false request.status.closed?
