@@ -11,8 +11,6 @@
         %a.brand{ :href => '#' } Manzier
         - if current_user
           %ul.nav
-            %li{:class => ('active' if current_page?(root_path))}
-              = link_to 'Home', root_path
             %li{:class => ('active' if (params[:controller] == 'requests' and params[:action] != 'new'))}
               = link_to 'Requests', requests_path
             %li{:class => ('active' if current_page?(new_request_path))}
