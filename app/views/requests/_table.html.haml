@@ -1,6 +1,8 @@
 %table#requests.table.table-hover.table-bordered
   %thead
     %tr
+      %th.request_id
+        ID
       %th
         Title
       %th
@@ -11,7 +13,9 @@
     - @requests.each do |request|
       %tr
         %td
-          = link_to request, request
+          = request.id
+        %td
+          = link_to request.title, request
         %td
           = request.requester
         %td

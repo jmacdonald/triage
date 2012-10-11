@@ -19,7 +19,8 @@ class RequestTest < ActiveSupport::TestCase
   end
 
   test 'that requests can display themselves as strings' do
-    assert_equal 'System is not working', requests(:valid).to_s
+    request = requests :valid
+    assert_equal "Request ##{request.id}: #{request.title}", requests(:valid).to_s
   end
 
   test 'that request status defaults to default status' do

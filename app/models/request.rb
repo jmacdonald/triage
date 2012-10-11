@@ -14,7 +14,7 @@ class Request < ActiveRecord::Base
   scope :unclosed, joins(:status).where(:statuses => {:closed => false})
 
   def to_s
-    self.title
+    "Request ##{self.id}: #{self.title}"
   end
 
   def set_default_status
