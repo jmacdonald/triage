@@ -32,6 +32,10 @@ class RequestsController < ApplicationController
     @requests = current_user.assignments.unclosed
   end
 
+  def closed_assignments
+    @requests = current_user.assignments.closed
+  end
+
   def show
     @request = current_user.requests.find params[:id]
   end

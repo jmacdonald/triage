@@ -137,6 +137,28 @@ class RequestsControllerTest < ActionController::TestCase
     end
   end
 
+  context 'closed assignments action' do
+    setup do
+      get :closed_assignments
+    end
+
+    should 'work' do
+      assert_response :success
+    end
+
+    should 'only show requests assigned to the current user' do
+      assigns(:requests).each do |request|
+        assert_equal @current_user, request.assignee
+      end
+    end
+
+    should 'only return closed assignments' do
+      assigns(:requests).each do |request|
+        assert request.status.closed?
+      end
+    end
+  end
+
   context 'show action' do
     setup do
       get :show, :id => requests(:valid).id

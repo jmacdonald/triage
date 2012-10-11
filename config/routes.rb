@@ -2,7 +2,10 @@ Manzier::Application.routes.draw do
   devise_for :users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
+  # Assignment routes. These are really just requests, but with some filters.
   get 'assignments/open' => 'requests#open_assignments', :as => 'open_assignments'
+  get 'assignments/closed' => 'requests#closed_assignments', :as => 'closed_assignments'
+
   resources :requests do
     get 'open', :on => :collection
     get 'closed', :on => :collection

@@ -1,0 +1,10 @@
+= render 'nav'
+
+- if @requests.empty?
+  .alert.alert-info
+    You don't have any closed assignments; do you do
+    %em
+      any
+    work around here?
+- else
+  = render 'table'

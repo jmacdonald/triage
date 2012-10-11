@@ -15,3 +15,6 @@
       %li{ class: ('active' if current_page?(open_assignments_path) ) }
         = link_to open_assignments_path do
           My Open Assignments
+      %li{ class: ('active' if current_page?(closed_assignments_path) ) }
+        = link_to closed_assignments_path do
+          My Closed Assignments
