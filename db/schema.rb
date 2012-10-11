@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121011031856) do
+ActiveRecord::Schema.define(:version => 20121011215110) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "request_id"
@@ -50,19 +50,6 @@ ActiveRecord::Schema.define(:version => 20121011031856) do
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
-  create_table "requests", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.integer  "requester_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "assignee_id"
-    t.integer  "status_id"
-    t.integer  "system_id"
-  end
-
-  add_index "requests", ["requester_id"], :name => "index_requests_on_user_id"
-
   create_table "statuses", :force => true do |t|
     t.string   "title"
     t.boolean  "default",    :default => false
@@ -76,6 +63,19 @@ ActiveRecord::Schema.define(:version => 20121011031856) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "tickets", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "requester_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "assignee_id"
+    t.integer  "status_id"
+    t.integer  "system_id"
+  end
+
+  add_index "tickets", ["requester_id"], :name => "index_requests_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
