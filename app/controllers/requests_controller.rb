@@ -22,14 +22,10 @@ class RequestsController < ApplicationController
 
   def open
     @requests = current_user.requests.unclosed
-
-    render 'index'
   end
 
   def closed
     @requests = current_user.requests.closed
-
-    render 'index'
   end
 
   def open_assignments

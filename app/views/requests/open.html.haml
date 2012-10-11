@@ -1,0 +1,8 @@
+= render 'nav'
+
+- if @requests.empty?
+  .alert.alert-info
+    You don't have any open requests. Maybe you'd like to
+    = link_to 'create one?', new_request_url
+- else
+  = render 'table'

@@ -1,0 +1,7 @@
+= render 'nav'
+
+- if @requests.empty?
+  .alert.alert-info
+    You don't have any closed requests.
+- else
+  = render 'table'
