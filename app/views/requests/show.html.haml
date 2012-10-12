@@ -1,7 +1,7 @@
 - content_for :nav do
   .well.context-menu
     %ul.nav.nav-list
-      %li.nav-header Actions
+      %li.nav-header Modify
       - if can? :edit, @request
         %li
           %a{ href: '#reassign_modal', data: {toggle: 'modal'}}
@@ -15,10 +15,15 @@
         %a{ href: '#edit_details_modal', data: {toggle: 'modal'}}
           %i.icon-pencil
           Edit Details
+      %li.nav-header Add
       %li
         %a{ href: '#add_comment_modal', data: {toggle: 'modal'}}
           %i.icon-comment
-          Add Comment
+          Comment
+      %li
+        %a{ href: '#add_attachment_modal', data: {toggle: 'modal'}}
+          %i.icon-file
+          Attachment
 
 %h2
   = @request
@@ -105,3 +110,25 @@
       %a.btn{href: '#', data: {dismiss: 'modal'}}
         Close
       = f.button :submit, class: 'btn-primary', value: 'Add Comment'
+
+#add_attachment_modal.modal.hide.fade
+  = simple_form_for [@request, @request.attachments.new], :html => {:multipart => true}   do |f|
+    .modal-header
+      %h3 Add Attachment
+    .modal-body
+      = f.input :file
+    .modal-footer
+      %a.btn{href: '#', data: {dismiss: 'modal'}}
+        Close
+      = f.button :submit, class: 'btn-primary', value: 'Add Attachment'
+
+- if @request.attachments.count > 0
+  - content_for :sidebar do
+    .well.context-menu
+      %ul.nav.nav-list
+        %li.nav-header Attachments
+        - @request.attachments.each do |attachment|
+          %li
+            = link_to attachment do
+              %i.icon-file
+              = attachment.file_name
