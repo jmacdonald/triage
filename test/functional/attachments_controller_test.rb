@@ -24,5 +24,9 @@ class AttachmentsControllerTest < ActionController::TestCase
     should 'associate attachments with the specified request' do
       assert_equal requests(:valid).id, assigns(:attachment).request.id
     end
+
+    should 'associate attachments with the current user' do
+      assert_equal users(:valid).id, assigns(:attachment).user.id
+    end
   end
 end
