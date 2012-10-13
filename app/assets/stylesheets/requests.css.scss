@@ -30,3 +30,12 @@ textarea#comment_content {
 th.request_id {
   width: 50px;
 }
+
+ul#attachments {
+  margin-left: 0px;
+  margin-right: 45px;
+  li {
+    list-style-type: none;
+    border-bottom: 1px solid #eee;
+  }
+}

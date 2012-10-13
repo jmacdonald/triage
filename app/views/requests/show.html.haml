@@ -125,11 +125,14 @@
 
 - if @request.attachments.count > 0
   - content_for :sidebar do
-    .well.context-menu
-      %ul.nav.nav-list
-        %li.nav-header Attachments
+    .sidebar
+      %h5 Attachments
+      %ul#attachments
         - @request.attachments.each do |attachment|
           %li
+            %i.icon-file
             = link_to attachment.file.url do
-              %i.icon-file
               = attachment.title
+            .pull-right
+              = link_to request_attachment_path(attachment),  { class: 'pull-right', method: 'delete' }  do
+                %i.icon-remove
