@@ -116,6 +116,7 @@
     .modal-header
       %h3 Add Attachment
     .modal-body
+      = f.input :title
       = f.input :file
     .modal-footer
       %a.btn{href: '#', data: {dismiss: 'modal'}}
