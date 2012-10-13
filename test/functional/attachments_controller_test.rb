@@ -41,5 +41,13 @@ class AttachmentsControllerTest < ActionController::TestCase
     should 'work' do
       assert_redirected_to request_url(id: requests(:valid).id)
     end
+
+    should 'dissociate the attachment from its request' do
+      assert_equal 0, requests(:valid).attachments.count
+    end
+
+    should 'destroy the attachment' do
+      assert_equal 0 , Attachment.count
+    end
   end
 end

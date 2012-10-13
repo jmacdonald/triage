@@ -13,7 +13,12 @@ class AttachmentsController < ApplicationController
 
   def destroy
     request = Request.find params[:request_id]
-    
+    attachment = Attachment.find params[:id]
+
+    unless attachment.destroy
+      flash[:error] = 'Attachment delete failed; please try again.'
+    end
+
     redirect_to request 
   end
 end
