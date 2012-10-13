@@ -7,4 +7,8 @@ class Attachment < ActiveRecord::Base
   attr_accessible :title, :file
 
   validates_attachment :file, :presence => true, :size => { :in => 0..5.megabytes }
+
+  def file_name
+    self.file_file_name
+  end
 end
