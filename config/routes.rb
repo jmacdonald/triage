@@ -10,7 +10,7 @@ Manzier::Application.routes.draw do
     get 'open', :on => :collection
     get 'closed', :on => :collection
     resources :comments, :only => [:create]
-    resources :attachments
+    resources :attachments, :only => [:create]
   end
 
   # The priority is based upon order of creation:
