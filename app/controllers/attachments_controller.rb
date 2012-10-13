@@ -10,4 +10,10 @@ class AttachmentsController < ApplicationController
 
     redirect_to request 
   end
+
+  def destroy
+    request = Request.find params[:request_id]
+    
+    redirect_to request 
+  end
 end

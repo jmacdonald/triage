@@ -29,4 +29,17 @@ class AttachmentsControllerTest < ActionController::TestCase
       assert_equal users(:valid).id, assigns(:attachment).user.id
     end
   end
+
+  context 'delete action' do
+    setup do
+      delete :destroy, {
+        :request_id => requests(:valid).id,
+        :id => attachments(:valid).id
+      }
+    end
+
+    should 'work' do
+      assert_redirected_to request_url(id: requests(:valid).id)
+    end
+  end
 end
