@@ -112,7 +112,7 @@
       = f.button :submit, class: 'btn-primary', value: 'Add Comment'
 
 #add_attachment_modal.modal.hide.fade
-  = simple_form_for [@request, @request.attachments.new], :html => {:multipart => true}   do |f|
+  = simple_form_for [@request, Attachment.new], :html => {:multipart => true}   do |f|
     .modal-header
       %h3 Add Attachment
     .modal-body
@@ -130,6 +130,6 @@
         %li.nav-header Attachments
         - @request.attachments.each do |attachment|
           %li
-            = link_to attachment do
+            = link_to attachment.file.url do
               %i.icon-file
-              = attachment.file_name
+              = attachment.title
