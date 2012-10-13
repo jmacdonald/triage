@@ -29,7 +29,7 @@
       .row-fluid
         .span2
           = yield :nav
-        .span6
+        .span7
           / Flash messages
           - if flash[:notice]
             .alert.alert-info
@@ -41,5 +41,5 @@
             .alert.alert-error
               = flash[:error]
           = yield
-        .span2
+        .span3
           = yield :sidebar
