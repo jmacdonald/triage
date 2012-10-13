@@ -19,3 +19,6 @@
 
 # Ignore OS X DS_Store files.
 .DS_Store
+
+# Ignore uploaded files.
+public/system/*
