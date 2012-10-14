@@ -12,6 +12,7 @@ class Request < ActiveRecord::Base
 
   scope :closed, joins(:status).where(:statuses => {:closed => true})
   scope :unclosed, joins(:status).where(:statuses => {:closed => false})
+  scope :unassigned, where(:assignee_id => nil)
 
   def to_s
     "Request ##{self.id}: #{self.title}"

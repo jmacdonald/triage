@@ -50,4 +50,10 @@ class RequestTest < ActiveSupport::TestCase
       assert_false request.status.closed?
     end
   end
+
+  test 'that the unassigned scope only returns requests without an assignee' do
+    Request.unassigned.each do |request|
+      assert request.assignee.nil?
+    end
+  end
 end
