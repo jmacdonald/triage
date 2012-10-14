@@ -9,6 +9,7 @@ Manzier::Application.routes.draw do
   resources :requests do
     get 'open', :on => :collection
     get 'closed', :on => :collection
+    get 'unassigned', :on => :collection
     resources :comments, :only => [:create]
     resources :attachments, :only => [:create, :destroy]
   end

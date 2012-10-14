@@ -115,6 +115,22 @@ class RequestsControllerTest < ActionController::TestCase
     end
   end
 
+  context 'unassigned action' do
+    setup do
+      get :unassigned
+    end
+
+    should 'work' do
+      assert_response :success
+    end
+
+    should 'only return unassigned requests' do
+      assigns(:requests).each do |request|
+        assert request.assignee.nil?
+      end
+    end
+  end
+
   context 'open assignments action' do
     setup do
       get :open_assignments

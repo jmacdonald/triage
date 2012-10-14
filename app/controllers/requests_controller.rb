@@ -28,6 +28,10 @@ class RequestsController < ApplicationController
     @requests = current_user.requests.closed
   end
 
+  def unassigned
+    @requests = Request.unassigned
+  end
+
   def open_assignments
     @requests = current_user.assignments.unclosed
   end

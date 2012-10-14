@@ -1,0 +1,7 @@
+= render 'nav'
+
+- if @requests.empty?
+  .alert.alert-info
+    There are no unassigned requests at this time.
+- else
+  = render 'table'

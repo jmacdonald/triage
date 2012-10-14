@@ -5,6 +5,9 @@
       %li{ class: ('active' if current_page?(requests_path) or current_page?(root_path)) }
         = link_to requests_path do
           All Requests
+      %li{ class: ('active' if current_page?(unassigned_requests_path)) }
+        = link_to unassigned_requests_path do
+          Unassigned Requests
       %li.nav-header My Requests
       %li{ class: ('active' if current_page?(open_requests_path) ) }
         = link_to open_requests_path do
