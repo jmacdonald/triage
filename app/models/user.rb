@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :attachments
 
   validates :email, :password, :role, :name, :presence => true
+  validates :role, :inclusion => { :in => %w(administrator provider requester) }
 
   def to_s
     self.name

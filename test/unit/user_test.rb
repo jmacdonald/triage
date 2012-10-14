@@ -12,6 +12,7 @@ class UserTest < ActiveSupport::TestCase
   should validate_presence_of :role
   should validate_presence_of :name
   should_not allow_mass_assignment_of(:role)
+  should ensure_inclusion_of(:role).in_array %w(administrator provider requester)
 
   [:email, :password, :password_confirmation, :name].each do |attribute|
     should allow_mass_assignment_of(attribute)
