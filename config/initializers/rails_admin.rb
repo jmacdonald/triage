@@ -149,32 +149,16 @@ RailsAdmin.config do |config|
   #   create do; end
   #   update do; end
   # end
-  # config.model User do
-  #   # Found associations:
-  #     configure :requests, :has_many_association 
-  #     configure :assignments, :has_many_association 
-  #     configure :comments, :has_many_association   #   # Found columns:
-  #     configure :id, :integer 
-  #     configure :email, :string 
-  #     configure :password, :password         # Hidden 
-  #     configure :password_confirmation, :password         # Hidden 
-  #     configure :reset_password_token, :string         # Hidden 
-  #     configure :reset_password_sent_at, :datetime 
-  #     configure :remember_created_at, :datetime 
-  #     configure :sign_in_count, :integer 
-  #     configure :current_sign_in_at, :datetime 
-  #     configure :last_sign_in_at, :datetime 
-  #     configure :current_sign_in_ip, :string 
-  #     configure :last_sign_in_ip, :string 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
-  #     configure :role, :string 
-  #     configure :name, :string   #   # Sections:
-  #   list do; end
-  #   export do; end
-  #   show do; end
-  #   edit do; end
-  #   create do; end
-  #   update do; end
-  # end
+  config.model User do
+    list do; end
+    export do; end
+    show do; end
+    edit do 
+      field :email
+      field :name
+      field :role
+    end
+    create do; end
+    update do; end
+  end
 end
