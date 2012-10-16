@@ -5,8 +5,6 @@ class StatusTest < ActiveSupport::TestCase
 
   should have_many :requests
   should validate_presence_of :title
-  should ensure_inclusion_of(:default).in_array [true, false]
-  should ensure_inclusion_of(:closed).in_array [true, false]
 
   test 'that statuses can display themselves as strings' do
     assert_equal 'New', statuses(:valid).to_s
