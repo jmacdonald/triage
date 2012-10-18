@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  ROLE_OPTIONS = %w(administrator provider requester)
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -14,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :attachments
 
   validates :email, :password, :role, :name, :presence => true
-  validates :role, :inclusion => { :in => %w(administrator provider requester) }
+  validates :role, :inclusion => { :in => ROLE_OPTIONS }
 
   def to_s
     self.name

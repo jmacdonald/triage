@@ -156,7 +156,12 @@ RailsAdmin.config do |config|
     edit do 
       field :email
       field :name
-      field :role
+      field :role, :enum do
+        enum do
+          User::ROLE_OPTIONS
+        end
+      end
+      field :password
     end
     create do; end
     update do; end
