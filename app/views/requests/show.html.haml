@@ -26,8 +26,11 @@
           Attachment
 
 .request
+  .id
+    Request #
+    = @request.id
   %h2
-    = @request
+    = @request.title
   %dl.dl-horizontal
     %dt Status
     %dd
