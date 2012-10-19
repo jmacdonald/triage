@@ -25,46 +25,47 @@
           %i.icon-file
           Attachment
 
-%h2
-  = @request
-%dl.dl-horizontal
-  %dt Status
-  %dd
-    %span.label{ class: (label_class @request.status) }
-      = @request.status
-  %dt System
-  %dd 
-    = @request.system
-  %dt Requested By
-  %dd 
-    = @request.requester
-  %dt Requested On
-  %dd 
-    = pretty_date @request.created_at
-  %dt Assigned To
-  %dd 
-    = @request.assignee ? @request.assignee : 'Unassigned'
-%h5
-  Description
-= @request.description
+.request
+  %h2
+    = @request
+  %dl.dl-horizontal
+    %dt Status
+    %dd
+      %span.label{ class: (label_class @request.status) }
+        = @request.status
+    %dt System
+    %dd 
+      = @request.system
+    %dt Requested By
+    %dd 
+      = @request.requester
+    %dt Requested On
+    %dd 
+      = pretty_date @request.created_at
+    %dt Assigned To
+    %dd 
+      = @request.assignee ? @request.assignee : 'Unassigned'
+  %h5
+    Description
+  = @request.description
 
-%hr
+  %hr
 
-.comments
-  %h4 Comments
+  .comments
+    %h4 Comments
 
-  - @request.comments.each do |comment|
-    .comment
-      .row-fluid
-        .span1
-          = gravatar_image_tag comment.user.email, class: 'img-polaroid', gravatar: {size: 32}
-        .span11
-          %h5
-            = pretty_date comment.created_at
-            %br
-            %small
-              = comment.user
-          = comment.content
+    - @request.comments.each do |comment|
+      .comment
+        .row-fluid
+          .span1
+            = gravatar_image_tag comment.user.email, class: 'img-polaroid', gravatar: {size: 32}
+          .span11
+            %h5
+              = pretty_date comment.created_at
+              %br
+              %small
+                = comment.user
+            = comment.content
 
 #reassign_modal.modal.hide.fade
   = simple_form_for [@request] do |f|
