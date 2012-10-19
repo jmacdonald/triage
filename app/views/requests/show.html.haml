@@ -52,25 +52,26 @@
     Description
   = @request.description
 
-  %hr
+  - unless @request.comments.empty?
+    %hr
 
-  .comments
-    %h4 Comments
+    .comments
+      %h4 Comments
 
-    - @request.comments.each_with_index do |comment, index|
-      - unless index == 0
-        %hr
-      .comment
-        .row-fluid
-          .span1.gravatar
-            = gravatar_image_tag comment.user.email, class: 'img-polaroid', gravatar: {size: 32}
-          .span11
-            %h5
-              = pretty_date comment.created_at
-              %br
-              %small
-                = comment.user
-            = comment.content
+      - @request.comments.each_with_index do |comment, index|
+        - unless index == 0
+          %hr
+        .comment
+          .row-fluid
+            .span1.gravatar
+              = gravatar_image_tag comment.user.email, class: 'img-polaroid', gravatar: {size: 32}
+            .span11
+              %h5
+                = pretty_date comment.created_at
+                %br
+                %small
+                  = comment.user
+              = comment.content
 
 #reassign_modal.modal.hide.fade
   = simple_form_for [@request] do |f|
