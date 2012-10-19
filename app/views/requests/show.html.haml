@@ -54,10 +54,12 @@
   .comments
     %h4 Comments
 
-    - @request.comments.each do |comment|
+    - @request.comments.each_with_index do |comment, index|
+      - unless index == 0
+        %hr
       .comment
         .row-fluid
-          .span1
+          .span1.gravatar
             = gravatar_image_tag comment.user.email, class: 'img-polaroid', gravatar: {size: 32}
           .span11
             %h5
