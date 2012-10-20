@@ -71,6 +71,7 @@
                 %br
                 %small
                   = comment.user
+                  \- #{comment.user.role.titleize}
               = comment.content
 
 #reassign_modal.modal.hide.fade
