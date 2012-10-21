@@ -1,4 +1,4 @@
-class UserMailer < ActionMailer::Base
+class RequestMailer < ActionMailer::Base
   default from: "from@example.com"
 
   def assignment_email(request)
