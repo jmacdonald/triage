@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :role
 
   has_many :requests, :foreign_key => :requester_id
-  has_many :assignments, :class_name => 'Request', :foreign_key => :assignee_id, :after_add => :assignment_added, :after_remove => :assignment_removed
+  has_many :assignments, :class_name => 'Request', :foreign_key => :assignee_id
   has_many :comments
   has_many :attachments
 
@@ -20,11 +20,5 @@ class User < ActiveRecord::Base
 
   def to_s
     self.name
-  end
-
-  def assignment_added(request)
-  end
-
-  def assignment_removed(request)
   end
 end
