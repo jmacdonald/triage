@@ -1,12 +1,10 @@
 !!! 5
 %html
   %head
-    %meta{ content: 'text/html; charset=UTF-8', http-equiv: 'Content-Type' }
+    %meta{ :content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }
   %body
     %h1
       You've been assigned assigned a request.
 
     Hi #{@assignee},
-      You've been assigned request ##{@request.id}. Click 
-      = link_to 'here', @url
-      to view the request.
+    You've been assigned request # #{@request.id}. Click #{link_to 'here', @url} to view the request.
