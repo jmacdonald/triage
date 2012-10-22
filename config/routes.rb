@@ -14,6 +14,10 @@ Manzier::Application.routes.draw do
     resources :attachments, :only => [:create, :destroy]
   end
 
+  if Rails.env.development?
+    mount RequestMailer::Preview => 'mail_view'
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
