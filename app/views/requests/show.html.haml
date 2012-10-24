@@ -88,7 +88,7 @@
       %h3
         = t '.modal.reassign_request'
     .modal-body
-      = f.association :assignee
+      = f.association :assignee, label: false
     .modal-footer
       %a.btn{href: '#', data: {dismiss: 'modal'}}
         = t '.modal.close'
@@ -100,7 +100,7 @@
       %h3
         = t '.modal.change_status'
     .modal-body
-      = f.association :status
+      = f.association :status, label: false
     .modal-footer
       %a.btn{href: '#', data: {dismiss: 'modal'}}
         = t '.modal.close'
@@ -138,7 +138,7 @@
         = t '.modal.add_attachment'
     .modal-body
       = f.input :title
-      = f.input :file
+      = f.input :file, label: false
     .modal-footer
       %a.btn{href: '#', data: {dismiss: 'modal'}}
         = t '.modal.close'
