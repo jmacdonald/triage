@@ -2,13 +2,13 @@
   %thead
     %tr
       %th.request_id
-        ID
+        = t 'table.id'
       %th
-        Title
+        = t 'table.title'
       %th
-        Requester
+        = t 'table.requester'
       %th
-        Status
+        = t 'table.status'
   %tbody
     - @requests.each do |request|
       %tr

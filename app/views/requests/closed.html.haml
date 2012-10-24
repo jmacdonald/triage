@@ -2,6 +2,6 @@
 
 - if @requests.empty?
   .alert.alert-info
-    You don't have any closed requests.
+    = t 'requests.empty.closed'
 - else
   = render 'table'

@@ -2,9 +2,6 @@
 
 - if @requests.empty?
   .alert.alert-info
-    You don't have any closed assignments; do you do
-    %em
-      any
-    work around here?
+    = t 'requests.empty.closed_assignments'
 - else
   = render 'table'

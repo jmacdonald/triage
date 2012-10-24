@@ -2,4 +2,28 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  nav:
+    general: "General"
+    all_requests: "All Requests"
+    unassigned_requests: "Unassigned Requests"
+    my_requests: "My Requests"
+    open_requests: "Open Requests"
+    closed_requests: "Closed Requests"
+    my_assignments: "My Assignments"
+    open_assignments: "Open Assignments"
+    closed_assignments: "Closed Assignments"
+
+  table:
+    id: "ID"
+    title: "Title"
+    requester: "Requester"
+    status: "Status"
+
+  requests:
+    empty:
+      all: "There are no requests in the system."
+      unassigned: "There are no unassigned requests."
+      open: "You don't have any open requests."
+      closed: "You don't have any closed requests."
+      open_assignments: "You don't have any open assignments."
+      closed_assignments: "You don't have any closed assignments."

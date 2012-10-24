@@ -2,6 +2,6 @@
 
 - if @requests.empty?
   .alert.alert-info
-    You don't have any open assignments; aren't you lucky?
+    = t 'requests.empty.open_assignments'
 - else
   = render 'table'

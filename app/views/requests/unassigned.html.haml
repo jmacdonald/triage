@@ -2,6 +2,6 @@
 
 - if @requests.empty?
   .alert.alert-info
-    There are no unassigned requests at this time.
+    = t 'requests.empty.unassigned'
 - else
   = render 'table'
