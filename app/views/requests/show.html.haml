@@ -1,62 +1,70 @@
 - content_for :nav do
   .well.context-menu
     %ul.nav.nav-list
-      %li.nav-header Modify
+      %li.nav-header
+        = t '.actions.modify'
       - if can? :edit, @request
         %li
           %a{ href: '#reassign_modal', data: {toggle: 'modal'}}
             %i.icon-share
-            Re-assign
+            = t '.actions.reassign'
       %li
         %a{ href: '#change_status_modal', data: {toggle: 'modal'}}
           %i.icon-info-sign
-          Change Status
+          = t '.actions.change_status'
       %li
         %a{ href: '#edit_details_modal', data: {toggle: 'modal'}}
           %i.icon-pencil
-          Edit Details
-      %li.nav-header Add
+          = t '.actions.edit_details'
+      %li.nav-header
+        = t '.actions.add'
       %li
         %a{ href: '#add_comment_modal', data: {toggle: 'modal'}}
           %i.icon-comment
-          Comment
+          = t '.actions.comment'
       %li
         %a{ href: '#add_attachment_modal', data: {toggle: 'modal'}}
           %i.icon-file
-          Attachment
+          = t '.actions.attachment'
 
 .request
   .tag<
-    Request #
+    = t '.request_number'
     = @request.id
   %h2
     = @request.title
   %dl.dl-horizontal
-    %dt Status
+    %dt
+      = t '.status'
     %dd
       %span.label{ class: (label_class @request.status) }
         = @request.status
-    %dt System
+    %dt
+      = t '.system'
     %dd 
       = @request.system
-    %dt Requested By
+    %dt
+      = t '.requested_by'
     %dd 
       = @request.requester
-    %dt Requested On
+    %dt
+      = t '.requested_on'
     %dd 
       = pretty_date @request.created_at
-    %dt Assigned To
+    %dt
+      = t '.assigned_to'
     %dd 
-      = @request.assignee ? @request.assignee : 'Unassigned'
+      = @request.assignee ? @request.assignee : t('.unassigned')
   %h5
-    Description
+    = t '.description'
   = @request.description
 
   - unless @request.comments.empty?
     %hr
 
     .comments
-      %h4 Comments
+      %h4
+        = t '.comments'
 
       - @request.comments.each_with_index do |comment, index|
         - unless index == 0
@@ -77,64 +85,70 @@
 #reassign_modal.modal.hide.fade
   = simple_form_for [@request] do |f|
     .modal-header
-      %h3 Re-assign Request
+      %h3
+        = t '.modal.reassign_request'
     .modal-body
       = f.association :assignee
     .modal-footer
       %a.btn{href: '#', data: {dismiss: 'modal'}}
-        Close
-      = f.button :submit, class: 'btn-primary', value: 'Re-Asssign'
+        = t '.modal.close'
+      = f.button :submit, class: 'btn-primary', value: t('.modal.reassign')
 
 #change_status_modal.modal.hide.fade
   = simple_form_for [@request] do |f|
     .modal-header
-      %h3 Change Status
+      %h3
+        = t '.modal.change_status'
     .modal-body
       = f.association :status
     .modal-footer
       %a.btn{href: '#', data: {dismiss: 'modal'}}
-        Close
-      = f.button :submit, class: 'btn-primary', value: 'Change'
+        = t '.modal.close'
+      = f.button :submit, class: 'btn-primary', value: t('.modal.change')
 
 #edit_details_modal.modal.hide.fade
   = simple_form_for [@request] do |f|
     .modal-header
-      %h3 Edit Details
+      %h3
+        = t '.modal.edit_details'
     .modal-body
       = f.input :title
       = f.input :description
     .modal-footer
       %a.btn{href: '#', data: {dismiss: 'modal'}}
-        Close
-      = f.button :submit, class: 'btn-primary', value: 'Edit Details'
+        = t '.modal.close'
+      = f.button :submit, class: 'btn-primary', value: t('.modal.edit_details')
 
 #add_comment_modal.modal.hide.fade
   = simple_form_for [@request, @request.comments.new] do |f|
     .modal-header
-      %h3 Add Comment
+      %h3
+        = t '.modal.add_comment'
     .modal-body
       = f.input :content, input_html: {rows: 5}, label: false
     .modal-footer
       %a.btn{href: '#', data: {dismiss: 'modal'}}
-        Close
-      = f.button :submit, class: 'btn-primary', value: 'Add Comment'
+        = t '.modal.close'
+      = f.button :submit, class: 'btn-primary', value: t('.modal.add_comment')
 
 #add_attachment_modal.modal.hide.fade
   = simple_form_for [@request, Attachment.new], :html => {:multipart => true}   do |f|
     .modal-header
-      %h3 Add Attachment
+      %h3
+        = t '.modal.add_attachment'
     .modal-body
       = f.input :title
       = f.input :file
     .modal-footer
       %a.btn{href: '#', data: {dismiss: 'modal'}}
-        Close
-      = f.button :submit, class: 'btn-primary', value: 'Add Attachment'
+        = t '.modal.close'
+      = f.button :submit, class: 'btn-primary', value: t('.modal.add_attachment')
 
 - if @request.attachments.count > 0
   - content_for :sidebar do
     .sidebar
-      %h5 Attachments
+      %h5
+        = t '.attachments'
       %ul#attachments
         - @request.attachments.each do |attachment|
           %li
