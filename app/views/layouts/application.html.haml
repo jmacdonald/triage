@@ -12,19 +12,19 @@
         - if current_user
           %ul.nav
             %li{:class => ('active' if (params[:controller] == 'requests' and params[:action] != 'new'))}
-              = link_to 'Requests', requests_path
+              = link_to t('navbar.requests'), requests_path
             %li{:class => ('active' if current_page?(new_request_path))}
-              = link_to 'New Request', new_request_path
+              = link_to t('navbar.new_request'), new_request_path
           %ul.nav.pull-right
             - if current_user.role = 'administrator'
               %li
-                = link_to 'Admin', rails_admin_path
+                = link_to t('navbar.admin'), rails_admin_path
             %li
-              = link_to 'Logout', destroy_user_session_path, :method => :delete
+              = link_to t('navbar.logout'), destroy_user_session_path, :method => :delete
         - else
           %ul.nav.pull-right
             %li
-              = link_to 'Login', new_user_session_path
+              = link_to t('navbar.login'), new_user_session_path
     .container-fluid
       .row-fluid
         .span2

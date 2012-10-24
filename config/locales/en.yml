@@ -2,6 +2,12 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  navbar:
+    requests: "Requests"
+    new_request: "New Request"
+    admin: "Admin"
+    logout: "Logout"
+    login: "Login"
   nav:
     general: "General"
     all_requests: "All Requests"
