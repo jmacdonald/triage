@@ -1,0 +1,17 @@
+.row-fluid
+  .span10.offset2
+    .login
+      %h2
+        Manzier
+
+      = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+        .form-inputs
+          = f.input :email, :required => false, :autofocus => true
+          = f.input :password, :required => false
+          = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
+
+        .pull-right.right
+          = render "devise/shared/links"
+
+        = f.button :submit, "Sign in", class: 'btn btn-primary'
+
