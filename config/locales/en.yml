@@ -60,10 +60,14 @@ en:
         edit_details: "Edit Details"
         add_comment: "Add Comment"
         add_attachment: "Add Attachment"
+    new:
+      new_request: "New Request"
+      create_request: "Create Request"
   simple_form:
     labels:
       request:
         title: "Title"
         description: "Description"
+        system: "System"
       attachment:
         title: "Title"
