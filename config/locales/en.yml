@@ -20,10 +20,15 @@ en:
     status: "Status"
 
   requests:
-    empty:
-      all: "There are no requests in the system."
-      unassigned: "There are no unassigned requests."
-      open: "You don't have any open requests."
-      closed: "You don't have any closed requests."
-      open_assignments: "You don't have any open assignments."
-      closed_assignments: "You don't have any closed assignments."
+    index:
+      empty: "There are no requests in the system."
+    unassigned:
+      empty: "There are no unassigned requests."
+    open:
+      empty: "You don't have any open requests."
+    closed:
+      empty: "You don't have any closed requests."
+    open_assignments:
+      empty: "You don't have any open assignments."
+    closed_assignments:
+      empty: "You don't have any closed assignments."
