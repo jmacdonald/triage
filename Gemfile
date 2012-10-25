@@ -32,6 +32,7 @@ gem 'gravatar_image_tag'
 group :development, :test do
   gem 'debugger'
   gem 'mail_view'
+  gem 'letter_opener'
 end
 
 group :test do
