@@ -1,10 +1,10 @@
 require 'test_helper'
 
-class RequestMailerTest < ActionMailer::TestCase
+class NotifierTest < ActionMailer::TestCase
   context 'assignment email' do
     setup do
       @request = requests :valid
-      @email = RequestMailer.assignment_email(@request).deliver
+      @email = Notifier.assignment_email(@request).deliver
     end
 
     should 'be queued for delivery' do

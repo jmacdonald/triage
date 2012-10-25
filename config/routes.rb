@@ -15,7 +15,7 @@ Manzier::Application.routes.draw do
   end
 
   if Rails.env.development?
-    mount RequestMailer::Preview => 'mail_view'
+    mount Notifier::Preview => 'mail_view'
   end
 
   # The priority is based upon order of creation:
