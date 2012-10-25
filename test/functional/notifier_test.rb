@@ -4,7 +4,7 @@ class NotifierTest < ActionMailer::TestCase
   context 'assignment email' do
     setup do
       @request = requests :valid
-      @email = Notifier.assignment_email(@request).deliver
+      @email = Notifier.assignment(@request).deliver
     end
 
     should 'be queued for delivery' do

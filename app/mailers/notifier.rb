@@ -1,7 +1,7 @@
 class Notifier < ActionMailer::Base
   default from: "from@example.com"
 
-  def assignment_email(request)
+  def assignment(request)
     @assignee = request.assignee
     @url = request_url(request)
     @request = request
@@ -11,7 +11,7 @@ class Notifier < ActionMailer::Base
   class Preview < MailView
     def assignment
       request = Request.first
-      Notifier.assignment_email(request)
+      Notifier.assignment(request)
     end
   end
 end
