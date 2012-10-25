@@ -1,19 +1,23 @@
 valid:
+  username: valid
   email: valid@wastedintelligence.com
   role: administrator
   name: Valid User
 
 administrator:
+  username: administrator
   email: jordan@wastedintelligence.com
   role: administrator
   name: Jordan MacDonald
 
 provider:
+  username: provider
   email: mia@wastedintelligence.com
   role: provider
   name: Mia MacDonald
 
 requester:
+  username: requester
   email: elle@wastedintelligence.com
   role: requester
   name: Elle MacDonald
