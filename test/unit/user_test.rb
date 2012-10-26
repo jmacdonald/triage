@@ -9,7 +9,6 @@ class UserTest < ActiveSupport::TestCase
   should have_many :attachments
   should validate_presence_of :email
   should validate_presence_of :username
-  should validate_presence_of :password
   should validate_presence_of :role
   should validate_presence_of :name
   should allow_mass_assignment_of :email
@@ -19,6 +18,7 @@ class UserTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :remember_me
   should allow_mass_assignment_of :name
   should allow_mass_assignment_of :role
+  should validate_uniqueness_of :email
   should validate_uniqueness_of :username
   should ensure_inclusion_of(:role).in_array %w(administrator provider requester)
 

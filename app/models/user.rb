@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :attachments
 
-  validates :email, :username, :password, :role, :name, :presence => true
+  validates :username, :role, :name, :presence => true
   validates :username, :uniqueness => true
   validates :role, :inclusion => { :in => ROLE_OPTIONS }
 
