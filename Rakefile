@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Manzier::Application.load_tasks
+Triage::Application.load_tasks

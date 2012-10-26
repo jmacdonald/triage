@@ -9,5 +9,5 @@ env:
 script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
 before_script:
-  - mysql -e 'create database manzier_test'
-  - psql -c 'create database manzier_test' -U postgres
+  - mysql -e 'create database triage_test'
+  - psql -c 'create database triage_test' -U postgres

@@ -8,6 +8,6 @@ class SystemTest < ActiveSupport::TestCase
   should validate_uniqueness_of :name
 
   test 'that a system can display itself' do
-    assert_equal 'Manzier', systems(:valid).to_s
+    assert_equal 'Triage', systems(:valid).to_s
   end
 end
