@@ -19,4 +19,25 @@ class NotifierTest < ActionMailer::TestCase
       assert_equal "You've been assigned a request", @email.subject
     end
   end
+
+  context 'comment email' do
+    setup do
+      @comment = comments :valid
+      @users = [users(:valid)]
+      @email = Notifier.comment(@comment, @users).deliver
+    end
+    
+    should 'be queued for delivery' do
+      assert_equal 1, ActionMailer::Base.deliveries.size
+    end
+
+    should 'be sent to the specified users' do
+      email_addresses = @users.collect {|user| user.email}
+      assert_equal email_addresses, @email.to
+    end
+
+    should 'have the right subject' do
+      assert_equal "#{@comment.user.name} commented on #{@comment.request}", @email.subject
+    end
+  end
 end

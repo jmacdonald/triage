@@ -8,6 +8,12 @@ class Notifier < ActionMailer::Base
     mail(to: @assignee.email, subject: "You've been assigned a request")
   end
 
+  def comment(comment, users)
+    @comment = comment
+    email_addresses = users.collect {|user| user.email}
+    mail(to: email_addresses, subject: "#{comment.user.name} commented on #{comment.request}")
+  end
+
   class Preview < MailView
     def assignment
       request = Request.first
