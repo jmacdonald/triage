@@ -19,5 +19,10 @@ class Notifier < ActionMailer::Base
       request = Request.first
       Notifier.assignment(request)
     end
+
+    def comment
+      comment = Comment.first
+      Notifier.comment(comment, [comment.request.requester])
+    end
   end
 end

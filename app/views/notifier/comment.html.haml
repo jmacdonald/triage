@@ -1,21 +1,19 @@
 .container-fluid
   .row-fluid
-    .span6.offset3.center
-      %h1
-        #{@comment.user.name} commented on #{@comment.request}
-      %hr
-  .comment
-    .row-fluid
-      .span1.gravatar
-        = gravatar_image_tag @comment.user.email, class: 'img-polaroid', gravatar: {size: 32}
-      .span11
-        %h5
-          = @comment.created_at
-          %br
-          %small
-            = @comment.user
-            \- #{@comment.user.role.titleize}
-        = @comment.content
+    .comment.span6.offset3
+      .tag
+        Request ##{@comment.request.id}
+      .row-fluid
+        .span1.gravatar
+          = gravatar_image_tag @comment.user.email, class: 'img-polaroid', gravatar: {size: 32}
+        .span11
+          %h5
+            = @comment.created_at
+            %br
+            %small
+              = @comment.user
+              \- #{@comment.user.role.titleize}
+          = @comment.content
   .row-fluid
     .span6.offset3.center
       %hr
