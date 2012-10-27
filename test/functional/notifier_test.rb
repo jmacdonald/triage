@@ -18,6 +18,14 @@ class NotifierTest < ActionMailer::TestCase
     should 'have the right subject' do
       assert_equal "You've been assigned a request", @email.subject
     end
+
+    should 'contain the request title' do
+      assert_match /#{@request.title}/, @email.encoded
+    end
+
+    should 'contain the request description' do
+      assert_match /#{@request.description}/, @email.encoded
+    end
   end
 
   context 'comment email' do
@@ -38,6 +46,10 @@ class NotifierTest < ActionMailer::TestCase
 
     should 'have the right subject' do
       assert_equal "#{@comment.user.name} commented on #{@comment.request}", @email.subject
+    end
+
+    should 'contain the comment content' do
+      assert_match /#{@comment.content}/, @email.encoded
     end
   end
 end
