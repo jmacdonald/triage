@@ -16,3 +16,4 @@ admin.role = 'administrator'
 admin.save
 
 Status.create([{title: 'New', default: true}, {title: 'Assigned'}, {title: 'Closed', closed: true}])
+System.create(name: 'Triage')
