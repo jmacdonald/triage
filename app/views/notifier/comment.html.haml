@@ -8,7 +8,7 @@
           = gravatar_image_tag @comment.user.email, class: 'img-polaroid', gravatar: {size: 32}
         .span11
           %h5
-            = @comment.created_at
+            = pretty_date @comment.created_at
             %br
             %small
               = @comment.user
