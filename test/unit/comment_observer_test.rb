@@ -2,6 +2,17 @@ require 'test_helper'
 
 class CommentObserverTest < ActiveSupport::TestCase
   context 'creating a comment' do
+    should 'send the right email' do
+      request = requests :valid
+      @comment = request.comments.new
+      @comment.content = 'This is a comment.'
+      @comment.user = users :requester
+      @comment.save
+
+      # Ensure that the proper email is queued.
+      assert_equal "#{@comment.user.name} commented on #{@comment.request}", ActionMailer::Base.deliveries[0].subject
+    end
+
     context 'on an unassigned request' do
       setup do
         @request = requests :unassigned
@@ -123,15 +134,27 @@ class CommentObserverTest < ActiveSupport::TestCase
       end
     end
 
-    should 'send the right email' do
-      request = requests :valid
-      @comment = request.comments.new
-      @comment.content = 'This is a comment.'
-      @comment.user = users :requester
-      @comment.save
+    context 'with user mentions' do
+      setup do
+        # Clear previous deliveries before each test.
+        ActionMailer::Base.deliveries = []
 
-      # Ensure that the proper email is queued.
-      assert_equal "#{@comment.user.name} commented on #{@comment.request}", ActionMailer::Base.deliveries[0].subject
+        request = requests :valid
+        @user1  = users :administrator
+        @user2  = users :provider
+        @comment = request.comments.new
+        @comment.content = "@#{@user1.username} @#{@user2.username} have either of you guys seen this before?"
+        @comment.user = users :requester
+        @comment.save
+      end
+
+      should 'send the email to the first referenced user' do
+        assert ActionMailer::Base.deliveries[0].to.include? @user1.email
+      end
+
+      should 'send the email to the second referenced user' do
+        assert ActionMailer::Base.deliveries[0].to.include? @user2.email
+      end
     end
   end
 end

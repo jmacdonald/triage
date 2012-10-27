@@ -15,6 +15,12 @@ class Notifier < ActionMailer::Base
     mail(to: email_addresses, subject: "#{comment.user.name} commented on #{comment.request}")
   end
 
+  def mention(comment, users)
+    @comment = comment
+    email_addresses = users.collect {|user| user.email}
+    mail(to: email_addresses, subject: "#{comment.user.name} mentioned you in a comment")
+  end
+
   class Preview < MailView
     def assignment
       request = Request.first
@@ -24,6 +30,11 @@ class Notifier < ActionMailer::Base
     def comment
       comment = Comment.first
       Notifier.comment(comment, [comment.request.requester])
+    end
+
+    def mention
+      comment = Comment.first
+      Notifier.mention(comment, [comment.request.requester])
     end
   end
 end

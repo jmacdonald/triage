@@ -1,0 +1,20 @@
+.container-fluid
+  .row-fluid
+    .comment.span6.offset3
+      .tag
+        Request ##{@comment.request.id}
+      .row-fluid
+        .span1.gravatar
+          = gravatar_image_tag @comment.user.email, class: 'img-polaroid', gravatar: {size: 32}
+        .span11
+          %h5
+            = pretty_date @comment.created_at
+            %br
+            %small
+              = @comment.user
+              \- #{@comment.user.role.titleize}
+          = @comment.content
+  .row-fluid
+    .span6.offset3.center
+      %hr
+      Click #{link_to 'here', request_url(@comment.request)} to view the request.

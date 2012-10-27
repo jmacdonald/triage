@@ -52,4 +52,29 @@ class NotifierTest < ActionMailer::TestCase
       assert_match /#{@comment.content}/, @email.encoded
     end
   end
+
+  context 'mention email' do
+    setup do
+      @comment = comments :valid
+      @users = [users(:valid)]
+      @email = Notifier.mention(@comment, @users).deliver
+    end
+    
+    should 'be queued for delivery' do
+      assert_equal 1, ActionMailer::Base.deliveries.size
+    end
+
+    should 'be sent to the specified users' do
+      email_addresses = @users.collect {|user| user.email}
+      assert_equal email_addresses, @email.to
+    end
+
+    should 'have the right subject' do
+      assert_equal "#{@comment.user.name} mentioned you in a comment", @email.subject
+    end
+
+    should 'contain the comment content' do
+      assert_match /#{@comment.content}/, @email.encoded
+    end
+  end
 end
