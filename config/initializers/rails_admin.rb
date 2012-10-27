@@ -154,6 +154,7 @@ RailsAdmin.config do |config|
     export do; end
     show do; end
     edit do 
+      field :username
       field :email
       field :name
       field :role, :enum do
