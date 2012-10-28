@@ -1,18 +1,18 @@
 sqlite: &sqlite
   adapter: sqlite3
-  database: db/<%= Rails.env %>.sqlite3
+  database: db/test.sqlite3
 
 mysql: &mysql
   adapter: mysql2
   username: root
   password:
-  database: triage_<%= Rails.env %>
+  database: triage_test
 
 postgresql: &postgresql
   adapter: postgresql
   username: postgres
   password:
-  database: triage_<%= Rails.env %>
+  database: triage_test
   min_messages: ERROR
 
 defaults: &defaults
@@ -22,11 +22,11 @@ defaults: &defaults
   <<: *<%= ENV['DB'] || "postgresql" %>
 
 development:
-  <<: *defaults
+  adapter: postgresql
+  username: postgres
+  password:
+  database: triage_development
+  min_messages: ERROR
 
 test:
   <<: *defaults
-
-production:
-  <<: *defaults
-  # TODO: Add erb-echo of credentials
