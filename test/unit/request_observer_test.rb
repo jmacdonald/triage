@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class RequestObserverTest < ActiveSupport::TestCase
+  setup do
+    # Clear previous deliveries before each test.
+    ActionMailer::Base.deliveries = []
+  end
+
   context 're-assigning a request' do
     setup do
       request = requests :valid
