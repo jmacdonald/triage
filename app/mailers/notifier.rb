@@ -1,5 +1,6 @@
 class Notifier < ActionMailer::Base
   add_template_helper ApplicationHelper
+  add_template_helper CommentHelper
   default from: "from@example.com"
 
   def assignment(request)
