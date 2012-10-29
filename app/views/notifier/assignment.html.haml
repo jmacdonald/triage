@@ -1,19 +1,14 @@
-.container-fluid
-  .row-fluid
-    .span6.offset3.center
-      %h1
-        You've been assigned a request.
-      %hr
-  .row-fluid
-    .span6.offset3
-      .request
-        .tag
-          Request ##{@request.id}
-        %h2
-          = @request.title
-        %p
-          = @request.description
-  .row-fluid
-    .span6.offset3.center
-      %hr
-      Click #{link_to 'here', @url} to view the request.
+.row-fluid
+  .span6.offset3.center
+    %h1
+      You've been assigned a request.
+    %hr
+.row-fluid
+  .span6.offset3
+    .request
+      .tag
+        Request ##{@request.id}
+      %h2
+        = @request.title
+      %p
+        = @request.description

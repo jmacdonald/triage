@@ -4,4 +4,9 @@
     %meta{ :content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }
     = stylesheet_link_tag 'notifier'
   %body
+    .container-fluid
     = yield
+    .row-fluid
+      .span6.offset3.center
+        %hr
+        Click #{link_to 'here', @url} to view the request.

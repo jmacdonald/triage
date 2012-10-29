@@ -10,12 +10,14 @@ class Notifier < ActionMailer::Base
   end
 
   def comment(comment, users)
+    @url = request_url(comment.request)
     @comment = comment
     email_addresses = users.collect {|user| user.email}
     mail(to: email_addresses, subject: "#{comment.user.name} commented on #{comment.request}")
   end
 
   def mention(comment, users)
+    @url = request_url(comment.request)
     @comment = comment
     email_addresses = users.collect {|user| user.email}
     mail(to: email_addresses, subject: "#{comment.user.name} mentioned you in a comment")
