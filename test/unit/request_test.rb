@@ -56,4 +56,34 @@ class RequestTest < ActiveSupport::TestCase
       assert request.assignee.nil?
     end
   end
+
+  context 'assignee association' do
+    setup do
+      @request = requests :valid
+    end
+
+    should 'allow administrators to be associated' do
+      @request.assignee = users :administrator
+      @request.save
+  
+      # Need to reload the value from the db.
+      assert Request.find(@request.id).assignee
+    end
+
+    should 'allow providers to be associated' do
+      @request.assignee = users :provider
+      @request.save
+
+      # Need to reload the value from the db.
+      assert Request.find(@request.id).assignee
+    end
+
+    should 'not allow requesters to be associated' do
+      @request.assignee = users :requester
+      @request.save
+
+      # Need to reload the value from the db.
+      assert_nil Request.find(@request.id).assignee
+    end
+  end
 end
