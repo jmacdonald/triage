@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :attachments
 
   validates :username, :role, :name, :presence => true
-  validates :username, :uniqueness => true, :format => /@\w+/
+  validates :username, :uniqueness => true, :format => /\w+/
   validates :role, :inclusion => { :in => ROLE_OPTIONS }
 
   def to_s

@@ -21,8 +21,8 @@ class UserTest < ActiveSupport::TestCase
   should validate_uniqueness_of :email
   should validate_uniqueness_of :username
   should ensure_inclusion_of(:role).in_array %w(administrator provider requester)
-  should validate_format_of(:username).with "jordan"
-  should validate_format_of(:username).not_with '$#@!%$_'
+  should allow_value('jordan').for(:username)
+  should_not allow_value('$#@!%$_').for(:username)
 
   test 'that users can display themselves as strings' do
     assert_equal 'Valid User', users(:valid).to_s
