@@ -4,4 +4,30 @@
   .alert.alert-info
     = t '.empty'
 - else
-  = render 'table'
+  %table#requests.table.table-hover.table-bordered
+    %thead
+      %tr
+        %th.request_id
+          = t 'table.id'
+        %th
+          = t 'table.title'
+        %th
+          = t 'table.requester'
+        %th
+          = t 'table.assignee'
+        %th
+          = t 'table.status'
+    %tbody
+      - @requests.each do |request|
+        %tr
+          %td
+            = request.id
+          %td
+            = link_to request.title, request
+          %td
+            = request.requester
+          %td
+            = request.assignee
+          %td
+            %span.label{ class: (label_class request.status) }
+              = request.status
