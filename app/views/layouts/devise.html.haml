@@ -1,0 +1,22 @@
+!!! 5
+%html
+  %head
+    %title Triage
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .container-fluid
+      .row-fluid
+        .span8.offset2
+          / Flash messages
+          - if flash[:notice]
+            .alert.alert-info
+              = flash[:notice]
+          - if flash[:alert]
+            .alert.alert-error
+              = flash[:alert]
+          - if flash[:error]
+            .alert.alert-error
+              = flash[:error]
+      = yield
