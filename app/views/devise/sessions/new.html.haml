@@ -1,8 +1,8 @@
 .row-fluid
   .span4.offset4
     .login
-      %h2
-        Triage
+      .center.logo
+        = image_tag "logo.png"
 
       = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
         .form-inputs
