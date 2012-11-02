@@ -7,6 +7,7 @@ valid:
   assignee: valid
   status: valid
   system: valid
+  severity: moderate
 
 unassigned:
   title: System is not working
@@ -14,6 +15,7 @@ unassigned:
   requester: requester
   status: closed
   system: valid
+  severity: moderate
 
 closed:
   title: System is not working
@@ -22,3 +24,4 @@ closed:
   assignee: valid
   status: closed
   system: valid
+  severity: moderate
