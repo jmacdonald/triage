@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121025195315) do
+ActiveRecord::Schema.define(:version => 20121102150623) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "request_id"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20121025195315) do
     t.integer  "assignee_id"
     t.integer  "status_id"
     t.integer  "system_id"
+    t.string   "severity"
   end
 
   add_index "requests", ["requester_id"], :name => "index_requests_on_user_id"
