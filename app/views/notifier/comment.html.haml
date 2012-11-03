@@ -1,6 +1,7 @@
 .row-fluid
   .span8.offset2.center
     %h1
-      A comment has been added.
+      = @comment.user
+      commented on request ##{@comment.request.id}:
     %hr
 = render 'comment'
