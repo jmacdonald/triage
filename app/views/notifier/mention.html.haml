@@ -1,6 +1,7 @@
 .row-fluid
   .span8.offset2.center
     %h1
-      You've been mentioned in a comment.
+      = @comment.user
+      mentioned you in a comment:
     %hr
 = render 'comment'
