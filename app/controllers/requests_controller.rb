@@ -48,11 +48,11 @@ class RequestsController < ApplicationController
   def update
     @request = current_user.requests.find params[:id]
 
-    if @request.update_attributes params[:request]
-      redirect_to @request
-    else
-      render 'edit'
+    unless @request.update_attributes params[:request]
+      flash[:error] = @request.errors.full_messages.join('<br />').html_safe
     end
+
+    redirect_to @request
   end
 
   def destroy
