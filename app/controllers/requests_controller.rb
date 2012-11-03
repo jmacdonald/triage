@@ -62,4 +62,10 @@ class RequestsController < ApplicationController
       redirect_to requests_url
     end
   end
+
+  def search
+    request = Request.find(params[:id])
+
+    redirect_to request if request
+  end
 end

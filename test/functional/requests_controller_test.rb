@@ -226,4 +226,24 @@ class RequestsControllerTest < ActionController::TestCase
       assert_redirected_to :action => :index
     end
   end
+
+  context 'search action' do
+    context 'with an exact id' do
+      setup do
+        @valid_request = requests :valid
+
+        get :search, {
+          id: @valid_request.id
+        }
+      end
+
+      should 'work' do
+        assert_response :redirect
+      end
+
+      should 'redirect to the request show action' do
+        assert_redirected_to :action => :show, :id => @valid_request.id
+      end
+    end
+  end
 end

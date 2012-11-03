@@ -15,6 +15,11 @@
               = link_to t('navbar.requests'), requests_path
             %li{:class => ('active' if current_page?(new_request_path))}
               = link_to t('navbar.new_request'), new_request_path
+            - unless current_user.role == 'requester'
+              = form_tag(search_requests_path, class: 'navbar-form pull-left', method: 'get') do
+                = text_field_tag 'id', nil, placeholder: 'Request #', class: 'span2'
+                %button.btn{type: 'submit'}
+                  Search
           %ul.nav.pull-right
             - if current_user.role = 'administrator'
               %li
