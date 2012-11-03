@@ -29,7 +29,8 @@ class RequestsControllerTest < ActionController::TestCase
       post :create, { :request => {
         title: requests(:valid).title,
         description: requests(:valid).description,
-        system_id: requests(:valid).system.id
+        system_id: requests(:valid).system.id,
+        severity: 'moderate'
       }}
     end
 
