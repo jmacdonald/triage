@@ -1,4 +1,5 @@
 Triage::Application.routes.draw do
+  require File.expand_path("../../lib/custom_constraints", __FILE__)
   devise_for :users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
@@ -20,5 +21,7 @@ Triage::Application.routes.draw do
     mount Notifier::Preview => 'mail_view'
   end
 
-  root :to => 'requests#index'
+  root :to => 'requests#unassigned', :constraints => RoleConstraint.new('administrator')
+  root :to => 'requests#open_assignments', :constraints => RoleConstraint.new('provider')
+  root :to => 'requests#open'
 end
