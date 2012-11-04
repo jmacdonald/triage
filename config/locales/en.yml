@@ -28,6 +28,8 @@ en:
   requests:
     index:
       empty: "There are no requests in the system."
+    search:
+      empty: "There are no requests that match your query."
     unassigned:
       empty: "There are no unassigned requests."
     open:

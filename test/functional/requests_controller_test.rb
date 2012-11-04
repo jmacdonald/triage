@@ -233,7 +233,7 @@ class RequestsControllerTest < ActionController::TestCase
         @valid_request = requests :valid
 
         get :search, {
-          id: @valid_request.id
+          request_id: @valid_request.id
         }
       end
 
@@ -243,6 +243,44 @@ class RequestsControllerTest < ActionController::TestCase
 
       should 'redirect to the request show action' do
         assert_redirected_to :action => :show, :id => @valid_request.id
+      end
+    end
+
+    context 'without an id' do
+      setup do
+        get :search
+      end
+
+      should 'work' do
+        assert_response :success
+      end
+
+      should 'show the search listing page' do
+        assert_template 'search'
+      end
+
+      should 'have an empty array of results' do
+        assert_equal [], assigns(:requests)
+      end
+    end
+
+    context 'with an invalid id' do
+      setup do
+        get :search, {
+          request_id: 'asdf098'
+        }
+      end
+
+      should 'work' do
+        assert_response :success
+      end
+
+      should 'show the search listing page' do
+        assert_template 'search'
+      end
+
+      should 'have an empty array of results' do
+        assert_equal [], assigns(:requests)
       end
     end
   end

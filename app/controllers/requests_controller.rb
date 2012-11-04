@@ -64,8 +64,13 @@ class RequestsController < ApplicationController
   end
 
   def search
-    request = Request.find(params[:id])
-
-    redirect_to request if request
+    begin
+      # If a valid request ID is specified, show the request.
+      request = Request.find params[:request_id]
+      redirect_to request
+    rescue ActiveRecord::RecordNotFound
+      # Couldn't find an exact match for the request id; bail.
+      @requests = []
+    end
   end
 end
