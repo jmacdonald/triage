@@ -1,59 +1,6 @@
 require 'test_helper'
 
 class RoutesTest < ActionController::IntegrationTest
-  # Devise Routes
-  should 'route new user session' do
-    assert_routing({ :path => '/users/sign_in', :method => :get }, { :controller => 'devise/sessions', :action => 'new' })
-  end
-
-  should 'route user session' do 
-    assert_routing({ :path => '/users/sign_in', :method => :post }, { :controller => 'devise/sessions', :action => 'create' })
-  end
-
-  should 'route destroy user session' do
-    assert_routing({ :path => '/users/sign_out', :method => :delete }, { :controller => 'devise/sessions', :action => 'destroy' })
-  end
-
-  should 'route user password' do
-    assert_routing({ :path => '/users/password', :method => :post }, { :controller => 'devise/passwords', :action => 'create' })
-  end
-
-  should 'route new user password' do
-    assert_routing({ :path => '/users/password/new', :method => :get }, { :controller => 'devise/passwords', :action => 'new' })
-  end
-
-  should 'route edit user password' do
-    assert_routing({ :path => '/users/password/edit', :method => :get }, { :controller => 'devise/passwords', :action => 'edit' })
-  end
-
-  should 'route update user password' do
-    assert_routing({ :path => '/users/password', :method => :put }, { :controller => 'devise/passwords', :action => 'update' })
-  end
-
-  should 'route cancel user registration' do
-    assert_routing({ :path => '/users/cancel', :method => :get }, { :controller => 'devise/registrations', :action => 'cancel' })
-  end
-
-  should 'route create user registration' do
-    assert_routing({ :path => '/users/sign_up', :method => :get }, { :controller => 'devise/registrations', :action => 'new' })
-  end
-
-  should 'route new user registration' do
-    assert_routing({ :path => '/users', :method => :post }, { :controller => 'devise/registrations', :action => 'create' })
-  end
-
-  should 'route edit user registration' do
-    assert_routing({ :path => '/users/edit', :method => :get }, { :controller => 'devise/registrations', :action => 'edit' })
-  end
-
-  should 'route update user registration' do
-    assert_routing({ :path => '/users', :method => :put }, { :controller => 'devise/registrations', :action => 'update' })
-  end
-
-  should 'route destroy user registration' do
-    assert_routing({ :path => '/users', :method => :delete }, { :controller => 'devise/registrations', :action => 'destroy' })
-  end
-
   # Assignment Routes
   should 'route open assignments' do
     assert_routing({ :path => '/assignments/open', :method => :get }, { :controller => 'requests', :action => 'open_assignments' })
