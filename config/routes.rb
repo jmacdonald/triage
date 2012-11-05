@@ -16,10 +16,8 @@ Triage::Application.routes.draw do
     resources :comments, :only => [:create]
     resources :attachments, :only => [:create, :destroy]
   end
-
-  if Rails.env.development?
-    mount Notifier::Preview => 'mail_view'
-  end
+  
+  mount Notifier::Preview => 'mail_view' if Rails.env.development?
 
   root :to => 'requests#unassigned', :constraints => RoleConstraint.new('administrator')
   root :to => 'requests#open_assignments', :constraints => RoleConstraint.new('provider')
