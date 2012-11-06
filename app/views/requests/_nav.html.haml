@@ -18,11 +18,12 @@
       %li{ class: ('active' if current_page?(closed_requests_path) ) }
         = link_to closed_requests_path do
           = t 'nav.closed_requests'
-      %li.nav-header
-        = t 'nav.my_assignments'
-      %li{ class: ('active' if (params[:controller] == 'requests' and params[:action] == 'open_assignments') ) }
-        = link_to open_assignments_path do
-          = t 'nav.open_assignments'
-      %li{ class: ('active' if current_page?(closed_assignments_path) ) }
-        = link_to closed_assignments_path do
-          = t 'nav.closed_assignments'
+      - if can? :read, Request.new
+        %li.nav-header
+          = t 'nav.my_assignments'
+        %li{ class: ('active' if (params[:controller] == 'requests' and params[:action] == 'open_assignments') ) }
+          = link_to open_assignments_path do
+            = t 'nav.open_assignments'
+        %li{ class: ('active' if current_page?(closed_assignments_path) ) }
+          = link_to closed_assignments_path do
+            = t 'nav.closed_assignments'
