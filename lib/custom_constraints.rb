@@ -1,6 +1,11 @@
-# Based on http://collectiveidea.com/blog/archives/2011/05/31/user-centric-routing-in-rails-3/
-class RoleConstraint < Struct.new(:value)
-  def matches?(request)
-    request.env["warden"].user.role == value
+class RoleConstraint
+
+  def initialize(role)
+    @role = role
   end
+
+  def matches?(request)
+    request.env["warden"].user.role == @role
+  end
+
 end
