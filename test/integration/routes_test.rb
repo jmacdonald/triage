@@ -71,24 +71,4 @@ class RoutesTest < ActionController::IntegrationTest
     end
   end
 
-  # Root Routes
-  context 'when the current user is an administrator' do
-    should 'route root to unassigned requests' do 
-      # pending 'need to figure out how to setup user, request object is nil, so devise helpers dont work'
-      # assert_routing({ :path => '/', :method => :get }, { :controller => 'requests', :action => 'unassigned' } )
-    end
-  end
-
-  context 'when the current user is a provider' do
-    should 'route root to open assignments' do
-      # pending 'need to figure out how to setup user, request object is nil, so devise helpers dont work'
-      # assert_routing({ :path => '/', :method => :get }, { :controller => 'requests', :action => 'open_assignments' } )
-    end
-  end
-
-  should 'route root to open requests' do
-    # pending 'need to figure out how to setup user, request object is nil, so devise helpers dont work'
-    # assert_routing({ :path => '/', :method => :get }, { :controller => 'requests', :action => 'open' } )
-  end
-
 end

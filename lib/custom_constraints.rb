@@ -5,7 +5,11 @@ class RoleConstraint
   end
 
   def matches?(request)
-    request.env["warden"].user.role == @role
+    if request.env['warden'].user
+      request.env['warden'].user.role == @role
+    else
+      false
+    end
   end
 
 end
