@@ -4,25 +4,26 @@
       - if can? :read, Request.new
         %li.nav-header
           = t 'nav.general'
-        %li{ class: ('active' if current_page?(requests_path) or current_page?(root_path)) }
+        %li{ class: ('active' if current_page?(requests_path) ) }
           = link_to requests_path do
             = t 'nav.all_requests'
-        %li{ class: ('active' if current_page?(unassigned_requests_path)) }
+        %li{ class: ('active' if (params[:controller] == 'requests' and params[:action] == 'unassigned') ) }
           = link_to unassigned_requests_path do
             = t 'nav.unassigned_requests'
       %li.nav-header
         = t 'nav.my_requests'
-      %li{ class: ('active' if current_page?(open_requests_path) ) }
+      %li{ class: ('active' if (params[:controller] == 'requests' and params[:action] == 'open') ) }
         = link_to open_requests_path do
           = t 'nav.open_requests'
       %li{ class: ('active' if current_page?(closed_requests_path) ) }
         = link_to closed_requests_path do
           = t 'nav.closed_requests'
-      %li.nav-header
-        = t 'nav.my_assignments'
-      %li{ class: ('active' if current_page?(open_assignments_path) ) }
-        = link_to open_assignments_path do
-          = t 'nav.open_assignments'
-      %li{ class: ('active' if current_page?(closed_assignments_path) ) }
-        = link_to closed_assignments_path do
-          = t 'nav.closed_assignments'
+      - if can? :read, Request.new
+        %li.nav-header
+          = t 'nav.my_assignments'
+        %li{ class: ('active' if (params[:controller] == 'requests' and params[:action] == 'open_assignments') ) }
+          = link_to open_assignments_path do
+            = t 'nav.open_assignments'
+        %li{ class: ('active' if current_page?(closed_assignments_path) ) }
+          = link_to closed_assignments_path do
+            = t 'nav.closed_assignments'
