@@ -2,6 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    alias_action :open, :closed, :to => :read
     user ||= User.new # guest user (not logged in)
     if user.role == 'administrator'
       can :manage, :all
