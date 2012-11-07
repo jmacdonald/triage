@@ -18,27 +18,27 @@ class RequestsController < ApplicationController
   end
 
   def index
-    @requests = Request.all
+    @requests = Request.page params[:page]
   end
 
   def open
-    @requests = current_user.requests.unclosed
+    @requests = current_user.requests.unclosed.page params[:page]
   end
 
   def closed
-    @requests = current_user.requests.closed
+    @requests = current_user.requests.closed.page params[:page]
   end
 
   def unassigned
-    @requests = Request.unassigned
+    @requests = Request.unassigned.page params[:page]
   end
 
   def open_assignments
-    @requests = current_user.assignments.unclosed
+    @requests = current_user.assignments.unclosed.page params[:page]
   end
 
   def closed_assignments
-    @requests = current_user.assignments.closed
+    @requests = current_user.assignments.closed.page params[:page]
   end
 
   def show
