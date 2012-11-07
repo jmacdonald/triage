@@ -70,6 +70,10 @@ class RequestsControllerTest < ActionController::TestCase
     should 'show all requests' do
       assert_equal Request.count, assigns(:requests).count
     end
+
+    should 'paginate results' do
+      assert_includes assigns(:requests).to_sql, "LIMIT #{Kaminari.config.default_per_page}"
+    end
   end
 
   context 'open action' do
@@ -91,6 +95,10 @@ class RequestsControllerTest < ActionController::TestCase
       assigns(:requests).each do |request|
         assert_false request.status.closed?
       end
+    end
+
+    should 'paginate results' do
+      assert_includes assigns(:requests).to_sql, "LIMIT #{Kaminari.config.default_per_page}"
     end
   end
 
@@ -114,6 +122,10 @@ class RequestsControllerTest < ActionController::TestCase
         assert request.status.closed?
       end
     end
+
+    should 'paginate results' do
+      assert_includes assigns(:requests).to_sql, "LIMIT #{Kaminari.config.default_per_page}"
+    end
   end
 
   context 'unassigned action' do
@@ -129,6 +141,10 @@ class RequestsControllerTest < ActionController::TestCase
       assigns(:requests).each do |request|
         assert request.assignee.nil?
       end
+    end
+
+    should 'paginate results' do
+      assert_includes assigns(:requests).to_sql, "LIMIT #{Kaminari.config.default_per_page}"
     end
   end
 
@@ -152,6 +168,10 @@ class RequestsControllerTest < ActionController::TestCase
         assert_false request.status.closed?
       end
     end
+
+    should 'paginate results' do
+      assert_includes assigns(:requests).to_sql, "LIMIT #{Kaminari.config.default_per_page}"
+    end
   end
 
   context 'closed assignments action' do
@@ -173,6 +193,10 @@ class RequestsControllerTest < ActionController::TestCase
       assigns(:requests).each do |request|
         assert request.status.closed?
       end
+    end
+
+    should 'paginate results' do
+      assert_includes assigns(:requests).to_sql, "LIMIT #{Kaminari.config.default_per_page}"
     end
   end
 
