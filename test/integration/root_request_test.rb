@@ -11,7 +11,7 @@ class RootRequestTest < ActionDispatch::IntegrationTest
       @user.save
     end
     should 'route root to unassigned requests' do 
-      post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[password]' => @password
+      post_via_redirect user_session_path, 'user[username]' => @user.username, 'user[password]' => @password
       assert_equal '/', path
       assert_equal request.params[:controller], 'requests'
       assert_equal request.params[:action], 'unassigned'
@@ -27,7 +27,7 @@ class RootRequestTest < ActionDispatch::IntegrationTest
       @user.save
     end
     should 'route root to open assignments' do 
-      post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[password]' => @password
+      post_via_redirect user_session_path, 'user[username]' => @user.username, 'user[password]' => @password
       assert_equal '/', path
       assert_equal request.params[:controller], 'requests'
       assert_equal request.params[:action], 'open_assignments'
@@ -43,7 +43,7 @@ class RootRequestTest < ActionDispatch::IntegrationTest
       @user.save
     end
     should 'route root to open requests' do 
-      post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[password]' => @password
+      post_via_redirect user_session_path, 'user[username]' => @user.username, 'user[password]' => @password
       assert_equal '/', path
       assert_equal request.params[:controller], 'requests'
       assert_equal request.params[:action], 'open'
