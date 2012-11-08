@@ -59,6 +59,20 @@ class RequestTest < ActiveSupport::TestCase
     end
   end
 
+  test 'that a new request assigns itself to the next user responsible for its system' do
+    request = Request.new({
+      title: 'test',
+      description: 'test',
+      requester_id: users(:valid).id,
+      status_id: statuses(:valid).id,
+      system_id: systems(:valid).id,
+      severity: 'moderate'
+    })
+    request.save
+
+    assert_equal users(:valid), request.assignee
+  end
+
   context 'assignee association' do
     setup do
       @request = requests :valid
