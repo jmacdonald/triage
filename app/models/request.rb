@@ -12,6 +12,7 @@ class Request < ActiveRecord::Base
   validates :status, :title, :description, :requester, :system, :severity, :presence => true
   validates :severity, :inclusion => { :in => SEVERITY_OPTIONS }
   before_validation :set_default_status, :if => "status.nil?"
+  before_create :assign
 
   scope :closed, joins(:status).where(:statuses => {:closed => true})
   scope :unclosed, joins(:status).where(:statuses => {:closed => false})
@@ -27,5 +28,9 @@ class Request < ActiveRecord::Base
     if self.status.nil?
       logger.error 'Requests cannot be created without a default status; please create one.'
     end
+  end
+
+  def assign
+    self.assignee = self.system.next_assignee
   end
 end
