@@ -16,7 +16,7 @@ class RequestTest < ActiveSupport::TestCase
   should validate_presence_of :severity
   should ensure_inclusion_of(:severity).in_array %w(minor moderate major critical)
 
-  [:assignee, :status, :system, :title, :description, :severity, :requester].each do |attribute|
+  [:assignee_id, :status_id, :system_id, :title, :description, :severity].each do |attribute|
     should allow_mass_assignment_of(attribute)
   end
 
