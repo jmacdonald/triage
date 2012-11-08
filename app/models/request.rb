@@ -7,7 +7,7 @@ class Request < ActiveRecord::Base
   belongs_to :system
   has_many :comments
   has_many :attachments
-  attr_accessible :description, :title, :system_id, :assignee_id, :status_id, :severity
+  attr_accessible :description, :title, :system, :assignee, :status, :severity, :requester
 
   validates :status, :title, :description, :requester, :system, :severity, :presence => true
   validates :severity, :inclusion => { :in => SEVERITY_OPTIONS }
