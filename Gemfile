@@ -23,6 +23,7 @@ gem 'gravatar_image_tag'
 gem 'squeel'
 
 group :development, :test do
+  gem 'rspec-rails'
   gem 'debugger'
   gem 'mail_view'
   gem 'letter_opener'
