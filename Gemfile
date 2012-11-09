@@ -34,12 +34,10 @@ end
 group :test do
   gem 'sqlite3'
   gem 'mysql2'
-  gem 'minitest'
   gem 'rb-fsevent'
   gem 'listen', '0.4.7'
-  gem 'guard-minitest'
+  gem 'guard-rspec'
   gem 'terminal-notifier-guard'
-  gem 'turn'
   gem 'shoulda'
   gem 'shoulda-matchers'
 end
