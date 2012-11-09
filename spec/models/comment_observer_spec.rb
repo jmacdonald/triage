@@ -3,8 +3,10 @@ require 'spec_helper'
 describe CommentObserver do
   context 'creating a comment' do
     it 'should send the right email' do
-      @comment = FactoryGirl.build :comment
-      @comment.save
+      # Clear previous deliveries before each test.
+      ActionMailer::Base.deliveries = []
+
+      @comment = FactoryGirl.create :comment
 
       # Ensure that the proper email is queued.
       ActionMailer::Base.deliveries[0].subject.should eq("#{@comment.user.name} commented on #{@comment.request}")
