@@ -29,4 +29,9 @@ FactoryGirl.define do
   factory :status do
     title 'new'
   end
+
+  factory :responsibility do
+    user
+    system
+  end
 end
