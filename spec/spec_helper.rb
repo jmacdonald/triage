@@ -40,6 +40,9 @@ Spork.prefork do
     #     --seed 1234
     config.order = "random"
 
+    # Devise helpers
+    config.include Devise::TestHelpers, :type => :controller
+
     # Paperclip tests!
     config.include Paperclip::Shoulda::Matchers
   end
