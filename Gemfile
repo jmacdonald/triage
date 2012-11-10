@@ -32,6 +32,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'minitest'
   gem 'sqlite3'
   gem 'mysql2'
   gem 'rb-fsevent'
@@ -40,6 +41,5 @@ group :test do
   gem 'guard-spork'
   gem 'spork-rails'
   gem 'terminal-notifier-guard'
-  gem 'shoulda'
   gem 'shoulda-matchers'
 end
