@@ -37,7 +37,7 @@ FactoryGirl.define do
 
   factory :attachment do
     title 'Test Attachment'
-    file File.new 'spec/files/attachment.png'
+    file File.new 'spec/fixtures/attachment.png'
     user
     request
   end
