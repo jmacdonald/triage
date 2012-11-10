@@ -12,7 +12,7 @@ class Request < ActiveRecord::Base
   validates :status, :title, :description, :requester, :system, :severity, :presence => true
   validates :severity, :inclusion => { :in => SEVERITY_OPTIONS }
   before_validation :set_default_status, :if => "status.nil?"
-  before_create :assign
+  before_create :assign, :if => "assignee.nil?"
 
   scope :closed, joins(:status).where(:statuses => {:closed => true})
   scope :unclosed, joins(:status).where(:statuses => {:closed => false})
