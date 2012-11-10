@@ -34,4 +34,11 @@ FactoryGirl.define do
     user
     system
   end
+
+  factory :attachment do
+    title 'Test Attachment'
+    file File.new 'spec/files/attachment.png'
+    user
+    request
+  end
 end
