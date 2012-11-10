@@ -1,23 +1,23 @@
-require 'test_helper'
+require 'spec_helper'
 
-class CommentHelperTest < ActionView::TestCase
-  context 'embolden_mentions' do
-    setup do
-      @user1 = users :administrator
-      @user2 = users :provider
-      @comment = comments :valid
+describe CommentHelper do
+  describe 'embolden_mentions' do
+    before(:each) do
+      @user1 = FactoryGirl.create :user
+      @user2 = FactoryGirl.create :user
+      @comment = FactoryGirl.create :comment
       @comment.content = "@#{@user1.username} can you talk to @#{@user2.username}?"
     end
 
-    should 'embolden_mentions wraps mentions in strong tags' do
+    it 'should wrap mentions in strong tags' do
       assert_equal "<strong>@#{@user1.username}</strong> can you talk to <strong>@#{@user2.username}</strong>?", embolden_mentions(@comment.content)
     end
 
-    should 'return an html_safe string to prevent escaping' do
+    it 'should return an html_safe string to prevent escaping' do
       assert embolden_mentions(@comment.content).html_safe?
     end
 
-    should 'escape html in the comment content' do
+    it 'should escape html in the comment content' do
       @comment.content = '<html>'
       assert_equal '&lt;html&gt;', embolden_mentions(@comment.content)
     end
