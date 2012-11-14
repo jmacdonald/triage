@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe RequestObserver do
+  before(:all) do
+    # The notifier spec disables these; ensure they're re-enabled.
+    Request.observers.enable :all
+  end
+
   before(:each) do
     # Clear previous deliveries before each test.
     ActionMailer::Base.deliveries = []
