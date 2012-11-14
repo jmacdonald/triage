@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe CommentObserver do
+  before(:all) do
+    # The notifier spec disables these; ensure they're re-enabled.
+    Comment.observers.enable :all
+  end
+
   context 'creating a comment' do
     it 'should send the right email' do
       # Clear previous deliveries before each test.
