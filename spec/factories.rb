@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user do
     sequence :username do |s|
-      Faker::Name.first_name.downcase + s.to_s
+      "username#{s}"
     end
     email { Faker::Internet.email }
     role 'provider'
