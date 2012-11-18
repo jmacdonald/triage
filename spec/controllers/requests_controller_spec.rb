@@ -76,6 +76,10 @@ describe RequestsController do
     it 'should show all requests' do
       assigns(:requests).count.should eq(Request.count)
     end
+
+    it 'should paginate results' do
+      assigns(:requests).to_sql.should include "LIMIT #{Kaminari.config.default_per_page}"
+    end
   end
 
   context 'open action' do
@@ -97,6 +101,10 @@ describe RequestsController do
       assigns(:requests).each do |request|
         request.status.closed?.should be_false
       end
+    end
+
+    it 'should paginate results' do
+      assigns(:requests).to_sql.should include "LIMIT #{Kaminari.config.default_per_page}"
     end
   end
 
@@ -120,6 +128,10 @@ describe RequestsController do
         request.status.closed?.should be_true
       end
     end
+
+    it 'should paginate results' do
+      assigns(:requests).to_sql.should include "LIMIT #{Kaminari.config.default_per_page}"
+    end
   end
 
   context 'unassigned action' do
@@ -135,6 +147,10 @@ describe RequestsController do
       assigns(:requests).each do |request|
         request.assignee.should be_nil
       end
+    end
+
+    it 'should paginate results' do
+      assigns(:requests).to_sql.should include "LIMIT #{Kaminari.config.default_per_page}"
     end
   end
 
@@ -158,6 +174,10 @@ describe RequestsController do
         request.status.closed?.should be_false
       end
     end
+
+    it 'should paginate results' do
+      assigns(:requests).to_sql.should include "LIMIT #{Kaminari.config.default_per_page}"
+    end
   end
 
   context 'closed assignments action' do
@@ -179,6 +199,10 @@ describe RequestsController do
       assigns(:requests).each do |request|
         request.status.closed?.should be_true
       end
+    end
+
+    it 'should paginate results' do
+      assigns(:requests).to_sql.should include "LIMIT #{Kaminari.config.default_per_page}"
     end
   end
 
