@@ -21,6 +21,7 @@ gem 'simple_form'
 gem 'rails_admin'
 gem 'gravatar_image_tag'
 gem 'squeel'
+gem 'kaminari-bootstrap'
 
 group :development, :test do
   gem 'rspec-rails'
