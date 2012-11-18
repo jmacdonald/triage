@@ -163,6 +163,7 @@ RailsAdmin.config do |config|
         end
       end
       field :password
+      field :available
     end
     create do; end
     update do; end
