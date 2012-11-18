@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  subject { FactoryGirl.build :user }
+  subject { FactoryGirl.create :user }
 
   it { should have_many :requests }
   it { should have_many :assignments }
@@ -19,6 +19,7 @@ describe User do
   it { should allow_mass_assignment_of :password_confirmation }
   it { should allow_mass_assignment_of :remember_me }
   it { should allow_mass_assignment_of :name }
+  it { should allow_mass_assignment_of :available }
   it { should allow_mass_assignment_of :role }
   it { should validate_uniqueness_of :email }
   it { should validate_uniqueness_of :username }
@@ -28,5 +29,11 @@ describe User do
 
   it 'should be able to display itself as a string' do
     subject.to_s.should eq(subject.name)
+  end
+
+  describe 'available attribute' do
+    it 'should default to true' do
+      subject.reload.available.should be_true
+    end
   end
 end
