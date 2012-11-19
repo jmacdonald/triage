@@ -3,7 +3,9 @@ FactoryGirl.define do
     sequence :username do |s|
       "username#{s}"
     end
-    email { Faker::Internet.email }
+    sequence :email do |s|
+      "username#{s}@example.com"
+    end
     role 'provider'
     name { Faker::Name.name }
     password 'testpassword'
@@ -25,7 +27,9 @@ FactoryGirl.define do
   end
 
   factory :system do
-    name { Faker::Company.name }
+    sequence :name do |s|
+      "system#{s}"
+    end
   end
 
   factory :status do
