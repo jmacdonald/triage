@@ -36,4 +36,17 @@ describe User do
       subject.reload.available.should be_true
     end
   end
+
+  describe 'available scope' do
+    it 'should only return available users' do
+      # Create some available and unavailable users.
+      FactoryGirl.create_list :user, 5
+      FactoryGirl.create_list :user, 7, available: false
+
+      # Check each returned user to make sure they're available
+      User.available.each do |user|
+        user.available.should be_true
+      end
+    end
+  end
 end
