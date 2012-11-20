@@ -8,7 +8,7 @@ describe RequestsController do
     @target_request = FactoryGirl.create :request, requester: @current_user
   end
 
-  context 'new action' do
+  describe 'new action' do
     before(:each) do
       get :new
     end
@@ -26,7 +26,7 @@ describe RequestsController do
     end
   end
 
-  context 'create action' do
+  describe 'create action' do
     before(:each) do
       # Create a system and status for the new request.
       system = FactoryGirl.create :system
@@ -64,7 +64,7 @@ describe RequestsController do
     end
   end
 
-  context 'index action' do
+  describe 'index action' do
     before(:each) do
       get :index
     end
@@ -82,7 +82,7 @@ describe RequestsController do
     end
   end
 
-  context 'open action' do
+  describe 'open action' do
     before(:each) do
       get :open
     end
@@ -108,7 +108,7 @@ describe RequestsController do
     end
   end
 
-  context 'closed action' do
+  describe 'closed action' do
     before(:each) do
       get :closed
     end
@@ -134,7 +134,7 @@ describe RequestsController do
     end
   end
 
-  context 'unassigned action' do
+  describe 'unassigned action' do
     before(:each) do
       get :unassigned
     end
@@ -154,7 +154,7 @@ describe RequestsController do
     end
   end
 
-  context 'open assignments action' do
+  describe 'open assignments action' do
     before(:each) do
       get :open_assignments
     end
@@ -180,7 +180,7 @@ describe RequestsController do
     end
   end
 
-  context 'closed assignments action' do
+  describe 'closed assignments action' do
     before(:each) do
       get :closed_assignments
     end
@@ -206,17 +206,30 @@ describe RequestsController do
     end
   end
 
-  context 'show action' do
-    before(:each) do
-      get :show, :id => @target_request.id
+  describe 'show action' do
+    context 'when the current user is the requester' do
+      before(:each) do
+        get :show, :id => @target_request.id
+      end
+
+      it 'should work' do
+        response.should be_success
+      end
     end
 
-    it 'should work' do
-      response.should be_success
+    context 'when the current user is not the requester' do
+      before :each do
+        @foreign_request = FactoryGirl.create :request
+        get :show, :id => @foreign_request.id
+      end
+
+      it 'should work' do
+        response.should be_success
+      end
     end
   end
 
-  context 'update action' do
+  describe 'update action' do
     before(:each) do
       put :update, {
         id: @target_request.id,
@@ -243,21 +256,38 @@ describe RequestsController do
     end
   end
 
-  context 'delete action' do
-    before(:each) do
-      delete :destroy, id: @target_request.id
+  describe 'delete action' do
+    context 'when the current user is the requester' do
+      before(:each) do
+        delete :destroy, id: @target_request.id
+      end
+
+      it 'should work' do
+        response.should be_redirect
+      end
+
+      it 'should redirect to the request index action' do
+        response.should redirect_to(:action => :index)
+      end
     end
 
-    it 'should work' do
-      response.should be_redirect
-    end
+    context 'when the current user is not the requester' do
+      before(:each) do
+        @foreign_request = FactoryGirl.create :request
+        delete :destroy, id: @foreign_request.id
+      end
 
-    it 'should redirect to the request index action' do
-      response.should redirect_to(:action => :index)
+      it 'should work' do
+        response.should be_redirect
+      end
+
+      it 'should redirect to the request index action' do
+        response.should redirect_to(:action => :index)
+      end
     end
   end
 
-  context 'search action' do
+  describe 'search action' do
     context 'with an exact id' do
       before(:each) do
         get :search, {
