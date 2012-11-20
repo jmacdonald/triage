@@ -46,7 +46,7 @@ class RequestsController < ApplicationController
   end
 
   def update
-    @request = current_user.requests.find params[:id]
+    @request = Request.find params[:id]
 
     unless @request.update_attributes params[:request]
       flash[:error] = @request.errors.full_messages.join('<br />').html_safe
