@@ -42,7 +42,7 @@ class RequestsController < ApplicationController
   end
 
   def show
-    @request = current_user.requests.find params[:id]
+    @request = Request.find params[:id]
   end
 
   def update

@@ -207,12 +207,25 @@ describe RequestsController do
   end
 
   describe 'show action' do
-    before(:each) do
-      get :show, :id => @target_request.id
+    context 'when the current user is the requester' do
+      before(:each) do
+        get :show, :id => @target_request.id
+      end
+
+      it 'should work' do
+        response.should be_success
+      end
     end
 
-    it 'should work' do
-      response.should be_success
+    context 'when the current user is not the requester' do
+      before :each do
+        @foreign_request = FactoryGirl.create :request
+        get :show, :id => @foreign_request.id
+      end
+
+      it 'should work' do
+        response.should be_success
+      end
     end
   end
 
