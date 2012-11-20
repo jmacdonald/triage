@@ -230,29 +230,47 @@ describe RequestsController do
   end
 
   describe 'update action' do
-    before(:each) do
-      put :update, {
-        id: @target_request.id,
-        request: {
-         title: 'New Title'
-        }
-      } 
+    context 'when the current user is the requester' do
+      before(:each) do
+        put :update, {
+          id: @target_request.id,
+          request: {
+           title: 'New Title'
+          }
+        } 
+      end
+
+      it 'should work' do
+        response.should be_redirect
+      end
+
+      it 'should update the specified attribute' do
+        assigns(:request).title.should eq('New Title')
+      end
+
+      it 'should only update the attributes provided' do
+        assigns(:request).description.should eq(@target_request.description)
+      end
+
+      it 'should redirect to the request\'s show action' do
+        response.should redirect_to(:action => :show, :id => @target_request.id)
+      end
     end
 
-    it 'should work' do
-      response.should be_redirect
-    end
+    context 'when the current user is not the requester' do
+      before(:each) do
+        @foreign_request = FactoryGirl.create :request
+        put :update, {
+          id: @foreign_request.id,
+          request: {
+           title: 'New Title'
+          }
+        } 
+      end
 
-    it 'should update the specified attribute' do
-      assigns(:request).title.should eq('New Title')
-    end
-
-    it 'should only update the attributes provided' do
-      assigns(:request).description.should eq(@target_request.description)
-    end
-
-    it 'should redirect to the request\'s show action' do
-      response.should redirect_to(:action => :show, :id => @target_request.id)
+      it 'should work' do
+        response.should be_redirect
+      end
     end
   end
 
