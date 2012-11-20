@@ -257,16 +257,33 @@ describe RequestsController do
   end
 
   describe 'delete action' do
-    before(:each) do
-      delete :destroy, id: @target_request.id
+    context 'when the current user is the requester' do
+      before(:each) do
+        delete :destroy, id: @target_request.id
+      end
+
+      it 'should work' do
+        response.should be_redirect
+      end
+
+      it 'should redirect to the request index action' do
+        response.should redirect_to(:action => :index)
+      end
     end
 
-    it 'should work' do
-      response.should be_redirect
-    end
+    context 'when the current user is not the requester' do
+      before(:each) do
+        @foreign_request = FactoryGirl.create :request
+        delete :destroy, id: @foreign_request.id
+      end
 
-    it 'should redirect to the request index action' do
-      response.should redirect_to(:action => :index)
+      it 'should work' do
+        response.should be_redirect
+      end
+
+      it 'should redirect to the request index action' do
+        response.should redirect_to(:action => :index)
+      end
     end
   end
 

@@ -56,7 +56,7 @@ class RequestsController < ApplicationController
   end
 
   def destroy
-    @request = current_user.requests.find params[:id]
+    @request = Request.find params[:id]
 
     if @request.destroy
       redirect_to requests_url
