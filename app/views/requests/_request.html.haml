@@ -1,0 +1,17 @@
+%li
+  = link_to request do
+    .row-fluid
+      .span1
+        = gravatar_image_tag request.requester.email, class: 'img-polaroid', gravatar: {size: 32}
+      .span8
+        %h5
+          = request.title
+        %small.light
+          = request.requester.name
+      .span3.request_id
+        %small
+          = "# #{request.id}"
+          %br
+          - unless request.assignee.nil?
+            = gravatar_image_tag request.assignee.email, gravatar: {size: 12}
+            = request.assignee.name

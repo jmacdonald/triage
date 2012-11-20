@@ -3,12 +3,14 @@ $dark_blue: #2884B3
 $outline: rgba(255,255,255,0.3)
 $border: $dark_blue
 $drop_shadow: rgba(0,0,0,0.5)
+$normal_text: #555
+$light_text: #777
 
 body
   color: #4b4b4b
 
 @mixin box
-  color: #555
+  color: $normal_text
   text-shadow: 0 1px 0 #FFF
   border: 1px solid #ccc
   box-shadow: inset 0 0 0 1px #fff, inset 0 0 190px 0 #e3e3e3, 0 0 6px 0 #ccc
@@ -27,12 +29,14 @@ body
 
 .comment
   h5
-    color: #555
+    color: $normal_text
     margin-top: 0
-
 
 .center
   text-align: center
 
 .right
   text-align: right
+
+.light
+  color: $light_text
