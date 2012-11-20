@@ -4,5 +4,10 @@
   .alert.alert-info
     = t '.empty'
 - else
-  = render 'requests'
-  = paginate @requests
+  %ul.requests
+    - @requests.each do |request|
+      = render partial: 'request', locals: { request: request }
+    %li
+      = page_entries_info @requests
+  .pull-right
+    = paginate @requests
