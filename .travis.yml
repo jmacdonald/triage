@@ -1,6 +1,9 @@
 language: ruby
 rvm:
   - "1.9.3"
+branches:
+  only:
+    - master
 env:
   - DB=sqlite
   - DB=mysql
