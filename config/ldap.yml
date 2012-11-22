@@ -22,7 +22,7 @@ authorizations: &AUTHORIZATIONS
 
 development:
   host: localhost
-  port: 389
+  port: 1389
   attribute: cn
   base: ou=people,dc=test,dc=com
   admin_user: cn=admin,dc=test,dc=com
