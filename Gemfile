@@ -22,6 +22,7 @@ gem 'rails_admin'
 gem 'gravatar_image_tag'
 gem 'squeel'
 gem 'kaminari-bootstrap'
+gem 'devise_ldap_authenticatable'
 
 group :development, :test do
   gem 'rspec-rails'

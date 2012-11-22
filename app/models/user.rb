@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   ROLE_OPTIONS = %w(administrator provider requester)
 
-  devise :database_authenticatable, :rememberable, :trackable, :validatable
+  devise :ldap_authenticatable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :username, :password, :password_confirmation, :remember_me, :name, :available, :role
