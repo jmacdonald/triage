@@ -11,6 +11,7 @@ env:
 script:
   - bundle exec rake --trace db:migrate
   - bundle exec rspec spec/
+bundler_args: --without development
 before_script:
   - mysql -e 'create database triage_test'
   - psql -c 'create database triage_test' -U postgres

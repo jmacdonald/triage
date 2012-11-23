@@ -24,11 +24,14 @@ gem 'squeel'
 gem 'kaminari-bootstrap'
 gem 'devise_ldap_authenticatable'
 
+group :development do
+  gem 'debugger'
+end
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'debugger'
   gem 'mail_view'
   gem 'letter_opener'
 end
