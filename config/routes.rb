@@ -17,6 +17,10 @@ Triage::Application.routes.draw do
     resources :comments, :only => [:create]
     resources :attachments, :only => [:create, :destroy]
   end
+
+  scope 'settings' do
+    get 'profile' => 'users#edit', as: 'edit_profile'
+  end
   
   mount Notifier::Preview => 'mail_view' if Rails.env.development?
 

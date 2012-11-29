@@ -64,4 +64,10 @@ describe 'routes' do
       { :delete => '/requests/1/attachments/1' }.should route_to({ :controller => 'attachments', :action => 'destroy', :request_id => '1', :id => '1' })  
     end 
   end
+
+  describe 'setting routes' do
+    it 'should route to current user edit' do
+      { :get => '/settings/profile' }.should route_to({ :controller => 'users', :action => 'edit' })
+    end
+  end
 end
