@@ -14,6 +14,11 @@
  */
 
 @import "bootstrap";
+@import "common";
+
+body {
+  font-family: 'OpenSans';
+}
 
 .alert {
   margin-top: 20px;
