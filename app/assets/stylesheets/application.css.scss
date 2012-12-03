@@ -13,6 +13,9 @@
  *= require devise
  */
 
+// Use OpenSans for Twitter Bootstrap.
+$baseFontFamily: 'OpenSans';
+
 @import "bootstrap";
 @import "common";
 
