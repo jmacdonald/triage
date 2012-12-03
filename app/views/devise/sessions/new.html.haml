@@ -1,8 +1,9 @@
 .row-fluid
   .span4.offset4
     .login
-      .center.logo
-        = image_tag "logo.png"
+      %h1.center
+        Triage
+        %hr
 
       = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
         .row-fluid
