@@ -67,7 +67,7 @@ describe 'routes' do
 
   describe 'setting routes' do
     it 'should route to current user edit' do
-      { :get => '/settings/profile' }.should route_to({ :controller => 'users', :action => 'edit' })
+      { :get => '/settings/profile' }.should route_to({ :controller => 'settings', :action => 'edit_profile' })
     end
   end
 end
