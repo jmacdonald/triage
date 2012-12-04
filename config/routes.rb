@@ -19,7 +19,7 @@ Triage::Application.routes.draw do
   end
 
   scope 'settings' do
-    get 'profile' => 'users#edit', as: 'edit_profile'
+    get 'profile' => 'settings#edit_profile', as: 'edit_profile'
   end
   
   mount Notifier::Preview => 'mail_view' if Rails.env.development?
