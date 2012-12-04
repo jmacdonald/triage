@@ -23,6 +23,7 @@ gem 'gravatar_image_tag'
 gem 'squeel'
 gem 'kaminari-bootstrap'
 gem 'devise_ldap_authenticatable'
+gem 'strong_parameters'
 
 group :development do
   gem 'debugger'
