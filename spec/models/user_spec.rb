@@ -13,14 +13,6 @@ describe User do
   it { should validate_presence_of :username }
   it { should validate_presence_of :role }
   it { should validate_presence_of :name }
-  it { should allow_mass_assignment_of :email }
-  it { should allow_mass_assignment_of :username }
-  it { should allow_mass_assignment_of :password }
-  it { should allow_mass_assignment_of :password_confirmation }
-  it { should allow_mass_assignment_of :remember_me }
-  it { should allow_mass_assignment_of :name }
-  it { should allow_mass_assignment_of :available }
-  it { should allow_mass_assignment_of :role }
   it { should validate_uniqueness_of :email }
   it { should validate_uniqueness_of :username }
   it { should ensure_inclusion_of(:role).in_array %w(administrator provider requester) }
