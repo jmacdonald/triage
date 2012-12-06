@@ -11,15 +11,15 @@ Triage provides several features that help with managing requests:
 
 ### Conversation-Driven Workflow
 
-Comments are an integral part of every request. It's usually the case that the initial request doesn't have enough detail. Comments allow the conversation to continue and keeps all of the information where it belongs: with the original request.
+Comments are an integral part of every request. It's usually the case that the initial request doesn't have enough detail. Comments allow the conversation to continue, while keeping all of the information where it belongs: with the original request.
 
 ### Notifications
 
-Comments, re-assignments, status changes; users are kept up to date on a regular basis, without being overwhelmed with emails. Triage intelligently notifies users when important events occur that relate to them and their requests.
+Comments, re-assignments, and status changes; users are kept up to date on a regular basis without being inundated with emails. Triage intelligently notifies users when important events occur that relate to them and their requests.
 
 ### Twitter-Style Mentions
 
-Responding to a request and need to pull someone else in on the conversation? Mentions allow you to send messages to other users and bring their attention to the request. They're ideal for leveraging expertise that might not be directly involved in the request.
+Responding to a request and need to pull someone else in on the conversation? Mentions allow you to reference other users, bringing their attention to the request. They're ideal for leveraging expertise that might not be directly involved.
 
 ### Auto Assignment
 
