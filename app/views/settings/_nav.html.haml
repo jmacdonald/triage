@@ -3,6 +3,6 @@
     %ul.nav.nav-list
       %li.nav-header
         = t 'nav.settings'
-      %li{ class: ('active' if (params[:controller] == 'settings' and params[:action] == 'edit_profile') ) }
+      %li{ class: ('active' if (params[:controller] == 'settings' && (params[:action] == 'edit_profile' || params[:action] == 'update_profile'))) }
         = link_to edit_profile_path do
           = t 'nav.profile'
