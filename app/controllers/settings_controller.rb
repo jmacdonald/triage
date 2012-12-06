@@ -8,10 +8,14 @@ class SettingsController < ApplicationController
   def update_profile
     authorize! :update, current_user
 
-    if current_user.update_attributes params[:user]
+    if current_user.update_attributes profile_params
       flash[:notice] = t 'settings.update_profile.success'
     end
 
     render 'edit_profile'
+  end
+
+  def profile_params
+    return params.require(:user).permit(:name, :email, :available)
   end
 end

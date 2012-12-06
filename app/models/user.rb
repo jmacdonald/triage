@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
+
   ROLE_OPTIONS = %w(administrator provider requester)
 
   devise :ldap_authenticatable, :database_authenticatable, :rememberable, :trackable, :validatable
