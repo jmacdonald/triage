@@ -74,6 +74,13 @@ en:
     new:
       new_request: "New Request"
       create_request: "Create Request"
+  settings:
+    edit_profile:
+      update_profile: "Update Profile"
+    update_profile:
+      success: "Profile updated successfully."
+      
+    
   simple_form:
     labels:
       request:
