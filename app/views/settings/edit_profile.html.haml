@@ -1,2 +1,8 @@
-%h1 Settings#edit_profile
-%p Find me in app/views/settings/edit_profile.html.haml
+= render 'nav'
+
+.box
+  = simple_form_for current_user, url: edit_profile_path do |f|
+    = f.input :email
+    = f.input :name
+    = f.input :available
+    = f.button :submit, class: 'btn-primary'
