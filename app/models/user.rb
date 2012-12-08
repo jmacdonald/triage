@@ -3,7 +3,11 @@ class User < ActiveRecord::Base
 
   ROLE_OPTIONS = %w(administrator provider requester)
 
-  devise :ldap_authenticatable, :database_authenticatable, :rememberable, :trackable, :validatable
+  if Rails.application.config.triage['ldap_enabled']
+    devise :ldap_authenticatable, :database_authenticatable, :rememberable, :trackable, :validatable
+  else
+    devise :database_authenticatable, :rememberable, :trackable, :validatable
+  end
 
   has_many :requests, :foreign_key => :requester_id
   has_many :assignments, :class_name => 'Request', :foreign_key => :assignee_id

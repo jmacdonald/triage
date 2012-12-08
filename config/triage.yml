@@ -1,0 +1,11 @@
+defaults: &defaults
+  ldap_enabled: false
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

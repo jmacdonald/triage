@@ -62,6 +62,9 @@ module Triage
     # add fonts directory to the assets path
     config.assets.paths << Rails.root.join("vendor", "assets", "fonts")
 
+    # Import administrator-configurable settings for Triage.
+    config.triage = YAML.load_file("#{Rails.root}/config/triage.yml")[Rails.env]
+
     # Use custom layout for devise sessions.
     config.to_prepare do
       Devise::SessionsController.layout "devise" 
