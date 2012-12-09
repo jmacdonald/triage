@@ -38,4 +38,11 @@ describe SettingsController do
       end
     end
   end
+
+  describe 'edit_password' do
+    it 'works' do
+      get 'edit_password'
+      response.should be_success
+    end
+  end
 end

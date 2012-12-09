@@ -15,6 +15,10 @@ class SettingsController < ApplicationController
     render 'edit_profile'
   end
 
+  def edit_password
+    authorize! :update, current_user
+  end
+
   def profile_params
     return params.require(:user).permit(:name, :email, :available)
   end
