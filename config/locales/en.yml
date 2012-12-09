@@ -21,7 +21,7 @@ en:
     closed_assignments: "Closed Assignments"
     settings: "Settings"
     profile: "Profile"
-
+    password: "Password"
   table:
     id: "ID"
     title: "Title"
@@ -79,6 +79,8 @@ en:
       update_profile: "Update Profile"
     update_profile:
       success: "Profile updated successfully."
+    edit_password:
+      update_password: "Update Password"
       
     
   simple_form:
