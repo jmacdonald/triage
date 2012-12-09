@@ -77,5 +77,9 @@ describe 'routes' do
     it 'should route to password edit' do
       { :get => '/settings/password' }.should route_to({ :controller => 'settings', :action => 'edit_password' })
     end
+
+    it 'should route to update password' do
+      { :put => '/settings/password' }.should route_to({ :controller => 'settings', :action => 'update_password' })
+    end
   end
 end
