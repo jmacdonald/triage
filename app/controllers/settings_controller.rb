@@ -19,7 +19,24 @@ class SettingsController < ApplicationController
     authorize! :update, current_user
   end
 
+  def update_password
+    authorize! :update, current_user
+
+    # Confirm password.
+    if params[:user][:password] != params[:user][:password_confirmation]
+      flash[:error] = t 'settings.update_password.mismatch'
+    elsif current_user.update_attributes password_params
+      flash[:notice] = t 'settings.update_password.success'
+    end
+
+    render 'edit_password'
+  end
+
   def profile_params
     return params.require(:user).permit(:name, :email, :available)
+  end
+
+  def password_params
+    return params.require(:user).permit(:password)
   end
 end
