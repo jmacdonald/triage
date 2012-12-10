@@ -29,6 +29,10 @@ Users can be associated with systems for which they're responsible and Triage wi
 
 Sometimes words just aren't enough. Images, spreadsheets and screenshots are but a few of the additional types of content that can make a request so much easier to fulfill. Triage supports attachments of any kind, right out of the box.
 
+### LDAP Support
+
+Triage can easily integrate with your existing directory server to facilitate centralized management of passwords. Users can sign on with the same credentials as any other system setup with your directory server, making remembering varying passwords a thing of the past.
+
 ### Beautiful User Interface
 
 Design isn't an afterthought in the development of Triage, it's a driving force. Triage has a refined and functional user interface that has been designed to reflect the underlying principles of the project itself: simplicity and elegance.
