@@ -81,8 +81,9 @@ en:
       success: "Profile updated successfully."
     edit_password:
       update_password: "Update Password"
-      
-    
+    update_password:
+      mismatch: "Password and confirmation did not match."
+      success: "Password updated successfully."
   simple_form:
     labels:
       request:
