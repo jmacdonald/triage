@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :request
+  load_and_authorize_resource :comment, through: :request
 
   def create
     request = Request.find params[:request_id]
