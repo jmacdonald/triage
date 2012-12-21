@@ -5,6 +5,7 @@ class Status < ActiveRecord::Base
   validates :title, :presence => true
 
   before_save :clear_defaults, :if => :default?
+  before_destroy :ensure_unused
 
   def self.default
     self.where(:default => true).first
@@ -16,5 +17,9 @@ class Status < ActiveRecord::Base
 
   def to_s
     self.title
+  end
+
+  def ensure_unused
+    self.requests.empty?
   end
 end

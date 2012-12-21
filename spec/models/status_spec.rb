@@ -81,4 +81,19 @@ describe Status do
       Status.default.should eq(@status)
     end
   end
+
+  context 'deleting a status' do
+    before(:each) do
+      @status = FactoryGirl.create :status
+    end
+
+    it 'should succeed when no requests are associated with it' do
+      @status.destroy.should be_true
+    end
+
+    it 'should fail when requests are associated with it' do
+      request = FactoryGirl.create :request, { status: @status }
+      @status.destroy.should be_false
+    end
+  end
 end
