@@ -7,16 +7,18 @@ class Status < ActiveRecord::Base
   before_save :clear_defaults, :if => :default?
   before_destroy :ensure_unused
 
+  def to_s
+    self.title
+  end
+
   def self.default
     self.where(:default => true).first
   end
 
+  private
+
   def clear_defaults
     Status.update_all :default => false
-  end
-
-  def to_s
-    self.title
   end
 
   def ensure_unused
