@@ -10,7 +10,7 @@ describe Status do
     subject.to_s.should eq(subject.title)
   end
 
-  context 'a new status' do
+  describe 'a new status' do
     before(:each) do
       @status = FactoryGirl.create :status
     end
@@ -24,7 +24,7 @@ describe Status do
     end
   end
 
-  context 'a new default status' do
+  describe 'a new default status' do
     before(:each) do
       # Create the initial default status.
       @initial_default_status = FactoryGirl.build :status
@@ -47,7 +47,7 @@ describe Status do
     end
   end
 
-  context 'a new non-default status' do
+  describe 'a new non-default status' do
     before(:each) do
       # Create the initial default status.
       @initial_default_status = FactoryGirl.build :status
@@ -67,7 +67,7 @@ describe Status do
     end
   end
 
-  context 'default method' do
+  describe 'default method' do
     it 'should exist' do
       Status.respond_to?(:default).should be_true
     end
