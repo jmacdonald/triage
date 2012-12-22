@@ -1,13 +1,15 @@
 require 'spec_helper'
 
 describe CommentHelper do
+  before(:each) do
+    @user1 = FactoryGirl.create :user
+    @user2 = FactoryGirl.create :user
+    @comment = FactoryGirl.create :comment
+    @comment.content = content
+  end
+
   describe 'embolden_mentions' do
-    before(:each) do
-      @user1 = FactoryGirl.create :user
-      @user2 = FactoryGirl.create :user
-      @comment = FactoryGirl.create :comment
-      @comment.content = "@#{@user1.username} can you talk to @#{@user2.username}?"
-    end
+    let(:content) { "@#{@user1.username} can you talk to @#{@user2.username}?" }
 
     it 'should wrap mentions in strong tags' do
       assert_equal "<strong>@#{@user1.username}</strong> can you talk to <strong>@#{@user2.username}</strong>?", embolden_mentions(@comment.content)
