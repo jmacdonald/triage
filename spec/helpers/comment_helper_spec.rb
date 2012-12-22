@@ -15,11 +15,11 @@ describe CommentHelper do
     let (:content) { '<html>' }
 
     it 'should escape html in the comment content' do
-      assert_equal '&lt;html&gt;', escape(@comment.content)
+      escape(@comment.content).should eq('&lt;html&gt;')
     end
 
     it 'should return an html_safe string to prevent escaping' do
-      assert escape(@comment.content).html_safe?
+      escape(@comment.content).html_safe?.should be_true
     end
   end
 
@@ -27,7 +27,7 @@ describe CommentHelper do
     let(:content) { "@#{@user1.username} can you talk to @#{@user2.username}?" }
 
     it 'should wrap mentions in strong tags' do
-      assert_equal "<strong>@#{@user1.username}</strong> can you talk to <strong>@#{@user2.username}</strong>?", embolden_mentions(@comment.content)
+      embolden_mentions(@comment.content).should eq("<strong>@#{@user1.username}</strong> can you talk to <strong>@#{@user2.username}</strong>?")
     end
   end
 
