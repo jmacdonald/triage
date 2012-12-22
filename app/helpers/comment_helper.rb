@@ -10,4 +10,16 @@ module CommentHelper
       "<strong>#{mention}</strong>"
     end
   end
+
+  def link_references(content)
+    content.gsub! /#\w+/ do |reference|
+      # Find the referenced request and link to it, if found.
+      begin
+        request = Request.find reference[1..-1]
+        "<a href=\"#{request_path(request)}\">##{request.id}</a>"
+      rescue ActiveRecord::RecordNotFound
+        reference
+      end
+    end
+  end
 end
