@@ -7,8 +7,15 @@ module CommentHelper
   def embolden_mentions(content)
     # Embolden the mentions.
     content.gsub! /@\w+/ do |mention|
-      "<strong>#{mention}</strong>"
+      # Embolden the mention if the user exists.
+      if User.exists? username: mention[1..-1]
+        "<strong>#{mention}</strong>"
+      else
+        mention
+      end
     end
+
+    content
   end
 
   def link_references(content)
@@ -21,5 +28,7 @@ module CommentHelper
         reference
       end
     end
+
+    content
   end
 end

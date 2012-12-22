@@ -24,10 +24,28 @@ describe CommentHelper do
   end
 
   describe 'embolden_mentions' do
-    let(:content) { "@#{@user1.username} can you talk to @#{@user2.username}?" }
+    context 'with a valid mention' do
+      let(:content) { "@#{@user1.username} can you talk to @#{@user2.username}?" }
 
-    it 'should wrap mentions in strong tags' do
-      embolden_mentions(@comment.content).should eq("<strong>@#{@user1.username}</strong> can you talk to <strong>@#{@user2.username}</strong>?")
+      it 'should wrap mentions in strong tags' do
+        embolden_mentions(@comment.content).should eq("<strong>@#{@user1.username}</strong> can you talk to <strong>@#{@user2.username}</strong>?")
+      end
+    end
+
+    context 'with an invalid mention' do
+      let(:content) { "@invalid can you talk to @invalid2?" }
+
+      it 'should not wrap mentions in strong tags' do
+        embolden_mentions(@comment.content).should eq("@invalid can you talk to @invalid2?")
+      end
+    end
+
+    context 'without any mentions' do
+      let(:content) { "I'm working on this right now." }
+
+      it 'should not change the content' do
+        embolden_mentions(@comment.content).should eq("I'm working on this right now.")
+      end
     end
   end
 
@@ -44,6 +62,14 @@ describe CommentHelper do
       let(:content) { "This issue is related to #asdf." }
 
       it 'should not insert links' do
+        link_references(@comment.content).should eq(@comment.content)
+      end
+    end
+
+    context 'without any references' do
+      let(:content) { "This issue is related to another." }
+
+      it 'should not change the content' do
         link_references(@comment.content).should eq(@comment.content)
       end
     end
