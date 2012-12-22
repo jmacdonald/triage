@@ -16,7 +16,7 @@ module CommentHelper
       # Find the referenced request and link to it, if found.
       begin
         request = Request.find reference[1..-1]
-        "<a href=\"#{request_path(request)}\">##{request.id}</a>"
+        "<a href=\"#{request_url(request)}\">##{request.id}</a>"
       rescue ActiveRecord::RecordNotFound
         reference
       end

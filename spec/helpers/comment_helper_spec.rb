@@ -35,8 +35,8 @@ describe CommentHelper do
     context 'with a valid reference' do
       let(:content) { "This issue is related to ##{@foreign_request.id}." }
 
-      it 'should insert links' do
-        link_references(@comment.content).should eq("This issue is related to <a href=\"#{request_path(@foreign_request)}\">##{@foreign_request.id}</a>.")
+      it 'should insert full URL links' do
+        link_references(@comment.content).should eq("This issue is related to <a href=\"#{request_url(@foreign_request)}\">##{@foreign_request.id}</a>.")
       end
     end
 
