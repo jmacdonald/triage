@@ -2,12 +2,14 @@ require 'spec_helper'
 
 describe CommentsController do
   before(:each) do
-    @user = FactoryGirl.create :user, role: 'administrator'
     @comment_request = FactoryGirl.create :request
-    sign_in @user
+    sign_in user
   end
 
   describe 'create action' do
+    # Set the user to sign in with.
+    let(:user) { FactoryGirl.create :user, role: 'administrator' }
+
     before(:each) do
       post :create, {
         request_id: @comment_request.id,
@@ -22,7 +24,7 @@ describe CommentsController do
     end
 
     it 'should associate comments with the current user' do
-      assigns(:comment).user.id.should eq(@user.id)
+      assigns(:comment).user.id.should eq(user.id)
     end
   end
 end
