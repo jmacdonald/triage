@@ -15,12 +15,18 @@ class Ability
 
       can :create, Request
       can :create, Comment
+
+      can :create, Attachment
+      can :destroy, Attachment, :user => { :id => user.id }
     elsif user.role == 'requester'
       # Read requests created by them.
       can :read, Request, :requester_id => user.id
 
       can :create, Request
       can :create, Comment, :request => { :requester_id => user.id }
+
+      can :create, Attachment, :request => { :requester_id => user.id }
+      can :destroy, Attachment, :user => { :id => user.id }
     end
   end
 end

@@ -42,6 +42,9 @@ describe Ability do
 
       @admin_assigned_request = FactoryGirl.build :request
       @admin_assigned_request.assignee = @administrator
+
+      @owned_attachment = FactoryGirl.create :attachment, { user: @provider, request: @assigned_request }
+      @foreign_attachment = FactoryGirl.create :attachment, { request: @assigned_request }
     end
 
     it 'should be able to create new requests' do
@@ -95,6 +98,18 @@ describe Ability do
     it 'should not be able to destroy comments' do
       @provider_ability.cannot?(:destroy, Comment.new).should be_true
     end
+
+    it 'should be able to create attachments' do
+      @provider_ability.can?(:create, Attachment.new).should be_true
+    end
+
+    it 'should be able to destroy its own attachments' do
+      @provider_ability.can?(:destroy, @owned_attachment).should be_true
+    end
+
+    it 'should not be able to destroy attachments it does not own' do
+      @provider_ability.cannot?(:destroy, @foreign_attachment).should be_true
+    end
   end
 
   context 'a requester' do
@@ -106,6 +121,9 @@ describe Ability do
 
       @admin_request = FactoryGirl.build :request
       @admin_request.requester = @administrator
+
+      @owned_attachment = FactoryGirl.create :attachment, { user: @requester, request: @owned_request }
+      @foreign_attachment = FactoryGirl.create :attachment, { request: @owned_request }
     end
 
     it 'should be able to read its own requests' do
@@ -146,6 +164,22 @@ describe Ability do
     it 'should not be able to destroy comments' do
       @requester_ability.cannot?(:destroy, @owned_request).should be_true
       @requester_ability.cannot?(:destroy, @admin_request).should be_true
+    end
+
+    it 'should not be able to create attachments on any request' do
+      @requester_ability.cannot?(:create, Attachment.new).should be_true
+    end
+
+    it 'should be able to create attachments on its own requests' do
+      @requester_ability.can?(:create, @owned_attachment).should be_true
+    end
+
+    it 'should be able to destroy its own attachments' do
+      @requester_ability.can?(:destroy, @owned_attachment).should be_true
+    end
+
+    it 'should not be able to destroy attachments it does not own' do
+      @requester_ability.cannot?(:destroy, @foreign_attachment).should be_true
     end
   end
 end

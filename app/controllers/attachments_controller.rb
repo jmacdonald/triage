@@ -1,5 +1,6 @@
 class AttachmentsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :request
+  load_and_authorize_resource :attachment, through: :request
 
   def create
     request = Request.find params[:request_id]

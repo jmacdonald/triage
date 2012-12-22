@@ -33,7 +33,7 @@ describe AttachmentsController do
 
   context 'delete action' do
     before(:each) do
-      attachment = FactoryGirl.create :attachment, user: @user
+      attachment = FactoryGirl.create :attachment, request: @attachment_request, user: @user
       delete :destroy, {
         request_id: @attachment_request.id,
         id: attachment.id
