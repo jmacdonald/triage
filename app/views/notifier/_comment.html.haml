@@ -15,4 +15,4 @@
           %small
             = @comment.user
             \- #{@comment.user.role.titleize}
-        = embolden_mentions @comment.content
+        = enrich @comment.content
