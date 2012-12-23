@@ -1,4 +1,4 @@
-module RequestsHelper
+module RequestHelper
   def label_class(status)
     # Set the style based on the status type.
     if status.default?

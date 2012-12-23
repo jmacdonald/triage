@@ -79,7 +79,8 @@
                 %br
                 %small
                   = comment.user
-                  \- #{comment.user.role.titleize}
+                  \-
+                  = request_role(@request, comment.user)
               = enrich comment.content
 
 #reassign_modal.modal.hide.fade
