@@ -80,7 +80,7 @@
                 %small
                   = comment.user
                   \- #{comment.user.role.titleize}
-              = embolden_mentions(comment.content)
+              = enrich comment.content
 
 #reassign_modal.modal.hide.fade
   = simple_form_for [@request] do |f|
