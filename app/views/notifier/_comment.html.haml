@@ -14,5 +14,6 @@
           %br
           %small
             = @comment.user
-            \- #{@comment.user.role.titleize}
+            \-
+            = request_role(@comment.request, @comment.user)
         = enrich @comment.content

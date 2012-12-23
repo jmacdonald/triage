@@ -31,4 +31,14 @@ module CommentHelper
   def enrich(content)
     escape link_references embolden_mentions content
   end
+
+  def request_role(request, user)
+    if user == request.requester
+      'Requester'
+    elsif user == request.assignee
+      'Assigned ' + user.role.titleize
+    else
+      user.role.titleize
+    end
+  end
 end
