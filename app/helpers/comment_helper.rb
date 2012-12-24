@@ -1,7 +1,6 @@
 module CommentHelper
   def escape(content)
-    # Escape the html and flag it as safe.
-    ERB::Util.html_escape(content).html_safe
+    ERB::Util.html_escape(content)
   end
 
   def embolden_mentions(content)
@@ -29,7 +28,7 @@ module CommentHelper
   end
 
   def enrich(content)
-    escape link_references embolden_mentions content
+    link_references(embolden_mentions escape content).html_safe
   end
 
   def request_role(request, user)
