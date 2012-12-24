@@ -80,7 +80,7 @@ describe CommentHelper do
       let(:content) { "@#{@user1.username}, is this related to ##{@foreign_request.id}?" }
 
       it 'should run all comment helpers' do
-        enrich(@comment.content).should eq(escape link_references embolden_mentions @comment.content)
+        enrich(@comment.content).should eq(link_references embolden_mentions escape @comment.content)
       end
     end
   end
