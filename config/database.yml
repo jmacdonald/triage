@@ -1,6 +1,6 @@
 sqlite: &sqlite
   adapter: sqlite3
-  database: db/test.sqlite3
+  database: db/<%= ENV['RAILS_ENV'] %>.sqlite3
 
 mysql: &mysql
   adapter: mysql2
