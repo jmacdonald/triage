@@ -37,6 +37,7 @@ gem 'squeel'
 gem 'kaminari-bootstrap'
 gem 'devise_ldap_authenticatable'
 gem 'strong_parameters'
+gem 'mail_view'
 
 group :development do
   gem 'debugger'
@@ -46,7 +47,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'mail_view'
   gem 'letter_opener'
 end
 
