@@ -15,7 +15,7 @@ gem 'squeel'
 gem 'kaminari-bootstrap'
 gem 'strong_parameters'
 
-group :postgres do
+group :postgresql do
   gem 'pg'
 end
 
