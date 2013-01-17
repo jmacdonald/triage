@@ -14,6 +14,7 @@ gem 'gravatar_image_tag'
 gem 'squeel'
 gem 'kaminari-bootstrap'
 gem 'strong_parameters'
+gem 'mail_view'
 
 group :postgresql do
   gem 'pg'
@@ -29,7 +30,6 @@ end
 
 group :development do
   gem 'debugger'
-  gem 'mail_view'
   gem 'letter_opener'
 end
 
@@ -44,7 +44,6 @@ group :test do
   gem 'spork-rails'
   gem 'terminal-notifier-guard'
   gem 'shoulda-matchers'
-  gem 'mail_view'
 end
 
 group :production do
