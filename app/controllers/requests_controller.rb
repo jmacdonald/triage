@@ -7,7 +7,7 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = current_user.requests.new request_params
+    @request = current_user.requests.new create_request_params
     
     if @request.save
       redirect_to @request
@@ -48,7 +48,7 @@ class RequestsController < ApplicationController
   def update
     @request = Request.find params[:id]
 
-    unless @request.update_attributes request_params
+    unless @request.update_attributes update_request_params
       flash[:error] = @request.errors.full_messages.join('<br />').html_safe
     end
 
@@ -74,7 +74,11 @@ class RequestsController < ApplicationController
     end
   end
 
-  def request_params
-    params.require(:request).permit(:description, :title, :system_id, :assignee_id, :status_id, :severity)
+  def create_request_params
+    params.require(:request).permit(:title, :description, :system_id, :severity)
+  end
+
+  def update_request_params
+    params.require(:request).permit(:title, :description, :system_id, :assignee_id, :status_id, :severity)
   end
 end
