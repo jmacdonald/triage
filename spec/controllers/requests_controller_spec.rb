@@ -57,8 +57,8 @@ describe RequestsController do
     end
 
     it 'should render the "new" action template when there is an error' do
-      # Submit an empty request.
-      post :create
+      # Submit a request without all required fields.
+      post :create, { request: { title: 'New Request' } }
       
       response.should render_template('new')
     end
@@ -358,6 +358,30 @@ describe RequestsController do
       it 'should have an empty array of results' do
         assigns(:requests).should eq([])
       end
+    end
+  end
+
+  describe 'strong parameters' do
+    before(:each) do
+      # Create a system and status for the new request.
+      system = FactoryGirl.create :system
+      status = FactoryGirl.create :status
+
+      # Create an assignee.
+      assignee = FactoryGirl.create :user, role: 'provider'
+
+      # Create attributes for the new request, associating the new system, status, and assignee, as well as trying to set its requester.
+      request_attributes = FactoryGirl.attributes_for :request
+      request_attributes[:system_id] = system.id
+      request_attributes[:status_id] = status.id
+      request_attributes[:assignee_id] = assignee.id
+      request_attributes[:requester_id] = @current_user.id
+
+      post :create, { :request => request_attributes }
+    end
+
+    it 'should permit description, title, system, assignee, status, severity, and requester attributes' do
+      @controller.request_params.keys.should eq(['description', 'title', 'system_id', 'assignee_id', 'status_id', 'severity'])
     end
   end
 end

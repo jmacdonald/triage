@@ -16,10 +16,6 @@ describe Request do
   it { should validate_presence_of :severity }
   it { should ensure_inclusion_of(:severity).in_array %w(minor moderate major critical) }
 
-  [:assignee_id, :status_id, :system_id, :title, :description, :severity, :requester_id].each do |attribute|
-    it { should allow_mass_assignment_of(attribute) }
-  end
-
   it 'should be able to display itself as a string' do
     subject.to_s.should eq("Request ##{subject.id}: #{subject.title}")
   end
