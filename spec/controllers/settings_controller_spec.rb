@@ -79,7 +79,7 @@ describe SettingsController do
 
       describe 'permitted parameters' do
         it 'should be limited to password and password_confirmation' do
-          @controller.password_params.keys.should eq(['password'])
+          @controller.password_params.keys.should eq(['password', 'password_confirmation'])
         end
       end
     end
