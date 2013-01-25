@@ -18,4 +18,8 @@ class CommentsController < ApplicationController
 
     redirect_to request 
   end
+
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
 end
