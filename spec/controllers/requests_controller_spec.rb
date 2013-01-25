@@ -28,14 +28,13 @@ describe RequestsController do
 
   describe 'create action' do
     before(:each) do
-      # Create a system and status for the new request.
+      # Create a system and default status for the new request.
       system = FactoryGirl.create :system
-      status = FactoryGirl.create :status
+      status = FactoryGirl.create :status, default: true
 
-      # Create attributes for the new request, associating the new system and status.
+      # Create attributes for the new request, associating the new system.
       request_attributes = FactoryGirl.attributes_for :request
       request_attributes[:system_id] = system.id
-      request_attributes[:status_id] = status.id
 
       post :create, { :request => request_attributes }
     end
@@ -371,17 +370,37 @@ describe RequestsController do
       assignee = FactoryGirl.create :user, role: 'provider'
 
       # Create attributes for the new request, associating the new system, status, and assignee, as well as trying to set its requester.
-      request_attributes = FactoryGirl.attributes_for :request
-      request_attributes[:system_id] = system.id
-      request_attributes[:status_id] = status.id
-      request_attributes[:assignee_id] = assignee.id
-      request_attributes[:requester_id] = @current_user.id
-
-      post :create, { :request => request_attributes }
+      @request_attributes = FactoryGirl.attributes_for :request
+      @request_attributes[:system_id] = system.id
+      @request_attributes[:status_id] = status.id
+      @request_attributes[:assignee_id] = assignee.id
+      @request_attributes[:requester_id] = @current_user.id
     end
 
-    it 'should permit description, title, system, assignee, status, severity, and requester attributes' do
-      @controller.request_params.keys.should eq(['description', 'title', 'system_id', 'assignee_id', 'status_id', 'severity'])
+    context 'creating a new request' do
+      before :each do
+        post :create, { :request => @request_attributes }
+      end
+
+      it 'should permit title, description, system, and severity attributes' do
+        @controller.create_request_params.keys.should eq(['title', 'description', 'system_id', 'severity'])
+      end
+    end
+
+    context 'updating an existing request' do
+      before :each do
+        # Create a request to update.
+        target_request = FactoryGirl.create :request
+
+        put :update, { 
+          id: target_request.id,
+          :request => @request_attributes
+        }
+      end
+
+      it 'should permit title, description, system, assignee, status, and severity attributes' do
+        @controller.update_request_params.keys.should eq(['title', 'description', 'system_id', 'assignee_id', 'status_id', 'severity'])
+      end
     end
   end
 end
