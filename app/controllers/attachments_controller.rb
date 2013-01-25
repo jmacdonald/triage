@@ -4,7 +4,7 @@ class AttachmentsController < ApplicationController
 
   def create
     request = Request.find params[:request_id]
-    @attachment = request.attachments.new params[:attachment]
+    @attachment = request.attachments.new attachment_params
     @attachment.user = current_user
 
     unless @attachment.save
@@ -23,5 +23,9 @@ class AttachmentsController < ApplicationController
     end
 
     redirect_to request 
+  end
+
+  def attachment_params
+    params.require(:attachment).permit(:title, :file)
   end
 end

@@ -29,6 +29,10 @@ describe AttachmentsController do
     it 'should associate attachments with the current user' do
       assigns(:attachment).user.id.should eq(@user.id)
     end
+
+    it 'should only allow title and file to be set' do
+      @controller.attachment_params.keys.should eq(['title', 'file'])
+    end
   end
 
   context 'delete action' do
