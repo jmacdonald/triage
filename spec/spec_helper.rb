@@ -1,6 +1,12 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spork'
-require 'debugger'
+
+# Require the debugger gem, if it's available. This is to reduce build time on TravisCI.
+begin
+  require 'debugger'
+rescue LoadError
+  puts 'Warning: Debugger gem not installed; debugger calls will fail.'
+end
 
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'

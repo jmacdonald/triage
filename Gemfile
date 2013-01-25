@@ -34,7 +34,6 @@ group :development do
 end
 
 group :test do
-  gem 'debugger'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
