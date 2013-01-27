@@ -1,7 +1,6 @@
 Triage::Application.routes.draw do
   require File.expand_path("../../lib/custom_constraints", __FILE__)
   devise_for :users
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   # Assignment routes. These are really just requests, but with some filters.
   scope 'assignments' do
