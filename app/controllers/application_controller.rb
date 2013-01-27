@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
   private
 
   def safe_controller?
-    devise_controller? or rails_admin_controller?
+    devise_controller?
   end
 end
