@@ -46,6 +46,12 @@ en:
     show:
       request_number: "Request #"
       status: "Status"
+      severity: "Severity"
+      severities:
+        minor: "Minor"
+        moderate: "Moderate"
+        major: "Major"
+        critical: "Critical"
       system: "System"
       requested_by: "Requested By"
       requested_on: "Requested On"

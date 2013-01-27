@@ -7,4 +7,17 @@ module RequestHelper
       return 'label-inverse'
     end
   end
+
+  def severity_class(severity)
+    case severity
+    when 'minor'
+      ''
+    when 'moderate'
+      'label-info'
+    when 'major'
+      'label-warning'
+    when 'critical'
+      'label-error'
+    end
+  end
 end

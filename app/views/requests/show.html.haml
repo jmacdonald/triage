@@ -40,6 +40,11 @@
       %span.label{ class: (label_class @request.status) }
         = @request.status
     %dt
+      = t '.severity'
+    %dd
+      %span.label{ class: (severity_class @request.severity) }
+        = t ".severities.#{@request.severity}"
+    %dt
       = t '.system'
     %dd 
       = @request.system
