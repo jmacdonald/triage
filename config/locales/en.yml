@@ -74,6 +74,8 @@ en:
     new:
       new_request: "New Request"
       create_request: "Create Request"
+    create:
+      error: "Failed to create request."
   settings:
     edit_profile:
       update_profile: "Update Profile"

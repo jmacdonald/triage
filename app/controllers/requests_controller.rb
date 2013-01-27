@@ -12,7 +12,7 @@ class RequestsController < ApplicationController
     if @request.save
       redirect_to @request
     else
-      flash[:error] = 'We were unable to create your request. Please try again.'
+      flash.now[:error] = t 'requests.create.error'
       render 'new'
     end
   end
