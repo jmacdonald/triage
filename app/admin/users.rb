@@ -19,6 +19,10 @@ ActiveAdmin.register User do
       f.input :role, as: :select, collection: User::ROLE_OPTIONS
       f.input :available
     end
+
+    f.inputs "Responsibilities" do
+      f.input :systems
+    end
     f.buttons
   end  
 end
