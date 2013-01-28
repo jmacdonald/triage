@@ -21,7 +21,7 @@
                 %button.btn{type: 'submit'}
                   Search
           %ul.nav.pull-right
-            - if current_user.role = 'administrator'
+            - if current_user.role == 'administrator'
               %li
                 = link_to t('navbar.admin'), admin_root_path
             %li{:class => ('active' if (params[:controller] == 'settings'))}
