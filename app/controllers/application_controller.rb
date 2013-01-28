@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
   private
 
   def safe_controller?
-    devise_controller? || (request.path.match(/^\/admin/) && @current_user.role == 'administrator')
+    devise_controller? || (request.path.match(/^\/admin/) && current_user.role == 'administrator')
   end
 end
