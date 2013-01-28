@@ -1,4 +1,16 @@
 ActiveAdmin.register User do
+  filter :username
+  filter :role
+  filter :available
+
+  index do
+    column :username
+    column :name
+    column :role
+    column :available
+    default_actions
+  end
+
   form do |f|
     f.inputs "Details" do
       f.input :username
