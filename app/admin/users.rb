@@ -1,7 +1,6 @@
 ActiveAdmin.register User do
   filter :username
   filter :role
-  filter :available
 
   index do
     column :username
