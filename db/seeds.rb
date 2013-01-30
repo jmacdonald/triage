@@ -1,11 +1,11 @@
-admin = User.new({
+admin = DatabaseUser.new({
   email: 'admin@example.com',
   username: 'admin',
   password: 'administrator',
   password_confirmation: 'administrator',
-  name: 'Administrator'
+  name: 'Administrator',
+  role: 'administrator'
 })
-admin.role = 'administrator'
 admin.save
 
 Status.create([{title: 'New', default: true}, {title: 'Assigned'}, {title: 'Closed', closed: true}])
