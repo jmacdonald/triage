@@ -2,7 +2,7 @@ Triage::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   require File.expand_path("../../lib/custom_constraints", __FILE__)
-  devise_for :database_users, :directory_users
+  devise_for :database_users, :directory_users, controllers: { sessions: 'sessions' }
 
   # Assignment routes. These are really just requests, but with some filters.
   scope 'assignments' do
