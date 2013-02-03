@@ -19,4 +19,15 @@ class SessionsController < Devise::SessionsController
     sign_in(user_class, resource)
     respond_with resource, :location => after_sign_in_path_for(resource)
   end
+
+  def destroy
+    set_flash_message :notice, :signed_out if sign_out && is_navigational_format?
+
+    # We actually need to hardcode this as Rails default responder doesn't
+    # support returning empty response on GET request
+    respond_to do |format|
+      format.all { head :no_content }
+      format.any(*navigational_formats) { redirect_to new_database_user_session_path }
+    end
+  end
 end
