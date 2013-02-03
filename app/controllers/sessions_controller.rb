@@ -1,7 +1,9 @@
 class SessionsController < Devise::SessionsController
   def create
-    # Copy the generic "user" parameters into the more specific subclasses.
-    params['directory_user'] = params['database_user'] = params['user']
+    # Copy the generic "user" parameters into the more specific subclasses. We need to modify
+    # the request parameters directly, since these are what warden is using.
+    request.params['directory_user'] = request.params['database_user'] = request.params['user']
+    request.params.delete('user')
 
     # Try to authenticate as a directory user.
     user_class = :directory_user
