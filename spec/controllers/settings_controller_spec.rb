@@ -48,6 +48,8 @@ describe SettingsController do
 
   describe 'update_password' do
     before(:each) do
+      @old_password = @current_user.encrypted_password
+
       # Build a set of default permitted attributes.
       @user_attributes = FactoryGirl.attributes_for(:user)
       @user_attributes[:password_confirmation] = @user_attributes[:password]
@@ -57,14 +59,14 @@ describe SettingsController do
       put :update_password, { user: @user_attributes }
 
       response.should be_success
-      @controller.current_user.previous_changes.empty?.should be_false
+      @current_user.reload.encrypted_password.should_not eq(@old_password)
     end
 
     it 'should confirm password' do
       # Submit password update without confirmation.
       put :update_password, { user: FactoryGirl.attributes_for(:user) }
 
-      @controller.current_user.previous_changes.empty?.should be_true
+      @current_user.reload.encrypted_password.should eq(@old_password)
       @controller.flash[:error].should_not be_nil
     end
 
