@@ -82,4 +82,18 @@ describe 'routes' do
       { :put => '/settings/password' }.should route_to({ :controller => 'settings', :action => 'update_password' })
     end
   end
+
+  describe 'session routes' do
+    it 'should route to new session' do
+      { :get => '/sign_in' }.should route_to({ :controller => 'sessions', :action => 'new' })
+    end
+
+    it 'should route to create session' do
+      { :post => '/sign_in' }.should route_to({ :controller => 'sessions', :action => 'create' })
+    end
+
+    it 'should route to destroy session' do
+      { :delete => '/sign_out' }.should route_to({ :controller => 'sessions', :action => 'destroy' })
+    end
+  end
 end
