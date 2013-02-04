@@ -5,7 +5,7 @@ describe 'root route' do
   context 'when the current user is an administrator' do
     before(:each) do
       @user = FactoryGirl.create :user, role: 'administrator'
-      login_as @user, scope: 'user'
+      login_as @user
     end
 
     it 'should route root to unassigned requests' do 
@@ -19,7 +19,7 @@ describe 'root route' do
   context 'when the current user is a provider' do
     before(:each) do
       @user = FactoryGirl.create :user, role: 'provider'
-      login_as @user, scope: 'user'
+      login_as @user
     end
 
     it 'should route root to open assignments' do 
@@ -33,7 +33,7 @@ describe 'root route' do
   context 'when the current user is requester' do
     before(:each) do
       @user = FactoryGirl.create :user, role: 'requester'
-      login_as @user, scope: 'user'
+      login_as @user
     end
 
     it 'should route root to open requests' do 
