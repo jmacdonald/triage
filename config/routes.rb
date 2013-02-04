@@ -2,7 +2,13 @@ Triage::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   require File.expand_path("../../lib/custom_constraints", __FILE__)
-  devise_for :database_users, :directory_users, controllers: { sessions: 'sessions' }
+  devise_for :database_users, :directory_users, skip: [:sessions]
+
+  devise_scope :database_user do
+    get 'sign_in' => 'sessions#new', :as => :new_session
+    post 'sign_in' => 'sessions#create', :as => :create_session
+    delete 'sign_out' => 'sessions#destroy', :as => :destroy_session
+  end
 
   # Assignment routes. These are really just requests, but with some filters.
   scope 'assignments' do
@@ -30,5 +36,6 @@ Triage::Application.routes.draw do
 
   root :to => 'requests#unassigned', :constraints => RoleConstraint.new('administrator')
   root :to => 'requests#open_assignments', :constraints => RoleConstraint.new('provider')
-  root :to => 'requests#open'
+  root :to => 'requests#open', :constraints => lambda { |request| request.env['warden'].user }
+  root :to => redirect('/sign_in')
 end
