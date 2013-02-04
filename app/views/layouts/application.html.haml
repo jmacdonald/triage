@@ -27,7 +27,7 @@
             %li{:class => ('active' if (params[:controller] == 'settings'))}
               = link_to t('navbar.settings'), edit_profile_path
             %li
-              = link_to t('navbar.logout'), destroy_user_session_path, :method => :delete
+              = link_to t('navbar.logout'), destroy_session_path, :method => :delete
         - else
           %ul.nav.pull-right
             %li
