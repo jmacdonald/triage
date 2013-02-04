@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user do
+  factory :user, class: DatabaseUser do
     sequence :username do |s|
       "username#{s}"
     end
