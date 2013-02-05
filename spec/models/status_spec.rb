@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Status do
-  subject { FactoryGirl.build :status }
+  subject { build :status }
 
   it { should have_many :requests }
   it { should validate_presence_of :title }
@@ -12,7 +12,7 @@ describe Status do
 
   describe 'a new status' do
     before(:each) do
-      @status = FactoryGirl.create :status
+      @status = create :status
     end
 
     it 'should default its "default" value to false' do
@@ -27,12 +27,12 @@ describe Status do
   describe 'a new default status' do
     before(:each) do
       # Create the initial default status.
-      @initial_default_status = FactoryGirl.build :status
+      @initial_default_status = build :status
       @initial_default_status.default = true
       @initial_default_status.save
 
       # Create a new default status to override it.
-      @status = FactoryGirl.build :status
+      @status = build :status
       @status.default = true
       @status.save
     end
@@ -50,12 +50,12 @@ describe Status do
   describe 'a new non-default status' do
     before(:each) do
       # Create the initial default status.
-      @initial_default_status = FactoryGirl.build :status
+      @initial_default_status = build :status
       @initial_default_status.default = true
       @initial_default_status.save
 
       # Create a new non-default status.
-      @status = FactoryGirl.create :status
+      @status = create :status
     end
 
     it 'should not change the pre-existing default status' do
@@ -74,7 +74,7 @@ describe Status do
 
     it 'should return a single status with its default flag set' do
       # Create an initial default status.
-      @status = FactoryGirl.build :status
+      @status = build :status
       @status.default = true
       @status.save
 
@@ -84,7 +84,7 @@ describe Status do
 
   context 'deleting a status' do
     before(:each) do
-      @status = FactoryGirl.create :status
+      @status = create :status
     end
 
     it 'should succeed when no requests are associated with it' do
@@ -92,7 +92,7 @@ describe Status do
     end
 
     it 'should fail when requests are associated with it' do
-      request = FactoryGirl.create :request, { status: @status }
+      request = create :request, { status: @status }
       @status.destroy.should be_false
     end
   end

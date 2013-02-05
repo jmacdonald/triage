@@ -10,12 +10,12 @@ describe RequestObserver do
     # Clear previous deliveries before each test.
     ActionMailer::Base.deliveries = []
 
-    @provider = FactoryGirl.create :user, role: 'provider'
+    @provider = create :user, role: 'provider'
   end
 
   context 'assigning a request as part of its creation' do
     before(:each) do
-      request = FactoryGirl.create :request, assignee: @provider
+      request = create :request, assignee: @provider
     end
 
     it 'should send an email' do
@@ -35,7 +35,7 @@ describe RequestObserver do
 
   context 're-assigning an existing request' do
     before(:each) do
-      request = FactoryGirl.create :request
+      request = create :request
 
       # Re-assign the request.
       request.assignee = @provider

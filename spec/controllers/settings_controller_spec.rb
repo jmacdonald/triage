@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SettingsController do
   before(:each) do
-    @current_user = FactoryGirl.create :database_user
+    @current_user = create :database_user
     sign_in @current_user
   end
 
@@ -16,7 +16,7 @@ describe SettingsController do
   describe 'update_profile' do
     before(:each) do
       # Build a set of default permitted attributes.
-      user_attributes = FactoryGirl.attributes_for(:user)
+      user_attributes = attributes_for(:user)
       user_attributes[:available] = true
 
       put :update_profile, { user: user_attributes }
@@ -51,7 +51,7 @@ describe SettingsController do
       @old_password = @current_user.encrypted_password
 
       # Build a set of default permitted attributes.
-      @user_attributes = FactoryGirl.attributes_for(:database_user)
+      @user_attributes = attributes_for(:database_user)
       @user_attributes[:password_confirmation] = @user_attributes[:password]
     end
 
@@ -64,7 +64,7 @@ describe SettingsController do
 
     it 'should confirm password' do
       # Submit password update without confirmation.
-      put :update_password, { user: FactoryGirl.attributes_for(:database_user) }
+      put :update_password, { user: attributes_for(:database_user) }
 
       @current_user.reload.encrypted_password.should eq(@old_password)
       @controller.flash[:error].should_not be_nil

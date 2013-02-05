@@ -3,12 +3,12 @@ require 'spec_helper'
 describe CommentHelper do
   describe 'content helpers' do
     before(:each) do
-      @foreign_request = FactoryGirl.create :request
+      @foreign_request = create :request
 
-      @user1 = FactoryGirl.create :user
-      @user2 = FactoryGirl.create :user
+      @user1 = create :user
+      @user2 = create :user
 
-      @comment = FactoryGirl.create :comment
+      @comment = create :comment
       @comment.content = content
     end
 
@@ -87,11 +87,11 @@ describe CommentHelper do
 
   describe 'request_role' do
     before(:each) do
-      @requester = FactoryGirl.create :user, role: 'requester'
-      @provider = FactoryGirl.create :user, role: 'provider'
-      @administrator = FactoryGirl.create :user, role: 'administrator'
+      @requester = create :user, role: 'requester'
+      @provider = create :user, role: 'provider'
+      @administrator = create :user, role: 'administrator'
 
-      @request = FactoryGirl.create :request, requester: @requester
+      @request = create :request, requester: @requester
     end
 
     context 'requester is a requester' do
@@ -148,7 +148,7 @@ describe CommentHelper do
 
     context 'requester is a provider' do
       before(:each) do
-        @requester = FactoryGirl.create :user, role: 'provider'
+        @requester = create :user, role: 'provider'
         @request.requester = @requester
       end
 
@@ -205,7 +205,7 @@ describe CommentHelper do
 
     context 'requester is an administrator' do
       before(:each) do
-        @requester = FactoryGirl.create :user, role: 'administrator'
+        @requester = create :user, role: 'administrator'
         @request.requester = @requester
       end
 

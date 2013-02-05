@@ -52,6 +52,9 @@ Spork.prefork do
 
     # Paperclip tests!
     config.include Paperclip::Shoulda::Matchers
+
+    # Directly include FactoryGirl methods
+    config.include FactoryGirl::Syntax::Methods
   end
 end
 

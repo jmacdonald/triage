@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Responsibility do
-  subject { FactoryGirl.build :responsibility }
+  subject { build :responsibility }
 
   it { should belong_to :user }
   it { should belong_to :system }

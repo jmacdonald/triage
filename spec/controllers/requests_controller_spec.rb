@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe RequestsController do
   before(:each) do
-    @current_user = FactoryGirl.create :database_user
+    @current_user = create :database_user
     sign_in @current_user
 
-    @target_request = FactoryGirl.create :request, requester: @current_user
+    @target_request = create :request, requester: @current_user
   end
 
   describe 'new action' do
@@ -29,11 +29,11 @@ describe RequestsController do
   describe 'create action' do
     before(:each) do
       # Create a system and default status for the new request.
-      system = FactoryGirl.create :system
-      status = FactoryGirl.create :status, default: true
+      system = create :system
+      status = create :status, default: true
 
       # Create attributes for the new request, associating the new system.
-      request_attributes = FactoryGirl.attributes_for :request
+      request_attributes = attributes_for :request
       request_attributes[:system_id] = system.id
 
       post :create, { :request => request_attributes }
@@ -218,7 +218,7 @@ describe RequestsController do
 
     context 'when the current user is not the requester' do
       before :each do
-        @foreign_request = FactoryGirl.create :request
+        @foreign_request = create :request
         get :show, :id => @foreign_request.id
       end
 
@@ -258,7 +258,7 @@ describe RequestsController do
 
     context 'when the current user is not the requester' do
       before(:each) do
-        @foreign_request = FactoryGirl.create :request
+        @foreign_request = create :request
         put :update, {
           id: @foreign_request.id,
           request: {
@@ -290,7 +290,7 @@ describe RequestsController do
 
     context 'when the current user is not the requester' do
       before(:each) do
-        @foreign_request = FactoryGirl.create :request
+        @foreign_request = create :request
         delete :destroy, id: @foreign_request.id
       end
 
@@ -363,14 +363,14 @@ describe RequestsController do
   describe 'strong parameters' do
     before(:each) do
       # Create a system and status for the new request.
-      system = FactoryGirl.create :system
-      status = FactoryGirl.create :status
+      system = create :system
+      status = create :status
 
       # Create an assignee.
-      assignee = FactoryGirl.create :database_user, role: 'provider'
+      assignee = create :database_user, role: 'provider'
 
       # Create attributes for the new request, associating the new system, status, and assignee, as well as trying to set its requester.
-      @request_attributes = FactoryGirl.attributes_for :request
+      @request_attributes = attributes_for :request
       @request_attributes[:system_id] = system.id
       @request_attributes[:status_id] = status.id
       @request_attributes[:assignee_id] = assignee.id
@@ -390,7 +390,7 @@ describe RequestsController do
     context 'updating an existing request' do
       before :each do
         # Create a request to update.
-        target_request = FactoryGirl.create :request
+        target_request = create :request
 
         put :update, { 
           id: target_request.id,

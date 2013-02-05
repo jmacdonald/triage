@@ -4,7 +4,7 @@ include Warden::Test::Helpers
 describe 'root route' do
   context 'when the current user is an administrator' do
     before(:each) do
-      @user = FactoryGirl.create :database_user
+      @user = create :database_user
       login_as @user
     end
 
@@ -18,7 +18,7 @@ describe 'root route' do
 
   context 'when the current user is a provider' do
     before(:each) do
-      @user = FactoryGirl.create :database_user, role: 'provider'
+      @user = create :database_user, role: 'provider'
       login_as @user
     end
 
@@ -32,7 +32,7 @@ describe 'root route' do
 
   context 'when the current user is requester' do
     before(:each) do
-      @user = FactoryGirl.create :database_user, role: 'requester'
+      @user = create :database_user, role: 'requester'
       login_as @user
     end
 

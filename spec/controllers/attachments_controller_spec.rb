@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe AttachmentsController do
   before(:each) do
-    @attachment_request = FactoryGirl.create :request
-    @user = FactoryGirl.create :database_user
+    @attachment_request = create :request
+    @user = create :database_user
     sign_in @user
   end
 
@@ -37,7 +37,7 @@ describe AttachmentsController do
 
   context 'delete action' do
     before(:each) do
-      attachment = FactoryGirl.create :attachment, request: @attachment_request, user: @user
+      attachment = create :attachment, request: @attachment_request, user: @user
       delete :destroy, {
         request_id: @attachment_request.id,
         id: attachment.id

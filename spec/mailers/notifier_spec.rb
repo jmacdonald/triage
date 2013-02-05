@@ -8,8 +8,8 @@ describe Notifier do
 
   describe 'assignment email' do
     before(:each) do
-      @assignee = FactoryGirl.create :user, role: 'administrator'
-      @request = FactoryGirl.create :request, assignee: @assignee
+      @assignee = create :user, role: 'administrator'
+      @request = create :request, assignee: @assignee
       @email = Notifier.assignment(@request).deliver
     end
 
@@ -36,8 +36,8 @@ describe Notifier do
 
   describe 'comment email' do
     before(:each) do
-      @comment = FactoryGirl.create :comment
-      @users = [FactoryGirl.create(:user)]
+      @comment = create :comment
+      @users = [create(:user)]
       @email = Notifier.comment(@comment, @users).deliver
     end
     
@@ -61,8 +61,8 @@ describe Notifier do
 
   describe 'mention email' do
     before(:each) do
-      @comment = FactoryGirl.create :comment
-      @users = [FactoryGirl.create(:user)]
+      @comment = create :comment
+      @users = [create(:user)]
       @email = Notifier.mention(@comment, @users).deliver
     end
     

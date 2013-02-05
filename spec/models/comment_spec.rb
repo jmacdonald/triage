@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Comment do
-  subject { FactoryGirl.build(:comment) }
+  subject { build(:comment) }
 
   it { should belong_to :user }
   it { should belong_to :request }

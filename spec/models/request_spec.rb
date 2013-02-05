@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Request do
-  subject { FactoryGirl.create :request }
+  subject { create :request }
 
   it { should belong_to :requester }
   it { should belong_to :assignee }
@@ -22,7 +22,7 @@ describe Request do
 
   context 'status' do
     before(:each) do
-      @default_status = FactoryGirl.create :status, default: true 
+      @default_status = create :status, default: true 
     end
 
     it 'should be set to the default status' do
@@ -33,7 +33,7 @@ describe Request do
     end
 
     it 'should be preserved when explicitly set' do
-      closed_status = FactoryGirl.create :status, closed: true
+      closed_status = create :status, closed: true
       subject.status = closed_status
       subject.save
 
@@ -44,12 +44,12 @@ describe Request do
   describe 'scopes' do
     before(:each) do
       # Create both closed and open statuses.
-      @open_status = FactoryGirl.create :status, closed: false
-      @closed_status = FactoryGirl.create :status, closed: true
+      @open_status = create :status, closed: false
+      @closed_status = create :status, closed: true
 
       # Create a request for the closed and open statuses.
-      @open_request = FactoryGirl.create :request, status: @open_status
-      @closed_request = FactoryGirl.create :request, status: @closed_status
+      @open_request = create :request, status: @open_status
+      @closed_request = create :request, status: @closed_status
     end
 
     describe 'closed scope' do
@@ -79,8 +79,8 @@ describe Request do
     describe 'unassigned scope' do
       before(:each) do
         # Create an assigned request.
-        provider = FactoryGirl.create :user, role: 'provider'
-        FactoryGirl.create :request, assignee: provider
+        provider = create :user, role: 'provider'
+        create :request, assignee: provider
       end
 
       it 'should return the right number of requests' do
@@ -97,11 +97,11 @@ describe Request do
 
   describe 'assignee association' do
     before(:each) do
-      @request = FactoryGirl.build :request
+      @request = build :request
     end
 
     it 'should allow administrators to be associated' do
-      administrator = FactoryGirl.create :user, role: 'administrator'
+      administrator = create :user, role: 'administrator'
       @request.assignee = administrator
       @request.save
 
@@ -109,14 +109,14 @@ describe Request do
     end
 
     it 'should allow providers to be associated' do
-      @request.assignee = FactoryGirl.create :user, role: 'provider'
+      @request.assignee = create :user, role: 'provider'
       @request.save
 
       @request.assignee.should_not be_nil
     end
 
     it 'should not allow requesters to be associated' do
-      @request.assignee = FactoryGirl.create :user, role: 'requester'
+      @request.assignee = create :user, role: 'requester'
       @request.save
 
       @request.reload.assignee.should be_nil
@@ -126,11 +126,11 @@ describe Request do
   describe 'auto-assignment' do
     it 'should assign new requests to the next user responsible for its system' do
       # Create a system with a responsible user.
-      responsible_user = FactoryGirl.create :user, role: 'provider'
-      system = FactoryGirl.create :system, users: [responsible_user]
+      responsible_user = create :user, role: 'provider'
+      system = create :system, users: [responsible_user]
 
       # Create a request for the system with a responsible user.
-      request = FactoryGirl.create :request, system: system
+      request = create :request, system: system
 
       request.assignee.id.should eq(responsible_user.id)
     end

@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe Ability do
   before(:each) do
-    @administrator = FactoryGirl.create :user, role: 'administrator'
-    @provider = FactoryGirl.create :user, role: 'provider'
-    @requester = FactoryGirl.create :user, role: 'requester'
+    @administrator = create :user, role: 'administrator'
+    @provider = create :user, role: 'provider'
+    @requester = create :user, role: 'requester'
   end
 
   context 'an administrator' do
@@ -37,14 +37,14 @@ describe Ability do
     before(:each) do
       @provider_ability = Ability.new @provider
 
-      @assigned_request = FactoryGirl.build :request
+      @assigned_request = build :request
       @assigned_request.assignee = @provider
 
-      @admin_assigned_request = FactoryGirl.build :request
+      @admin_assigned_request = build :request
       @admin_assigned_request.assignee = @administrator
 
-      @owned_attachment = FactoryGirl.create :attachment, { user: @provider, request: @assigned_request }
-      @foreign_attachment = FactoryGirl.create :attachment, { request: @assigned_request }
+      @owned_attachment = create :attachment, { user: @provider, request: @assigned_request }
+      @foreign_attachment = create :attachment, { request: @assigned_request }
     end
 
     it 'should be able to create new requests' do
@@ -116,14 +116,14 @@ describe Ability do
     before(:each) do
       @requester_ability = Ability.new @requester
 
-      @owned_request = FactoryGirl.build :request 
+      @owned_request = build :request 
       @owned_request.requester = @requester
 
-      @admin_request = FactoryGirl.build :request
+      @admin_request = build :request
       @admin_request.requester = @administrator
 
-      @owned_attachment = FactoryGirl.create :attachment, { user: @requester, request: @owned_request }
-      @foreign_attachment = FactoryGirl.create :attachment, { request: @owned_request }
+      @owned_attachment = create :attachment, { user: @requester, request: @owned_request }
+      @foreign_attachment = create :attachment, { request: @owned_request }
     end
 
     it 'should be able to read its own requests' do

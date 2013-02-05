@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe CommentsController do
   before(:each) do
-    @comment_request = FactoryGirl.create :request
-    @user = FactoryGirl.create :database_user
+    @comment_request = create :request
+    @user = create :database_user
     sign_in @user
   end
 

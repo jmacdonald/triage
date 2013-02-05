@@ -11,7 +11,7 @@ describe CommentObserver do
       # Clear previous deliveries before each test.
       ActionMailer::Base.deliveries = []
 
-      @comment = FactoryGirl.create :comment
+      @comment = create :comment
 
       # Ensure that the proper email is queued.
       ActionMailer::Base.deliveries[0].subject.should eq("#{@comment.user.name} commented on #{@comment.request}")
@@ -19,7 +19,7 @@ describe CommentObserver do
 
     context 'on an unassigned request' do
       before(:each) do
-        @comment = FactoryGirl.build :comment
+        @comment = build :comment
       end
 
       context 'when the author is the requester' do
@@ -58,8 +58,8 @@ describe CommentObserver do
 
     context 'on an assigned request' do
       before(:each) do
-        @comment = FactoryGirl.build :comment
-        @comment.request.assignee = FactoryGirl.build :user
+        @comment = build :comment
+        @comment.request.assignee = build :user
       end
 
       context 'when the author is the requester' do
@@ -86,7 +86,7 @@ describe CommentObserver do
           # Clear previous deliveries before each test.
           ActionMailer::Base.deliveries = []
 
-          @comment.request.assignee = FactoryGirl.build :user
+          @comment.request.assignee = build :user
           @comment.user = @comment.request.assignee
           @comment.save
         end
@@ -106,7 +106,7 @@ describe CommentObserver do
           # Clear previous deliveries before each test.
           ActionMailer::Base.deliveries = []
 
-          @comment.request.assignee = FactoryGirl.build :user
+          @comment.request.assignee = build :user
           @comment.save
         end
 
@@ -130,9 +130,9 @@ describe CommentObserver do
         # Clear previous deliveries before each test.
         ActionMailer::Base.deliveries = []
 
-        @user1  = FactoryGirl.create :user
-        @user2  = FactoryGirl.create :user
-        @comment = FactoryGirl.build :comment
+        @user1  = create :user
+        @user2  = create :user
+        @comment = build :comment
         @comment.content = "@#{@user1.username} @#{@user2.username} have either of you guys seen this before?"
         @comment.save
       end

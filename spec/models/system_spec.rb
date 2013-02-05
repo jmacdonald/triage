@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe System do
-  subject { FactoryGirl.build :system }
+  subject { build :system }
 
   it { should have_many :requests }
   it { should have_many :responsibilities }
@@ -10,7 +10,7 @@ describe System do
   it { should validate_uniqueness_of :name }
 
   it 'should be able to display itself' do
-    system = FactoryGirl.build :system
+    system = build :system
 
     system.to_s.should eq(system.name)
   end
@@ -21,7 +21,7 @@ describe System do
       Request.delete_all
 
       # Create a system.
-      @system = FactoryGirl.create :system
+      @system = create :system
     end
 
     context 'when no users are responsible for this system' do
@@ -33,8 +33,8 @@ describe System do
     context 'when there are multiple users responsible for this system' do
       before(:each) do
         # Associate users with the system.
-        @user1 = FactoryGirl.create :user
-        @user2 = FactoryGirl.create :user
+        @user1 = create :user
+        @user2 = create :user
         @system.users = [@user1, @user2]
         @system.save
       end
@@ -42,7 +42,7 @@ describe System do
       context 'when only one of the users has had a request assigned to it' do
         before :each do
           # Assign a request for this system to the first user.
-          request = FactoryGirl.build :request
+          request = build :request
           request.system = @system
           request.assignee = @user1
           request.save
@@ -75,7 +75,7 @@ describe System do
         before(:each) do
           # Assign requests to all users.
           [@user1, @user2].each do |user|
-            request = FactoryGirl.build :request
+            request = build :request
             request.system = @system
             request.assignee = user
             request.save

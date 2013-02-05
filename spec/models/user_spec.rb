@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  subject { FactoryGirl.create :user }
+  subject { create :user }
 
   it { should have_many :requests }
   it { should have_many :assignments }
@@ -32,8 +32,8 @@ describe User do
   describe 'available scope' do
     it 'should only return available users' do
       # Create some available and unavailable users.
-      FactoryGirl.create_list :user, 5
-      FactoryGirl.create_list :user, 7, available: false
+      create_list :user, 5
+      create_list :user, 7, available: false
 
       # Check each returned user to make sure they're available
       User.available.each do |user|

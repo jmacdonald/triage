@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Attachment do
-  subject { FactoryGirl.create :attachment }
+  subject { create :attachment }
 
   it { should belong_to :request }
   it { should belong_to :user }
