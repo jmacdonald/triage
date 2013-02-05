@@ -28,6 +28,10 @@ describe SessionsController do
       it 'should redirect to new action' do
         response.should redirect_to(new_session_path)
       end
+
+      it 'should display the right error message' do
+        flash[:error].should eq(I18n.t 'sessions.create.user_not_found')
+      end
     end
 
     context 'with valid credentials' do
