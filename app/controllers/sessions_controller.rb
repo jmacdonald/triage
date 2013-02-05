@@ -3,14 +3,19 @@ class SessionsController < Devise::SessionsController
     # Move the user parameters into their subclass variants. Modifying the
     # rack request parameters directly as Warden operates at a lower level.
     request.params['directory_user'] = request.params['database_user'] = request.params['user']
-    request.params.delete('user')
 
-    # Try to authenticate as a directory user.
-    user_class = :directory_user
-    self.resource = warden.authenticate scope: user_class
+    # Try to find the user signing in.
+    user = User.where(username: request.params['user']['username']).first
 
-    if self.resource.nil?
-      # Directory user authentication failed; force database user authentication.
+    if user.nil?
+      flash[:error] = t 'sessions.create.user_not_found'
+      return redirect_to new_session_path
+    elsif user.is_a? DirectoryUser
+      # Try to authenticate as a directory user.
+      user_class = :directory_user
+      self.resource = warden.authenticate! scope: user_class
+    elsif user.is_a? DatabaseUser
+      # Try to authenticate as a database user.
       user_class = :database_user
       self.resource = warden.authenticate! scope: user_class
     end

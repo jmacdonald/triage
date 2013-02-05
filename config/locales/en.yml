@@ -92,6 +92,9 @@ en:
     update_password:
       mismatch: "Password and confirmation did not match."
       success: "Password updated successfully."
+  sessions:
+    create:
+      user_not_found: "Invalid username or password."
   simple_form:
     labels:
       request:

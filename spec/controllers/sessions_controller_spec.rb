@@ -15,25 +15,42 @@ describe SessionsController do
   end
 
   describe 'create' do
-    before(:each) do
-      post :create, {
-        user: {
-          username: @user.username,
-          password: @password
+    context 'with invalid credentials' do
+      before(:each) do
+        post :create, {
+          user: {
+            username: 'asdf',
+            password: 'asdf'
+          }
         }
-      }
+      end
+
+      it 'should redirect to new action' do
+        response.should redirect_to(new_session_path)
+      end
     end
 
-    it 'should work' do
-      response.should be_redirect
-    end
+    context 'with valid credentials' do
+      before(:each) do
+        post :create, {
+          user: {
+            username: @user.username,
+            password: @password
+          }
+        }
+      end
 
-    it 'should redirect to the root path' do
-      response.should redirect_to(root_path)
-    end
+      it 'should work' do
+        response.should be_redirect
+      end
 
-    it 'should sign the user in' do
-      @controller.database_user_signed_in?.should be_true
+      it 'should redirect to the root path' do
+        response.should redirect_to(root_path)
+      end
+
+      it 'should sign the user in' do
+        @controller.database_user_signed_in?.should be_true
+      end
     end
   end
 
