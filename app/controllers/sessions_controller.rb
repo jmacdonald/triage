@@ -7,17 +7,19 @@ class SessionsController < Devise::SessionsController
     # Try to find the user signing in.
     user = User.where(username: request.params['user']['username']).first
 
-    if user.nil?
-      flash[:error] = t 'sessions.create.user_not_found'
-      return redirect_to new_session_path
-    elsif user.is_a? DirectoryUser
+    if user.is_a? DirectoryUser
       # Try to authenticate as a directory user.
       user_class = :directory_user
-      self.resource = warden.authenticate! scope: user_class
+      self.resource = warden.authenticate scope: user_class
     elsif user.is_a? DatabaseUser
       # Try to authenticate as a database user.
       user_class = :database_user
-      self.resource = warden.authenticate! scope: user_class
+      self.resource = warden.authenticate scope: user_class
+    end
+
+    if self.resource.nil?
+      flash[:error] = t 'sessions.create.failure'
+      return redirect_to new_session_path
     end
 
     set_flash_message(:notice, :signed_in) if is_navigational_format?

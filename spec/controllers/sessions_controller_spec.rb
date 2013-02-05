@@ -15,34 +15,18 @@ describe SessionsController do
   end
 
   describe 'create' do
-    context 'with invalid credentials' do
-      before(:each) do
-        post :create, {
-          user: {
-            username: 'asdf',
-            password: 'asdf'
-          }
+    before(:each) do
+      post :create, {
+        user: {
+          username: username,
+          password: password
         }
-      end
-
-      it 'should redirect to new action' do
-        response.should redirect_to(new_session_path)
-      end
-
-      it 'should display the right error message' do
-        flash[:error].should eq(I18n.t 'sessions.create.user_not_found')
-      end
+      }
     end
 
     context 'with valid credentials' do
-      before(:each) do
-        post :create, {
-          user: {
-            username: @user.username,
-            password: @password
-          }
-        }
-      end
+      let(:username) { @user.username }
+      let(:password) { @password }
 
       it 'should work' do
         response.should be_redirect
@@ -54,6 +38,32 @@ describe SessionsController do
 
       it 'should sign the user in' do
         @controller.database_user_signed_in?.should be_true
+      end
+    end
+
+    context 'with an invalid password' do
+      let(:username) { @user.username }
+      let(:password) { 'asdf' }
+
+      it 'should redirect to new action' do
+        response.should redirect_to(new_session_path)
+      end
+
+      it 'should display the right error message' do
+        flash[:error].should eq(I18n.t 'sessions.create.failure')
+      end
+    end
+
+    context 'with invalid credentials' do
+      let(:username) { 'asdf' }
+      let(:password) { 'asdf' }
+
+      it 'should redirect to new action' do
+        response.should redirect_to(new_session_path)
+      end
+
+      it 'should display the right error message' do
+        flash[:error].should eq(I18n.t 'sessions.create.failure')
       end
     end
   end
