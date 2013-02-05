@@ -1,7 +1,7 @@
 = render 'nav'
 
 .box
-  = simple_form_for current_user, url: edit_profile_path do |f|
+  = simple_form_for current_user, as: :user, url: update_profile_path do |f|
     = f.input :email
     = f.input :name
     = f.input :available
