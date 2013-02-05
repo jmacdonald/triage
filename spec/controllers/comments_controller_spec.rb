@@ -3,7 +3,7 @@ require 'spec_helper'
 describe CommentsController do
   before(:each) do
     @comment_request = FactoryGirl.create :request
-    @user = FactoryGirl.create :user, role: 'administrator'
+    @user = FactoryGirl.create :database_user
     sign_in @user
   end
 

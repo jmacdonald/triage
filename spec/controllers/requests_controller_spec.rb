@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe RequestsController do
   before(:each) do
-    @current_user = FactoryGirl.create :user, role: 'administrator'
+    @current_user = FactoryGirl.create :database_user
     sign_in @current_user
 
     @target_request = FactoryGirl.create :request, requester: @current_user
@@ -367,7 +367,7 @@ describe RequestsController do
       status = FactoryGirl.create :status
 
       # Create an assignee.
-      assignee = FactoryGirl.create :user, role: 'provider'
+      assignee = FactoryGirl.create :database_user, role: 'provider'
 
       # Create attributes for the new request, associating the new system, status, and assignee, as well as trying to set its requester.
       @request_attributes = FactoryGirl.attributes_for :request

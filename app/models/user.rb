@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   has_many :responsibilities
   has_many :systems, :through => :responsibilities
 
-  validates :username, :role, :name, :presence => true
+  validates :username, :email, :role, :name, :presence => true
+  validates :email, :uniqueness => true
   validates :username, :uniqueness => true, :format => /^\w+$/
   validates :role, :inclusion => { :in => ROLE_OPTIONS }
 

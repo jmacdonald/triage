@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SessionsController do
   before(:each) do
     @password = 'testpassword'
-    @user = FactoryGirl.create :user, role: 'administrator', password: @password
+    @user = FactoryGirl.create :database_user, password: @password
     @request.env['devise.mapping'] = Devise.mappings[:database_user]
   end
 

@@ -1,14 +1,20 @@
 FactoryGirl.define do
-  factory :user, class: DatabaseUser do
+  factory :user do
     sequence :username do |s|
       "username#{s}"
     end
     sequence :email do |s|
       "username#{s}@example.com"
     end
-    role 'provider'
+    role 'administrator'
     name { Faker::Name.name }
-    password 'testpassword'
+
+    factory :database_user, class: DatabaseUser do
+      password 'testpassword'
+    end
+
+    factory :directory_user, class: DirectoryUser do
+    end
   end
 
   factory :request do
