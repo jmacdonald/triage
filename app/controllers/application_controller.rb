@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :destroy_user_session_path
+  helper_method :current_user
   rescue_from DeviseLdapAuthenticatable::LdapException do |exception|
     render :text => exception, :status => 500
   end
@@ -28,13 +28,5 @@ class ApplicationController < ActionController::Base
 
   def current_user
     current_directory_user or current_database_user
-  end
-
-  def destroy_user_session_path
-    if current_user.class == DirectoryUser
-      return destroy_directory_user_session_path
-    else
-      return destroy_database_user_session_path
-    end
   end
 end
