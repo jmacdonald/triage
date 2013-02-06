@@ -15,7 +15,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.2 r9819"
-   sodipodi:docname="logo.svg">
+   sodipodi:docname="logo.svg"
+   inkscape:export-filename="/Users/jmacdonald/Projects/triage/app/assets/images/zero.png"
+   inkscape:export-xdpi="77.852158"
+   inkscape:export-ydpi="77.852158">
   <defs
      id="defs4">
     <linearGradient
@@ -240,6 +243,22 @@
        x2="291.66055"
        y2="755.72986"
        gradientUnits="userSpaceOnUse" />
+    <filter
+       inkscape:collect="always"
+       id="filter4504">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.29665116"
+         id="feGaussianBlur4506" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4528">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.912345"
+         id="feGaussianBlur4530" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -249,10 +268,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="255.97331"
-     inkscape:cy="437.21267"
+     inkscape:cx="300.79113"
+     inkscape:cy="438.59699"
      inkscape:document-units="px"
-     inkscape:current-layer="layer11"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1280"
      inkscape:window-height="752"
@@ -268,7 +287,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -279,7 +298,7 @@
      style="opacity:0.69827588;display:inline"
      transform="translate(0,-308.2677)">
     <path
-       style="opacity:0.64018692;fill:none;stroke:#000000;stroke-width:11.45800018000000087;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.75221240000000000;stroke-dasharray:none;display:inline;filter:url(#filter3846)"
+       style="opacity:0.64018692;fill:none;stroke:#000000;stroke-width:11.45800018;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.7522124;stroke-dasharray:none;display:inline;filter:url(#filter3846)"
        d="m 289.49133,327.03618 182.64176,0 0,220.64176 -91.32088,-40 -91.32088,40 z"
        id="path3930"
        inkscape:connector-curvature="0"
@@ -293,7 +312,8 @@
   <g
      inkscape:groupmode="layer"
      id="layer8"
-     inkscape:label="Pole">
+     inkscape:label="Pole"
+     style="display:inline">
     <rect
        style="fill:url(#linearGradient3947);fill-opacity:1;stroke:#9f9f9f;stroke-width:0.14751428;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="rect3939"
@@ -328,7 +348,7 @@
      id="g3955"
      inkscape:groupmode="layer">
     <path
-       style="fill:none;stroke:url(#linearGradient4105);stroke-width:8.37500000000000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+       style="fill:none;stroke:url(#linearGradient4105);stroke-width:8.375;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
        d="m 209.41948,546.52836 162.61959,0 0,205.49496 -81.30979,-37.25405 -81.3098,37.25405 z"
        id="path3957"
        inkscape:connector-curvature="0"
@@ -357,11 +377,11 @@
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="Letter Shadow"
-     style="display:inline"
+     style="display:none"
      transform="translate(0,-308.2677)">
     <g
        id="g4026"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;opacity:0.47844828;fill:none;stroke:url(#linearGradient4038);stroke-width:6.09999999999999964;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline;font-family:Titillium Web;-inkscape-font-specification:Titillium Web;filter:url(#filter4028)"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;opacity:0.47844831;fill:none;stroke:url(#linearGradient4038);stroke-width:6.0999999;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline;filter:url(#filter4028);font-family:Titillium Web;-inkscape-font-specification:Titillium Web"
        transform="translate(-90.082915,214)"
        inkscape:export-filename="/Users/jmacdonald/Projects/triage_website/source/images/logo.png"
        inkscape:export-xdpi="107.04672"
@@ -370,7 +390,7 @@
          sodipodi:nodetypes="ccccsccsccc"
          inkscape:connector-curvature="0"
          id="path4028"
-         style="font-size:144px;font-weight:bold;fill:none;stroke:url(#linearGradient4038);stroke-width:6.09999999999999964;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+         style="font-size:144px;font-weight:bold;fill:none;stroke:url(#linearGradient4038);stroke-width:6.0999999;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
          d="m 332.43719,362.86877 96.75,0 0,26.46094 -34.80468,0 c 0,0 0.72898,24.11662 1.73392,36.1328 2.78493,33.29976 8.26608,48.38283 8.26608,48.38283 l -47.07032,0 c 0,0 5.53141,-16.09233 8.31369,-48.38283 1.03508,-12.01287 1.68631,-36.1328 1.68631,-36.1328 l -34.875,0 0,-26.46094" />
     </g>
   </g>
@@ -378,10 +398,10 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Letter"
-     style="display:inline"
+     style="display:none"
      transform="translate(0,-308.2677)">
     <g
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#3d5866;fill-opacity:1;stroke:#ffffff;stroke-width:5.40000009999999975;stroke-miterlimit:4;stroke-opacity:1;font-family:Titillium Web;-inkscape-font-specification:Titillium Web"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#3d5866;fill-opacity:1;stroke:#ffffff;stroke-width:5.4000001;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Titillium Web;-inkscape-font-specification:Titillium Web"
        id="text2985"
        transform="translate(-90.082915,214)"
        inkscape:export-filename="/Users/jmacdonald/Projects/triage_website/source/images/logo.png"
@@ -389,7 +409,7 @@
        inkscape:export-ydpi="107.04672">
       <path
          d="m 332.43719,362.86877 96.75,0 0,26.46094 -34.80468,0 c 0,0 0.72898,24.11662 1.73392,36.1328 2.78493,33.29976 8.26608,48.38283 8.26608,48.38283 l -47.07032,0 c 0,0 5.53141,-16.09233 8.31369,-48.38283 1.03508,-12.01287 1.68631,-36.1328 1.68631,-36.1328 l -34.875,0 0,-26.46094"
-         style="font-size:144px;font-weight:bold;fill:#3d5866;fill-opacity:1;stroke:#ffffff;font-family:Sans;-inkscape-font-specification:Sans Bold"
+         style="font-size:144px;font-weight:bold;fill:#3d5866;fill-opacity:1;stroke:#ffffff;stroke-width:5.4000001;stroke-miterlimit:4;stroke-dasharray:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
          id="path3994"
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="ccccsccsccc" />
@@ -399,21 +419,68 @@
      inkscape:groupmode="layer"
      id="layer7"
      inkscape:label="Letter Glow"
-     style="display:inline"
+     style="display:none"
      transform="translate(0,-308.2677)">
     <g
        id="g4053"
-       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;opacity:0.96120689000000004;fill:#00a6ff;fill-opacity:1;stroke:none;display:inline;filter:url(#filter4447);font-family:Titillium Web;-inkscape-font-specification:Titillium Web"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;opacity:0.96120689;fill:#00a6ff;fill-opacity:1;stroke:none;display:inline;filter:url(#filter4447);font-family:Titillium Web;-inkscape-font-specification:Titillium Web"
        transform="translate(-90.083225,214)"
        inkscape:export-filename="/Users/jmacdonald/Projects/triage_website/source/images/logo.png"
        inkscape:export-xdpi="107.04672"
        inkscape:export-ydpi="107.04672">
       <path
-         style="font-size:144px;font-weight:bold;opacity:0.28448277000000000;fill:#00a6ff;fill-opacity:1;stroke:none;filter:url(#filter4231);font-family:Sans;-inkscape-font-specification:Sans Bold"
+         style="font-size:144px;font-weight:bold;opacity:0.28448277;fill:#00a6ff;fill-opacity:1;stroke:none;filter:url(#filter4231);font-family:Sans;-inkscape-font-specification:Sans Bold"
          d="m 336.4375,385.34375 c 11.66667,0 23.33333,0 35,0 -0.73282,28.33147 -1.79062,56.90716 -8.8125,84.46875 12.00843,-0.26164 24.74528,0.6433 36.3125,-0.375 -6.9563,-27.40804 -7.80568,-55.9086 -8.6875,-84.09375 11.64583,0 23.29167,0 34.9375,0 0,-6.15625 0,-12.3125 0,-18.46875 -29.58333,0 -59.16667,0 -88.75,0 0,6.15625 0,12.3125 0,18.46875 z"
          id="path4055"
          inkscape:connector-curvature="0" />
     </g>
+  </g>
+  <g
+     inkscape:label="Zero Shadow"
+     id="g4498"
+     inkscape:groupmode="layer"
+     style="display:inline">
+    <text
+       sodipodi:linespacing="125%"
+       id="text4500"
+       y="377.8797"
+       x="247.77046"
+       style="font-size:41.77572632px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;opacity:0.478;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:6.0999999;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter4504);font-family:Open Sans;-inkscape-font-specification:Open Sans"
+       xml:space="preserve"><tspan
+         style="font-size:150.39260864px;font-weight:bold;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:6.0999999;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;-inkscape-font-specification:Open Sans Bold"
+         y="377.8797"
+         x="247.77046"
+         id="tspan4502"
+         sodipodi:role="line">0</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Zero"
+     style="display:inline">
+    <text
+       xml:space="preserve"
+       style="font-size:41.77572632px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#3d5866;fill-opacity:1;stroke:#ffffff;stroke-width:5.63972282;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Open Sans;-inkscape-font-specification:Open Sans"
+       x="247.77046"
+       y="377.8797"
+       id="text3726"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3728"
+         x="247.77046"
+         y="377.8797"
+         style="font-size:150.39260864px;font-weight:bold;fill:#3d5866;fill-opacity:1;stroke:#ffffff;stroke-width:5.63972282;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;-inkscape-font-specification:Open Sans Bold">0</tspan></text>
+  </g>
+  <g
+     style="display:inline"
+     inkscape:label="Zero Glow"
+     id="g4508"
+     inkscape:groupmode="layer">
+    <path
+       style="font-size:41.77572632px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;opacity:0.28504675;fill:#00a6ff;fill-opacity:1;stroke:none;filter:url(#filter4528);font-family:Open Sans;-inkscape-font-specification:Open Sans"
+       d="m 288.46875,272.875 c -14.29928,-0.506 -26.7066,11.81388 -28.5,25.6875 -4.33975,19.01341 -4.0324,39.87009 2.40625,58.28125 4.56288,11.12849 15.69965,19.34681 27.96875,18.59375 13.62,0.82896 27.20925,-8.37265 30.03125,-21.875 5.61871,-18.81981 5.13728,-39.74881 -0.125,-58.65625 -3.77007,-11.87102 -14.24484,-22.26278 -27.21875,-22 -1.51654,-0.11893 -3.04343,-0.0636 -4.5625,-0.0312 z m 2,10.28125 c 11.69359,-0.35818 17.64188,12.53983 18,22.625 1.79076,16.89956 2.62613,34.94215 -3.8125,50.90625 -4.80285,9.40014 -19.31356,11.62005 -25.9375,2.875 -8.29605,-11.1951 -6.20048,-26.42519 -6.92614,-39.59369 0.32676,-11.23714 0.53559,-24.2903 8.58239,-32.96881 2.74256,-2.48685 6.40488,-3.86222 10.09375,-3.84375 z"
+       id="text4510"
+       inkscape:connector-curvature="0" />
   </g>
   <g
      inkscape:groupmode="layer"
