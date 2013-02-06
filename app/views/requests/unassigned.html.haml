@@ -2,6 +2,7 @@
 
 - if @requests.empty?
   .empty_set
-    = t '.empty'
+    %h2
+      = t '.empty'
 - else
   = render 'requests'
