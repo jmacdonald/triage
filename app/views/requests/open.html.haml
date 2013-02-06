@@ -1,7 +1,7 @@
 = render 'nav'
 
 - if @requests.empty?
-  .alert.alert-info
+  .empty_set
     = t '.empty'
 - else
   = render 'requests'
