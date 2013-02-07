@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'cancan/matchers'
 
 describe Ability do
   before(:each) do
@@ -13,23 +14,23 @@ describe Ability do
     end
 
     it 'should be able to manage any request' do
-      @administrator_ability.can?(:manage, Request.new).should be_true
+      @administrator_ability.should be_able_to(:manage, Request.new)
     end
 
     it 'should be able to manage any user' do
-      @administrator_ability.can?(:manage, User.new).should be_true
+      @administrator_ability.should be_able_to(:manage, User.new)
     end
 
     it 'should be able to manage any comment' do
-      @administrator_ability.can?(:manage, Comment.new).should be_true
+      @administrator_ability.should be_able_to(:manage, Comment.new)
     end
 
     it 'should be able to manage any attachment' do
-      @administrator_ability.can?(:manage, Attachment.new).should be_true
+      @administrator_ability.should be_able_to(:manage, Attachment.new)
     end
 
     it 'should be able to manage any status' do
-      @administrator_ability.can?(:manage, Status.new).should be_true
+      @administrator_ability.should be_able_to(:manage, Status.new)
     end
   end
 
@@ -48,83 +49,83 @@ describe Ability do
     end
 
     it 'should be able to create new requests' do
-      @provider_ability.can?(:create, Request.new).should be_true
+      @provider_ability.should be_able_to(:create, Request.new)
     end
 
     it 'should be able to read a new request' do
-      @provider_ability.can?(:read, Request.new).should be_true
+      @provider_ability.should be_able_to(:read, Request.new)
     end
 
     it 'should be able to read a request assigned to it' do
-      @provider_ability.can?(:read, @assigned_request).should be_true
+      @provider_ability.should be_able_to(:read, @assigned_request)
     end
 
     it 'should be able to read a request assigned to another user' do
-      @provider_ability.can?(:read, @admin_assigned_request).should be_true
+      @provider_ability.should be_able_to(:read, @admin_assigned_request)
     end
 
     it 'should not be able to update a new request' do
-      @provider_ability.cannot?(:update, Request.new).should be_true
+      @provider_ability.should_not be_able_to(:update, Request.new)
     end
 
     it 'should be able to update requests assigned to it' do
-      @provider_ability.can?(:update, @assigned_request).should be_true
+      @provider_ability.should be_able_to(:update, @assigned_request)
     end
 
     it 'should not be able to update requests assigned to another user' do
-      @provider_ability.cannot?(:update, @admin_assigned_request).should be_true
+      @provider_ability.should_not be_able_to(:update, @admin_assigned_request)
     end
 
     it 'should not be able to destroy a new request' do
-      @provider_ability.cannot?(:destroy, Request.new).should be_true
+      @provider_ability.should_not be_able_to(:destroy, Request.new)
     end
 
     it 'should not be able to destroy a request assigned to it' do
-      @provider_ability.cannot?(:destroy, @assigned_request).should be_true
+      @provider_ability.should_not be_able_to(:destroy, @assigned_request)
     end
 
     it 'should not be able to destroy a request assigned to another user' do
-      @provider_ability.cannot?(:destroy, @admin_assigned_request).should be_true
+      @provider_ability.should_not be_able_to(:destroy, @admin_assigned_request)
     end
 
     it 'should be able to comment on any request' do
-      @provider_ability.can(:create, Comment.new).should be_true
+      @provider_ability.can(:create, Comment.new)
     end
 
     it 'should not be able to update comments' do
-      @provider_ability.cannot?(:update, Comment.new).should be_true
+      @provider_ability.should_not be_able_to(:update, Comment.new)
     end
 
     it 'should not be able to destroy comments' do
-      @provider_ability.cannot?(:destroy, Comment.new).should be_true
+      @provider_ability.should_not be_able_to(:destroy, Comment.new)
     end
 
     it 'should be able to create attachments' do
-      @provider_ability.can?(:create, Attachment.new).should be_true
+      @provider_ability.should be_able_to(:create, Attachment.new)
     end
 
     it 'should be able to destroy its own attachments' do
-      @provider_ability.can?(:destroy, @owned_attachment).should be_true
+      @provider_ability.should be_able_to(:destroy, @owned_attachment)
     end
 
     it 'should not be able to destroy attachments it does not own' do
-      @provider_ability.cannot?(:destroy, @foreign_attachment).should be_true
+      @provider_ability.should_not be_able_to(:destroy, @foreign_attachment)
     end
 
     it 'should be able to read itself' do
-      @provider_ability.can?(:read, @provider).should be_true
+      @provider_ability.should be_able_to(:read, @provider)
     end
 
     it 'should not be able to read another' do
-      @provider_ability.cannot?(:read, @administrator).should be_true
+      @provider_ability.should_not be_able_to(:read, @administrator)
     end
 
     it 'should be able to update itself' do
-      @provider_ability.can?(:update, @provider).should be_true
+      @provider_ability.should be_able_to(:update, @provider)
     end
     
     it 'should not be able to update another' do
-      @provider_ability.cannot?(:update, @administrator).should be_true
+      @provider_ability.should_not be_able_to(:update, @administrator)
     end
   end
 
@@ -143,75 +144,75 @@ describe Ability do
     end
 
     it 'should be able to read its own requests' do
-      @requester_ability.can?(:read, @owned_request).should be_true
+      @requester_ability.should be_able_to(:read, @owned_request)
     end
 
     it 'should not be able to read requests owned by another user' do
-      @requester_ability.cannot?(:read, @admin_request).should be_true
+      @requester_ability.should_not be_able_to(:read, @admin_request)
     end
 
     it 'should be able to create requests' do
-      @requester_ability.can?(:create, Request.new).should be_true
+      @requester_ability.should be_able_to(:create, Request.new)
     end
 
     it 'should not be able to update requests' do
-      @requester_ability.cannot?(:update, @owned_request).should be_true
-      @requester_ability.cannot?(:update, @admin_request).should be_true
+      @requester_ability.should_not be_able_to(:update, @owned_request)
+      @requester_ability.should_not be_able_to(:update, @admin_request)
     end
 
     it "should be able to create comments on requests they've created" do
       comment = Comment.new
       comment.request = @owned_request
-      @requester_ability.can?(:create, comment).should be_true
+      @requester_ability.should be_able_to(:create, comment)
     end
 
     it "should not be able to create comments on requests they didn't create" do
       comment = Comment.new
       comment.request = @admin_request
 
-      @requester_ability.cannot?(:create, comment).should be_true
+      @requester_ability.should_not be_able_to(:create, comment)
     end
 
     it 'should not be able to update comments' do
-      @requester_ability.cannot?(:update, @owned_request).should be_true
-      @requester_ability.cannot?(:update, @admin_request).should be_true
+      @requester_ability.should_not be_able_to(:update, @owned_request)
+      @requester_ability.should_not be_able_to(:update, @admin_request)
     end
 
     it 'should not be able to destroy comments' do
-      @requester_ability.cannot?(:destroy, @owned_request).should be_true
-      @requester_ability.cannot?(:destroy, @admin_request).should be_true
+      @requester_ability.should_not be_able_to(:destroy, @owned_request)
+      @requester_ability.should_not be_able_to(:destroy, @admin_request)
     end
 
     it 'should not be able to create attachments on any request' do
-      @requester_ability.cannot?(:create, Attachment.new).should be_true
+      @requester_ability.should_not be_able_to(:create, Attachment.new)
     end
 
     it 'should be able to create attachments on its own requests' do
-      @requester_ability.can?(:create, @owned_attachment).should be_true
+      @requester_ability.should be_able_to(:create, @owned_attachment)
     end
 
     it 'should be able to destroy its own attachments' do
-      @requester_ability.can?(:destroy, @owned_attachment).should be_true
+      @requester_ability.should be_able_to(:destroy, @owned_attachment)
     end
 
     it 'should not be able to destroy attachments it does not own' do
-      @requester_ability.cannot?(:destroy, @foreign_attachment).should be_true
+      @requester_ability.should_not be_able_to(:destroy, @foreign_attachment)
     end
 
     it 'should be able to read itself' do
-      @requester_ability.can?(:read, @requester).should be_true
+      @requester_ability.should be_able_to(:read, @requester)
     end
 
     it 'should not be able to read another' do
-      @requester_ability.cannot?(:read, @administrator).should be_true
+      @requester_ability.should_not be_able_to(:read, @administrator)
     end
 
     it 'should be able to update itself' do
-      @requester_ability.can?(:update, @requester).should be_true
+      @requester_ability.should be_able_to(:update, @requester)
     end
 
     it 'should not be able to update another' do
-      @requester_ability.cannot?(:update, @administrator).should be_true
+      @requester_ability.should_not be_able_to(:update, @administrator)
     end
   end
 end
