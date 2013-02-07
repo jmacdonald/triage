@@ -56,7 +56,7 @@ en:
       requested_by: "Requested By"
       requested_on: "Requested On"
       assigned_to: "Assigned To"
-      unassigned: "Unassigned"
+      nobody: "Nobody"
       description: "Description"
       comments: "Comments"
       attachments: "Attachments"

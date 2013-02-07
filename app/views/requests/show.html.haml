@@ -59,7 +59,7 @@
         %dt
           = t '.assigned_to'
         %dd 
-          = @request.assignee ? @request.assignee : t('.unassigned')
+          = @request.assignee ? @request.assignee : t('.nobody')
   %h5
     = t '.description'
   = @request.description
