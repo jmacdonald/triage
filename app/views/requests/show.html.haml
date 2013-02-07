@@ -34,32 +34,35 @@
   %h2
     = @request.title
   %dl.dl-horizontal
-    %dt
-      = t '.status'
-    %dd
-      %span.label{ class: (label_class @request.status) }
-        = @request.status
-    %dt
-      = t '.severity'
-    %dd
-      %span.label{ class: (severity_class @request.severity) }
-        = t ".severities.#{@request.severity}"
-    %dt
-      = t '.system'
-    %dd 
-      = @request.system
-    %dt
-      = t '.requested_by'
-    %dd 
-      = @request.requester
-    %dt
-      = t '.requested_on'
-    %dd 
-      = pretty_date @request.created_at
-    %dt
-      = t '.assigned_to'
-    %dd 
-      = @request.assignee ? @request.assignee : t('.unassigned')
+    .row.row-fluid
+      .span5
+        %dt
+          = t '.status'
+        %dd
+          %span.label{ class: (label_class @request.status) }
+            = @request.status
+        %dt
+          = t '.severity'
+        %dd
+          %span.label{ class: (severity_class @request.severity) }
+            = t ".severities.#{@request.severity}"
+        %dt
+          = t '.system'
+        %dd 
+          = @request.system
+      .span7
+        %dt
+          = t '.requested_by'
+        %dd 
+          = @request.requester
+        %dt
+          = t '.requested_on'
+        %dd 
+          = pretty_date @request.created_at
+        %dt
+          = t '.assigned_to'
+        %dd 
+          = @request.assignee ? @request.assignee : t('.unassigned')
   %h5
     = t '.description'
   = @request.description
