@@ -9,7 +9,7 @@ class SettingsController < ApplicationController
     authorize! :update, current_user
 
     if current_user.update_attributes profile_params
-      flash[:notice] = t 'settings.update_profile.success'
+      flash.now[:notice] = t 'settings.update_profile.success'
     end
 
     render 'edit_profile'
@@ -24,9 +24,9 @@ class SettingsController < ApplicationController
 
     # Confirm password.
     if params[:user][:password] != params[:user][:password_confirmation]
-      flash[:error] = t 'settings.update_password.mismatch'
+      flash.now[:error] = t 'settings.update_password.mismatch'
     elsif current_user.update_attributes password_params
-      flash[:notice] = t 'settings.update_password.success'
+      flash.now[:notice] = t 'settings.update_password.success'
     end
 
     render 'edit_password'
