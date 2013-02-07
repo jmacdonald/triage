@@ -36,6 +36,5 @@ Triage::Application.routes.draw do
 
   root :to => 'requests#unassigned', :constraints => RoleConstraint.new('administrator')
   root :to => 'requests#open_assignments', :constraints => RoleConstraint.new('provider')
-  root :to => 'requests#open', :constraints => lambda { |request| request.env['warden'].user }
-  root :to => redirect('/sign_in')
+  root :to => 'requests#open'
 end
