@@ -31,8 +31,13 @@
   %span.tag<
     = t '.request_number'
     = @request.id
-  %h2
+  %h2.title
     = @request.title
+  %small.creation_details
+    created by
+    = @request.requester
+    = time_ago_in_words @request.created_at
+    ago
   %dl.dl-horizontal
     .row.row-fluid
       .span5
@@ -46,19 +51,11 @@
         %dd
           %span.label{ class: (severity_class @request.severity) }
             = t ".severities.#{@request.severity}"
+      .span7
         %dt
           = t '.system'
         %dd 
           = @request.system
-      .span7
-        %dt
-          = t '.requested_by'
-        %dd 
-          = @request.requester
-        %dt
-          = t '.requested_on'
-        %dd 
-          = pretty_date @request.created_at
         %dt
           = t '.assigned_to'
         %dd 
@@ -83,12 +80,13 @@
               = gravatar_image_tag comment.user.email, class: 'img-polaroid', gravatar: {size: 32}
             .span11
               %h5
-                = pretty_date comment.created_at
+                = comment.user
+                \-
+                = request_role(@request, comment.user)
                 %br
                 %small
-                  = comment.user
-                  \-
-                  = request_role(@request, comment.user)
+                  = time_ago_in_words comment.created_at
+                  ago
               = enrich comment.content
 
 #reassign_modal.modal.hide.fade
