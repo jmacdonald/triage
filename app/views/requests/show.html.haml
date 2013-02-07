@@ -38,8 +38,8 @@
     = @request.requester
     = time_ago_in_words @request.created_at
     ago
-  .row.row-fluid
-    .span5
+  .row.row-fluid.details
+    .span4
       %dl.dl-horizontal
         %dt
           = t '.status'
@@ -51,7 +51,7 @@
         %dd
           %span.label{ class: (severity_class @request.severity) }
             = t ".severities.#{@request.severity}"
-    .span7
+    .span8
       %dl.dl-horizontal
         %dt
           = t '.system'
