@@ -7,7 +7,7 @@ describe Ability do
     @requester = create :user, role: 'requester'
   end
 
-  context 'an administrator' do
+  describe 'administrator' do
     before(:each) do
       @administrator_ability = Ability.new @administrator
     end
@@ -33,7 +33,7 @@ describe Ability do
     end
   end
 
-  context 'a provider' do
+  describe 'provider' do
     before(:each) do
       @provider_ability = Ability.new @provider
 
@@ -110,9 +110,25 @@ describe Ability do
     it 'should not be able to destroy attachments it does not own' do
       @provider_ability.cannot?(:destroy, @foreign_attachment).should be_true
     end
+
+    it 'should be able to read itself' do
+      @provider_ability.can?(:read, @provider).should be_true
+    end
+
+    it 'should not be able to read another' do
+      @provider_ability.cannot?(:read, @administrator).should be_true
+    end
+
+    it 'should be able to update itself' do
+      @provider_ability.can?(:update, @provider).should be_true
+    end
+    
+    it 'should not be able to update another' do
+      @provider_ability.cannot?(:update, @administrator).should be_true
+    end
   end
 
-  context 'a requester' do
+  describe 'requester' do
     before(:each) do
       @requester_ability = Ability.new @requester
 
@@ -180,6 +196,22 @@ describe Ability do
 
     it 'should not be able to destroy attachments it does not own' do
       @requester_ability.cannot?(:destroy, @foreign_attachment).should be_true
+    end
+
+    it 'should be able to read itself' do
+      @requester_ability.can?(:read, @requester).should be_true
+    end
+
+    it 'should not be able to read another' do
+      @requester_ability.cannot?(:read, @administrator).should be_true
+    end
+
+    it 'should be able to update itself' do
+      @requester_ability.can?(:update, @requester).should be_true
+    end
+
+    it 'should not be able to update another' do
+      @requester_ability.cannot?(:update, @administrator).should be_true
     end
   end
 end
