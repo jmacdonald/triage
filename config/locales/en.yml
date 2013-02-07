@@ -88,6 +88,7 @@ en:
     update_profile:
       success: "Profile updated successfully."
     edit_password:
+      password_managed_externally: "Your password cannot be changed through Triage as it is managed externally. Please contact your administration for further assistance."
       update_password: "Update Password"
     update_password:
       mismatch: "Password and confirmation did not match."
