@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :assignments, :class_name => 'Request', :foreign_key => :assignee_id
   has_many :comments
   has_many :attachments
-  has_many :responsibilities
+  has_many :responsibilities, :inverse_of => :user
   has_many :systems, :through => :responsibilities
 
   validates :username, :email, :role, :name, :presence => true

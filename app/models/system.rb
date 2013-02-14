@@ -1,6 +1,6 @@
 class System < ActiveRecord::Base
   has_many :requests
-  has_many :responsibilities
+  has_many :responsibilities, :inverse_of => :system
   has_many :users, :through => :responsibilities
 
   validates :name, :presence => true
