@@ -15,6 +15,7 @@ gem 'squeel'
 gem 'kaminari-bootstrap'
 gem 'strong_parameters'
 gem 'mail_view'
+gem 'coveralls', require: false
 
 group :postgresql do
   gem 'pg'

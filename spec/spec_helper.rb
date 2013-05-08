@@ -1,6 +1,10 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spork'
 
+# Test coverage analysis
+require 'coveralls'
+Coveralls.wear!
+
 # Require the debugger gem, if it's available. This is to reduce build time on TravisCI.
 begin
   require 'debugger'
