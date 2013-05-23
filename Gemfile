@@ -49,6 +49,8 @@ end
 
 group :production do
   gem 'unicorn'
+  gem 'foreman'
+  gem 'foreman-export-initscript'
 end
 
 group :assets do
