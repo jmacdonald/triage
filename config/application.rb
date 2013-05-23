@@ -66,5 +66,8 @@ module Triage
     config.to_prepare do
       Devise::SessionsController.layout "devise" 
     end
+
+    # Add the lib directory (to import the custom failure app for warden).
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end
