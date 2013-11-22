@@ -13,9 +13,9 @@ class Request < ActiveRecord::Base
   before_validation :set_default_status, :if => "status.nil?"
   before_create :assign, :if => "assignee.nil?"
 
-  scope :closed, joins(:status).where(:statuses => {:closed => true})
-  scope :unclosed, joins(:status).where(:statuses => {:closed => false})
-  scope :unassigned, where(:assignee_id => nil)
+  scope :closed, -> { joins(:status).where :statuses => {:closed => true} }
+  scope :unclosed, -> { joins(:status).where :statuses => {:closed => false} }
+  scope :unassigned, -> { where(:assignee_id => nil) }
 
   def to_s
     "Request ##{self.id}: #{self.title}"

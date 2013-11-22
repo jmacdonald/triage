@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates :username, :uniqueness => true, :format => /^\w+$/
   validates :role, :inclusion => { :in => ROLE_OPTIONS }
 
-  scope :available, where(available: true)
+  scope :available, -> { where available: true }
 
   def to_s
     self.name
