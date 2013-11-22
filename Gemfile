@@ -25,7 +25,6 @@ gem 'activeadmin'
 gem 'gravatar_image_tag'
 gem 'squeel'
 gem 'kaminari-bootstrap'
-gem 'strong_parameters'
 gem 'mail_view'
 gem 'coveralls', require: false
 
