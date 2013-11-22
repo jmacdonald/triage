@@ -14,6 +14,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'rails-observers'
 gem 'devise'
 gem 'devise_ldap_authenticatable'
 gem 'cancan'
