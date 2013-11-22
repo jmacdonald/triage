@@ -1,6 +1,4 @@
 Triage::Application.routes.draw do
-  ActiveAdmin.routes(self)
-
   require File.expand_path("../../lib/custom_constraints", __FILE__)
   devise_for :database_users, :directory_users, skip: [:sessions]
 
