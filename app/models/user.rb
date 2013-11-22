@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   validates :username, :email, :role, :name, :presence => true
   validates :email, :uniqueness => true
-  validates :username, :uniqueness => true, :format => /^\w+$/
+  validates :username, :uniqueness => true, :format => /\A\w+\z/
   validates :role, :inclusion => { :in => ROLE_OPTIONS }
 
   scope :available, -> { where available: true }
