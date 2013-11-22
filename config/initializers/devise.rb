@@ -244,4 +244,7 @@ Devise.setup do |config|
   config.warden do |manager|
       manager.failure_app = CustomFailure
   end
+
+  # Set the secret key.
+  config.secret_key = 'dab8f98b5ea6de3b496b7500d644feb4c15f9f33ee9f7e37b2cfa82ed1189e61040d6d61a7c03a9d0b3f17db0147df328804a09ddbd857c34373a4484092d170'
 end
