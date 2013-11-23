@@ -58,7 +58,7 @@ group :test do
   gem 'shoulda-matchers'
 end
 
-group :test, :production do
+group :test, :development do
   gem 'pry'
 end
 
