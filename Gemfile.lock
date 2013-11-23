@@ -285,6 +285,7 @@ DEPENDENCIES
   mysql2
   paperclip
   pg
+  pry
   rails (= 4.0.1)
   rails-observers
   rb-fsevent

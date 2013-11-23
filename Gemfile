@@ -58,6 +58,10 @@ group :test do
   gem 'shoulda-matchers'
 end
 
+group :test, :production do
+  gem 'pry'
+end
+
 group :production do
   gem 'unicorn'
   gem 'foreman'
