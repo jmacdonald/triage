@@ -10,6 +10,16 @@ class ApplicationController < ActionController::Base
     redirect_to '/', :alert => exception.message
   end
 
+  # Pass default parameters through strong parameter methods
+  # since CanCan doesn't work with Rails 4 just yet.
+  before_filter do
+    resource = controller_name.singularize.to_sym
+    generic_method = "#{resource}_params"
+    create_method = "create_#{resource}_params"
+    params[resource] &&= send(generic_method) if respond_to?(generic_method, true)
+    params[resource] &&= send(create_method) if respond_to?(create_method, true)
+  end
+
   private
 
   def safe_controller?
