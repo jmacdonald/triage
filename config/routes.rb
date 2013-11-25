@@ -32,7 +32,7 @@ Triage::Application.routes.draw do
   
   mount Notifier::Preview => 'mail_view' if Rails.env.development?
 
-  root :to => 'requests#unassigned', :constraints => RoleConstraint.new('administrator')
-  root :to => 'requests#open_assignments', :constraints => RoleConstraint.new('provider')
-  root :to => 'requests#open'
+  get '/', to: 'requests#unassigned', constraints: RoleConstraint.new('administrator')
+  get '/', to: 'requests#open_assignments', constraints: RoleConstraint.new('provider')
+  get '/', to: 'requests#open'
 end

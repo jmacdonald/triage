@@ -33,7 +33,7 @@ describe SessionsController do
       end
 
       it 'should redirect to the root path' do
-        response.should redirect_to(root_path)
+        response.should redirect_to '/'
       end
 
       it 'should sign the user in' do
