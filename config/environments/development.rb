@@ -37,4 +37,7 @@ Triage::Application.configure do
   # Force absolute paths for assets in email. This fixes invalid asset link
   # when viewing emails through file paths (as is done in letter_opener).
   config.action_mailer.asset_host = "http://localhost:3000"
+
+  # Allow autoload to do its thing.
+  config.eager_load = false
 end

@@ -75,4 +75,7 @@ Triage::Application.configure do
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }
+
+  # Preload classes/modules before forking.
+  config.eager_load = true
 end
