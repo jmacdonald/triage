@@ -39,7 +39,7 @@
     = time_ago_in_words @request.created_at
     ago
   .row.details
-    .span4
+    .col-md-4
       %dl.dl-horizontal
         %dt
           = t '.status'
@@ -51,7 +51,7 @@
         %dd
           %span.label{ class: (severity_class @request.severity) }
             = t ".severities.#{@request.severity}"
-    .span8
+    .col-md-8
       %dl.dl-horizontal
         %dt
           = t '.system'
@@ -77,9 +77,9 @@
           %hr
         .comment
           .row
-            .span1.gravatar
+            .col-md-1.gravatar
               = gravatar_image_tag comment.user.email, class: 'img-polaroid', gravatar: {size: 32}
-            .span11
+            .col-md-11
               %h5
                 = comment.user
                 \-

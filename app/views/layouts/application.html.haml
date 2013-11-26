@@ -18,7 +18,7 @@
               = link_to t('navbar.new_request'), new_request_path
             - unless current_user.role == 'requester'
               = form_tag(search_requests_path, class: 'navbar-form pull-left', method: 'get', id: 'quick_search') do
-                = text_field_tag 'request_id', nil, placeholder: 'Request #', class: 'span2'
+                = text_field_tag 'request_id', nil, placeholder: 'Request #', class: 'col-md-2'
                 %button.btn{type: 'submit'}
                   Search
           %ul.nav.pull-right
@@ -32,9 +32,9 @@
               = link_to t('navbar.login'), new_user_session_path
     .container
       .row
-        .span2
+        .col-md-2
           = yield :nav
-        .span7
+        .col-md-7
           / Flash messages
           - if flash[:notice]
             .alert.alert-info
@@ -46,5 +46,5 @@
             .alert.alert-error
               = flash[:error]
           = yield
-        .span3
+        .col-md-3
           = yield :sidebar
