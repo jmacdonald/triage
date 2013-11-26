@@ -1,8 +1,8 @@
 - content_for :nav do
-  .well.context-menu
-    %ul.nav.nav-list
+  %nav
+    %ul
       - if can? :read, Request.new
-        %li.nav-header
+        %li.header
           = t 'nav.general'
         %li{ class: ('active' if current_page?(requests_path) ) }
           = link_to requests_path do
@@ -10,7 +10,7 @@
         %li{ class: ('active' if (params[:controller] == 'requests' and params[:action] == 'unassigned') ) }
           = link_to unassigned_requests_path do
             = t 'nav.unassigned_requests'
-      %li.nav-header
+      %li.header
         = t 'nav.my_requests'
       %li{ class: ('active' if (params[:controller] == 'requests' and params[:action] == 'open') ) }
         = link_to open_requests_path do
@@ -19,7 +19,7 @@
         = link_to closed_requests_path do
           = t 'nav.closed_requests'
       - if can? :read, Request.new
-        %li.nav-header
+        %li.header
           = t 'nav.my_assignments'
         %li{ class: ('active' if (params[:controller] == 'requests' and params[:action] == 'open_assignments') ) }
           = link_to open_assignments_path do

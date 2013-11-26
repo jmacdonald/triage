@@ -59,3 +59,29 @@ textarea {
 #quick_search {
   margin-left: 3px;
 }
+
+nav {
+  border-left: 1px solid $light_grey;
+
+  ul {
+    padding-left: 0px;
+
+    li {
+      list-style: none;
+      padding: 5px 10px 5px 15px;
+
+      &.header {
+        font-weight: bold;
+
+        &:nth-child(n+1) {
+          margin-top: 10px;
+        }
+      }
+
+      &.active {
+        background-color: $lighter_grey;
+        border-radius: 0 3px 3px 0;
+      }
+    }
+  }
+}

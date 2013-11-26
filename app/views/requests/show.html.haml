@@ -1,7 +1,7 @@
 - content_for :nav do
-  .well.context-menu
-    %ul.nav.nav-list
-      %li.nav-header
+  %nav
+    %ul
+      %li.header
         = t '.actions.modify'
       - if can? :edit, @request
         %li
@@ -16,7 +16,7 @@
         %a{ href: '#edit_details_modal', data: {toggle: 'modal'}}
           %i.icon-pencil
           = t '.actions.edit_details'
-      %li.nav-header
+      %li.header
         = t '.actions.add'
       %li
         %a{ href: '#add_comment_modal', data: {toggle: 'modal'}}
