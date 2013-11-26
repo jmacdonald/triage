@@ -40,4 +40,7 @@ Triage::Application.configure do
 
   # Allow autoload to do its thing.
   config.eager_load = false
+
+  # Don't use precompiled assets in development.
+  config.assets.prefix = "/dev-assets"
 end
