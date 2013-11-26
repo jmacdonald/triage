@@ -15,9 +15,9 @@ class ApplicationController < ActionController::Base
   before_filter do
     resource = controller_name.singularize.to_sym
     generic_method = "#{resource}_params"
-    create_method = "create_#{resource}_params"
+    action_method = "#{action_name}_#{resource}_params"
     params[resource] &&= send(generic_method) if respond_to?(generic_method, true)
-    params[resource] &&= send(create_method) if respond_to?(create_method, true)
+    params[resource] &&= send(action_method) if respond_to?(action_method, true)
   end
 
   private
