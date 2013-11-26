@@ -7,27 +7,28 @@
     = csrf_meta_tags
     %link{rel: "shortcut icon", href: "/favicon.ico"}
   %body
-    .navbar.navbar-static-top
+    .navbar.navbar-default.navbar-static-top{ role: 'navigation' }
       .navbar-inner
-        %a.brand{ :href => '#' } Triage
+        %a.navbar-brand{ :href => '#' } Triage
         - if current_user
-          %ul.nav
+          %ul.nav.navbar-nav
             %li{:class => ('active' if (params[:controller] == 'requests' and params[:action] != 'new'))}
               = link_to t('navbar.requests'), requests_path
             %li{:class => ('active' if current_page?(new_request_path))}
               = link_to t('navbar.new_request'), new_request_path
             - unless current_user.role == 'requester'
-              = form_tag(search_requests_path, class: 'navbar-form pull-left', method: 'get', id: 'quick_search') do
-                = text_field_tag 'request_id', nil, placeholder: 'Request #', class: 'col-md-2'
-                %button.btn{type: 'submit'}
+              = form_tag(search_requests_path, class: 'navbar-form navbar-left', method: 'get', id: 'quick_search', role: 'search') do
+                .form-group
+                  = text_field_tag 'request_id', nil, placeholder: 'Request #', class: 'form-control'
+                %button.btn.btn-default{type: 'submit'}
                   Search
-          %ul.nav.pull-right
+          %ul.nav.navbar-nav.pull-right
             %li{:class => ('active' if (params[:controller] == 'settings'))}
               = link_to t('navbar.settings'), edit_profile_path
             %li
               = link_to t('navbar.logout'), destroy_session_path, :method => :delete
         - else
-          %ul.nav.pull-right
+          %ul.nav.navbar-nav.pull-right
             %li
               = link_to t('navbar.login'), new_user_session_path
     .container
