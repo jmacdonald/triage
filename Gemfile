@@ -52,8 +52,6 @@ group :test do
   gem 'rb-fsevent'
   gem 'listen', '0.4.7'
   gem 'guard-rspec'
-  gem 'guard-spork'
-  gem 'spork-rails'
   gem 'terminal-notifier-guard'
   gem 'shoulda-matchers'
 end
