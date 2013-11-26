@@ -72,6 +72,9 @@ nav {
 
       &.header {
         font-weight: bold;
+        font-size: small;
+        text-transform: uppercase;
+        color: $dark_grey;
 
         &:nth-child(n+1) {
           margin-top: 10px;
