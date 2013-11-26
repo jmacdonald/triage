@@ -1,11 +1,11 @@
-.row-fluid
+.row
   .comment.span6.offset3
     .tag
       Request ##{@comment.request.id}
     %h2
       = @comment.request.title
     %hr
-    .row-fluid
+    .row
       .span1.gravatar
         = gravatar_image_tag @comment.user.email, class: 'img-polaroid', gravatar: {size: 32}
       .span11

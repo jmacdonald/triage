@@ -38,7 +38,7 @@
     = @request.requester
     = time_ago_in_words @request.created_at
     ago
-  .row.row-fluid.details
+  .row.details
     .span4
       %dl.dl-horizontal
         %dt
@@ -76,7 +76,7 @@
         - unless index == 0
           %hr
         .comment
-          .row-fluid
+          .row
             .span1.gravatar
               = gravatar_image_tag comment.user.email, class: 'img-polaroid', gravatar: {size: 32}
             .span11
